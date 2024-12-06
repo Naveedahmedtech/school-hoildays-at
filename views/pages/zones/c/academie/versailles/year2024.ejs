@@ -1,0 +1,55 @@
+    <div class="main">
+      <main id="main">
+        <div id="menu_annee">
+          <ul>
+            <li>
+              <a
+                href="/academie/versailles-year-2024"
+                id="actif"
+                title="vacances scolaires 2025 zone A"
+                >2024-2025</a
+              >
+            </li>
+            <li>
+              <a
+                href="/academie/versailles-year-2024"
+                title="vacances scolaires 2026 zone A"
+                >2025-2026</a
+              >
+            </li>
+          </ul>
+        </div>
+        <h1>Vacances scolaires zone C 2024-2025</h1>
+        <% vacations.forEach(vacation => { %>
+          <div class="dateTitre">
+            <a href="<%= vacation.link %>"><%= vacation.title %></a>
+          </div>
+          <div class="date dC">
+            <div class="zone zC"><span><%= vacation.zoneC %></span></div>
+            <span class="lesdates">
+              <% if (vacation.startDate) { %>
+                Fin des cours : <b><%= vacation.startDate %></b><br />
+              <% } %>
+              <% if (vacation.endDate) { %>
+                Jour de reprise : <b><%= vacation.endDate %></b>
+              <% } %>
+            </span>
+          </div>
+        <% }); %>
+        <div class="spacer"></div>
+        <div class="dateTitre">
+          <span>Les académies rattachées à la zone C :</span>
+        </div>
+        <div class="date dC">
+          <div class="zone zC"><span>Zone C</span></div>
+          <span class="lesdates"
+            ><a href="/academie-creteil/" class="noir">Créteil</a>,
+            <a href="/academie-montpellier/" class="noir">Montpellier</a>,
+            <a href="/academie-paris/" class="noir">Paris</a>,
+            <a href="/academie-toulouse/" class="noir">Toulouse</a>,
+            <a href="/academie-versailles/" class="noir">Versailles</a></span
+          >
+        </div>
+      </main>
+</div>
+

@@ -1,0 +1,112 @@
+<div class="main">
+    <main id="main">
+      <h1>Vacances de printemps 2024 vacances de Pâques 2024</h1>
+      <div class="date taille25">&nbsp;</div>
+      <% zones.forEach(zone => { %>
+        <div class="date dd<%= zone.text.charAt(zone.text.length - 1) %> taille33">
+          <a
+            href="<%= zone.href %>"
+            class="<%= zone.className %>"
+            title="<%= zone.title %>"
+          >
+            <%= zone.text %>
+          </a>
+        </div>
+      <% }) %>
+      <div class="spacer"></div>
+      <!-- vacation 2024  -->
+      <div class="dateLibelle dLibelle taille25">
+        <a href="<%= vacation2024.link %>" class="noir b"
+          ><%= vacation2024.title %></a
+        >
+      </div>
+  
+      <% vacation2024.zones.forEach((zone) => { %>
+      <div class="date <%= zone.className %> taille33">
+        <div class="zone <%= zone.zoneClass %>">
+          <span><%= zone.zoneName %></span>
+        </div>
+        <span class="lesdates">
+          <div class="mobile">Fin des cours :</div>
+          <b><%= zone.endOfClasses %></b><br />
+          <div class="mobile">Jour de reprise :</div>
+          <b><%= zone.dayOfResumption %></b>
+        </span>
+      </div>
+      <% }); %>
+      <div class="spacer"></div>
+      <br />
+      <h1>Vacances de printemps 2025 vacances de Pâques 2025</h1>
+      <div class="date taille25">&nbsp;</div>
+      <% zones.forEach(zone => { %>
+        <div class="date dd<%= zone.text.charAt(zone.text.length - 1) %> taille33">
+          <a
+            href="<%= zone.href %>"
+            class="<%= zone.className %>"
+            title="<%= zone.title %>"
+          >
+            <%= zone.text %>
+          </a>
+        </div>
+      <% }) %>
+      <div class="spacer"></div>
+      <!-- vacation 2025  -->
+      <div class="dateLibelle dLibelle taille25">
+        <a href="<%= vacation2025.link %>" class="noir b"
+          ><%= vacation2025.title %></a
+        >
+      </div>
+  
+      <% vacation2025.zones.forEach((zone) => { %>
+      <div class="date <%= zone.className %> taille33">
+        <div class="zone <%= zone.zoneClass %>">
+          <span><%= zone.zoneName %></span>
+        </div>
+        <span class="lesdates">
+          <div class="mobile">Fin des cours :</div>
+          <b><%= zone.endOfClasses %></b><br />
+          <div class="mobile">Jour de reprise :</div>
+          <b><%= zone.dayOfResumption %></b>
+        </span>
+      </div>
+      <% }); %>
+      <div class="spacer"></div>
+      <br />
+      <h1>Vacances de printemps 2026 vacances de Pâques 2026</h1>
+      <div class="date taille25">&nbsp;</div>
+      <% zones.forEach(zone => { %>
+        <div class="date dd<%= zone.text.charAt(zone.text.length - 1) %> taille33">
+          <a
+            href="<%= zone.href %>"
+            class="<%= zone.className %>"
+            title="<%= zone.title %>"
+          >
+            <%= zone.text %>
+          </a>
+        </div>
+      <% }) %>
+      <div class="spacer"></div>
+      <!-- vacation 2026  -->
+      <div class="dateLibelle dLibelle taille25">
+        <a href="<%= vacation2026.link %>" class="noir b"
+          ><%= vacation2026.title %></a
+        >
+      </div>
+  
+      <% vacation2026.zones.forEach((zone) => { %>
+      <div class="date <%= zone.className %> taille33">
+        <div class="zone <%= zone.zoneClass %>">
+          <span><%= zone.zoneName %></span>
+        </div>
+        <span class="lesdates">
+          <div class="mobile">Fin des cours :</div>
+          <b><%= zone.endOfClasses %></b><br />
+          <div class="mobile">Jour de reprise :</div>
+          <b><%= zone.dayOfResumption %></b>
+        </span>
+      </div>
+      <% }); %>
+      <div class="spacer"></div>
+    </main>
+  </div>
+  

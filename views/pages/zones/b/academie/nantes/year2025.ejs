@@ -1,0 +1,60 @@
+<div class="main">
+  <main id="main">
+    <div id="menu_annee">
+      <ul>
+        <li>
+          <a
+            href="/academie/nantes-year-2024"
+            title="vacances scolaires 2025 zone A"
+            >2024-2025</a
+          >
+        </li>
+        <li>
+          <a href="/academie/nantes-year-2025" 
+          id="actif"
+          title="vacances scolaires 2026 zone A"
+            >2025-2026</a
+          >
+        </li>
+      </ul>
+    </div>
+    <h1>Vacances scolaires zone B 2025-2026</h1>
+    <% vacations.forEach(vacation => { %>
+    <div class="dateTitre">
+      <a href="<%= vacation.link %>"><%= vacation.title %></a>
+    </div>
+    <div class="date dB">
+      <div class="zone zB"><span><%= vacation.zoneB %></span></div>
+      <span class="lesdates">
+        <% if (vacation.startDate) { %> Fin des cours :
+        <b><%= vacation.startDate %></b><br />
+        <% } %> <% if (vacation.endDate) { %> Jour de reprise :
+        <b><%= vacation.endDate %></b>
+        <% } %>
+      </span>
+    </div>
+    <% }); %>
+    <div class="spacer"></div>
+    <div class="dateTitre">
+      <span>Les académies rattachées à la zone B :</span>
+    </div>
+    <div class="date dB">
+      <div class="zone zB"><span>Zone B</span></div>
+      <span class="lesdates"
+        ><a href="/academie-aix-marseille/" class="noir">Aix-Marseille</a>,
+        <a href="/academie-amiens/" class="noir">Amiens</a>,
+        <a href="/academie-caen/" class="noir">Caen</a>,
+        <a href="/academie-lille/" class="noir">Lille</a>,
+        <a href="/academie-nancy-metz/" class="noir">Nancy-Metz</a>,
+        <a href="/academie-nantes/" class="noir">Nantes</a>,
+        <a href="/academie-nice/" class="noir">Nice</a>,
+        <a href="/academie-orleans-tours/" class="noir">Orléans-Tours</a>,
+        <a href="/academie-reims/" class="noir">Reims</a>,
+        <a href="/academie-rennes/" class="noir">Rennes</a>,
+        <a href="/academie-rouen/" class="noir">Rouen</a>,
+        <a href="/academie-strasbourg/" class="noir">Strasbourg</a></span
+      >
+    </div>
+  </main>
+<div></div>
+</div>

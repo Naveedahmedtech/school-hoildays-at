@@ -1,0 +1,40 @@
+<div class="main">
+  <main id="main">
+    <div id="menu_annee">
+      <ul>
+        <li>
+          <a
+            href="/academie/grenoble-year-2024"
+            id="actif"
+            title="vacances scolaires 2025 zone A"
+            >2024-2025</a
+          >
+        </li>
+        <li>
+          <a
+            href="/academie/grenoble-year-2025"
+            title="vacances scolaires 2026 zone A"
+            >2025-2026</a
+          >
+        </li>
+      </ul>
+    </div>
+    <h1>Vacances scolaires zone A 2024-2025</h1>
+    <% vacations.forEach(vacation => { %>
+    <div class="dateTitre">
+      <a href="<%= vacation.link %>"><%= vacation.title %></a>
+    </div>
+    <div class="date dA">
+      <div class="zone zA"><span><%= vacation.zoneA %></span></div>
+      <span class="lesdates">
+        <% if (vacation.startDate) { %> Fin des cours :
+        <b><%= vacation.startDate %></b><br />
+        <% } %> <% if (vacation.endDate) { %> Jour de reprise :
+        <b><%= vacation.endDate %></b>
+        <% } %>
+      </span>
+    </div>
+    <% }); %>
+    <div class="spacer"></div>
+  </main>
+</div>

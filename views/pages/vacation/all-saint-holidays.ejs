@@ -1,0 +1,37 @@
+<div>
+  <% const years = [{ year: 2024, vacations: vacation2024 }, { year: 2025, vacations: vacation2025 }, { year: 2026, vacations: vacation2026 }]; %>
+  <% years.forEach(({ year, vacations }) => { %>
+  <h1>Vacances de la Toussaint <%= year %></h1>
+  <div class="date taille25">&nbsp;</div>
+  <% zones.forEach(zone => { %>
+  <div class="date dd<%= zone.text.charAt(zone.text.length - 1) %> taille33">
+    <a
+      href="<%= zone.href %>"
+      class="<%= zone.className %>"
+      title="<%= zone.title %>"
+    >
+      <%= zone.text %>
+    </a>
+  </div>
+  <% }); %>
+  <div class="spacer"></div>
+  <!-- Vacations -->
+  <% vacations.forEach(item => { %>
+  <div class="dateLibelle dLibelle taille25">
+    <a href="<%= item.link %>" class="noir b"><%= item.title %></a>
+  </div>
+  <div class="date dZ <%= item && item.isOff ? 'off' : '' %>">
+    <div class="zone zZ">
+      <div class="<%= item.className %>"><%= item.zoneA %></div>
+      <div class="<%= item.className %>"><%= item.zoneB %></div>
+      <div class="<%= item.className %>"><%= item.zoneC %></div>
+    </div>
+    <span class="lesdates">
+      Fin des cours : <b><%= item.startDate %></b> <br />
+      Jour de reprise : <b><%= item.endDate %></b>
+    </span>
+  </div>
+  <% }); %>
+  <div class="spacer"></div>
+  <% }); %>
+</div>
