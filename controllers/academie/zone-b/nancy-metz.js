@@ -11,6 +11,8 @@ const { zonesVacationData } = require("../../../utils/zones.util");
 const zones = ["Zone B"];
 const location = "Nancy-Metz";
 const nancyMetz2024 = async (req, res) => {
+  const countdownData = req?.holidayData?.countdownData;
+
   const year = "2024";
 
   try {
@@ -40,6 +42,7 @@ const nancyMetz2024 = async (req, res) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
+      countdownData,
       title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
@@ -53,6 +56,8 @@ const nancyMetz2024 = async (req, res) => {
 };
 
 const nancyMetz2025 = async (req, res) => {
+  const countdownData = req?.holidayData?.countdownData;
+
   const year = "2025";
 
   try {
@@ -81,6 +86,7 @@ const nancyMetz2025 = async (req, res) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
+      countdownData,
       title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
@@ -94,6 +100,6 @@ const nancyMetz2025 = async (req, res) => {
 };
 
 module.exports = {
-    nancyMetz2024,
-    nancyMetz2025,
+  nancyMetz2024,
+  nancyMetz2025,
 };

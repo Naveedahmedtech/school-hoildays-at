@@ -11,6 +11,8 @@ const { zonesVacationData } = require("../../../utils/zones.util");
 const zones = ["Zone C"];
 const location = "Versailles";
 const versailles2024 = async (req, res) => {
+  const countdownData = req?.holidayData?.countdownData;
+
   const year = "2024";
 
   try {
@@ -40,6 +42,7 @@ const versailles2024 = async (req, res) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
+      countdownData,
       title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
@@ -53,6 +56,8 @@ const versailles2024 = async (req, res) => {
 };
 
 const versailles2025 = async (req, res) => {
+  const countdownData = req?.holidayData?.countdownData;
+
   const year = "2025";
 
   try {
@@ -81,6 +86,7 @@ const versailles2025 = async (req, res) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
+      countdownData,
       title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",

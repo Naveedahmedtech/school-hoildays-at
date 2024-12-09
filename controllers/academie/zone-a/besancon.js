@@ -12,6 +12,8 @@ const zones = ["Zone A"];
 const location = "Besançon";
 const besancon2024 = async (req, res) => {
   const year = "2024";
+  const countdownData = req?.holidayData?.countdownData;
+
 
   try {
     console.log("Fetching data using axios...");
@@ -40,6 +42,7 @@ const besancon2024 = async (req, res) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
+      countdownData,
       title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
@@ -54,6 +57,8 @@ const besancon2024 = async (req, res) => {
 
 const besancon2025 = async (req, res) => {
   const year = "2025";
+  const countdownData = req?.holidayData?.countdownData;
+
 
   try {
     console.log("Fetching data using axios...");
@@ -81,6 +86,7 @@ const besancon2025 = async (req, res) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
+      countdownData,
       title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",

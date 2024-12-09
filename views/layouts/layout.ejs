@@ -59,53 +59,29 @@
       <%- include(content) %>
     </main>
     <aside id="aside">
-      <div class="centerdiv tailleC">
-        <div class="date dA tailleC">
-          <div class="zone zA"><span>Zone A</span></div>
-          <span id="cA" class="lesdates"></span>
-        </div>
-        <div class="date dB tailleC">
-          <div class="zone zB"><span>Zone B</span></div>
-          <span id="cB" class="lesdates"></span>
-        </div>
-        <div class="date dC tailleC">
-          <div class="zone zC"><span>Zone C</span></div>
-          <span id="cC" class="lesdates"></span>
-        </div>
-        <div class="date dCorse tailleC">
-          <div class="zone zCorse"><span>Corse</span></div>
-          <span id="cCorse" class="lesdates"></span>
-        </div>
+      <div class="date dA tailleC">
+        <div class="zone zA"><span>Zone A</span></div>
+        <div id="holidayNameA" class="holiday-name"></div>
+        <span id="cZoneA" class="lesdates countdown-display"></span>
       </div>
-      <br />
-      <div class="centerdiv" style="width: 296px; height: 353px">
-        <a href="/carte/" title="Carte des zones des vacances scolaires"
-          ><img
-            src="/images/france-vacances-scolaires.webp"
-            alt="Carte des zones des vacances scolaires"
-            width="296px"
-            height="353px"
-        /></a>
+      <div class="date dB tailleC">
+        <div class="zone zB"><span>Zone B</span></div>
+
+  <div id="holidayNameA" class="holiday-name"></div>
+        <span id="cZoneB" class="lesdates countdown-display"></span>
       </div>
-      <style>
-        .cc {
-            font-size: 12px;
-            margin: -4px 0 0 0;
-        }
-        .c {
-            float: left;
-            text-align: center;
-            padding: 8px 0px 0px 20px;
-            line-height:11px!important;
-            font-size: 12px;
-        }
-        .c b{
-            font-size: 20px;
-        }
-        .tailleC {
-            max-width: 300px;
-        }
-    </style>
+      <div class="date dC tailleC">
+        <div class="zone zC"><span>Zone C</span></div>
+
+  <div id="holidayNameA" class="holiday-name"></div>
+        <span id="cZoneC" class="lesdates countdown-display"></span>
+      </div>
+      <div class="date dCorse tailleC">
+        <div class="zone zCorse"><span>Corse</span></div>
+          <div id="holidayNameA" class="holiday-name"></div>
+
+        <span id="cCorse" class="lesdates countdown-display"></span>
+      </div>
   </aside>
       <div class="spacer"></div>
     </div>
@@ -113,5 +89,163 @@
       <span class="margin5 b">© vacances-scolaires.education</span>
       <a href="/cgu.php" class="margin5 b blanc">CGU</a>
     </footer>
+      const countdownData = <%- JSON.stringify(countdownData) %>;
+
+const updateCountdowns = () => {
+  const now = new Date().getTime();
+
+  countdownData.forEach((data) => {
+    const elementId = `c${data.zone.replace(/\s/g, '')}`;
+    const targetElement = document.getElementById(elementId);
+
+    if (data.countdown_start_date) {
+      const targetDate = new Date(data.countdown_start_date).getTime();
+      const timeDiff = targetDate - now;
+
+      if (timeDiff <= 0) {
+        targetElement.innerHTML = `
+          <div class="time-segment">
+            <span class="value">00</span>
+            <span class="label">Days</span>
+          </div>
+          <div class="time-segment">
+            <span class="value">00</span>
+            <span class="label">Hours</span>
+          </div>
+          <div class="time-segment">
+            <span class="value">00</span>
+            <span class="label">Minutes</span>
+          </div>
+          <div class="time-segment">
+            <span class="value">00</span>
+            <span class="label">Seconds</span>
+          </div>
+        `;
+        return;
+      }
+
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+      targetElement.innerHTML = `
+        <div class="time-segment">
+          <span class="value">${days || "00"}</span>
+          <span class="label">Days</span>
+        </div>
+        <div class="time-segment">
+          <span class="value">${hours || "00"}</span>
+          <span class="label">Hours</span>
+        </div>
+        <div class="time-segment">
+          <span class="value">${minutes || "00"}</span>
+          <span class="label">Minutes</span>
+        </div>
+        <div class="time-segment">
+          <span class="value">${seconds || "00"}</span>
+          <span class="label">Seconds</span>
+        </div>
+      `;
+    } else {
+      targetElement.innerText = "No data available";
+    }
+  });
+};
+
+setInterval(updateCountdowns, 1000);
+updateCountdowns();
+
+    </script> -->
+    <script>
+      var countdownData = <%- JSON.stringify(countdownData) %>;
+      const updateCountdowns = () => {
+        const now = new Date().getTime();
+    
+        countdownData.forEach((data) => {
+          const elementId = `c${data.zone.replace(/\s/g, '')}`;
+          const targetElement = document.getElementById(elementId);
+    
+          if (targetElement) {
+            if (data.countdown_start_date) {
+              const targetDate = new Date(data.countdown_start_date).getTime();
+              const timeDiff = targetDate - now;
+    
+              if (timeDiff <= 0) {
+                // Countdown has ended, display 00
+                targetElement.innerHTML = `
+                  <div class="time-segment">
+                    <span class="value">00</span>
+                    <span class="label">Days</span>
+                  </div>
+                  <div class="time-segment">
+                    <span class="value">00</span>
+                    <span class="label">Hours</span>
+                  </div>
+                  <div class="time-segment">
+                    <span class="value">00</span>
+                    <span class="label">Minutes</span>
+                  </div>
+                  <div class="time-segment">
+                    <span class="value">00</span>
+                    <span class="label">Seconds</span>
+                  </div>
+                `;
+                return;
+              }
+    
+              const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+              const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+              const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+    
+              targetElement.innerHTML = `
+                <div class="time-segment">
+                  <span class="value">${days || "00"}</span>
+                  <span class="label">Days</span>
+                </div>
+                <div class="time-segment">
+                  <span class="value">${hours || "00"}</span>
+                  <span class="label">Hours</span>
+                </div>
+                <div class="time-segment">
+                  <span class="value">${minutes || "00"}</span>
+                  <span class="label">Minutes</span>
+                </div>
+                <div class="time-segment">
+                  <span class="value">${seconds || "00"}</span>
+                  <span class="label">Seconds</span>
+                </div>
+              `;
+            } else {
+              // No countdown_start_date, display default 00
+              targetElement.innerHTML = `
+                <div class="time-segment">
+                  <span class="value">00</span>
+                  <span class="label">Days</span>
+                </div>
+                <div class="time-segment">
+                  <span class="value">00</span>
+                  <span class="label">Hours</span>
+                </div>
+                <div class="time-segment">
+                  <span class="value">00</span>
+                  <span class="label">Minutes</span>
+                </div>
+                <div class="time-segment">
+                  <span class="value">00</span>
+                  <span class="label">Seconds</span>
+                </div>
+              `;
+            }
+          }
+        });
+      };
+    
+      setInterval(updateCountdowns, 1000);
+      updateCountdowns();
+    </script>
+    
   </body>
+
 </html>

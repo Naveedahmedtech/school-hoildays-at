@@ -9,10 +9,12 @@ const { getOverallDateRange } = require("../../utils/home.util");
 const { zonesVacationData } = require("../../utils/zones.util");
 
 const region = async (req, res) => {
+  const countdownData = req?.holidayData?.countdownData;
   try {
     // Render the page with the holiday ranges and structured data
     res.render("layouts/layout", {
       title: "Home - School and Public Holidays",
+      countdownData,
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/regions/regions",
@@ -24,6 +26,7 @@ const region = async (req, res) => {
 };
 
 const commonRegion2024 = async (req, res) => {
+  const countdownData = req?.holidayData?.countdownData;
   const { region_name, of, department, zone, page, error } = req.query;
   let zones = [];
   zones.push(zone);
@@ -60,6 +63,7 @@ const commonRegion2024 = async (req, res) => {
     const subHeading = department && department !== "undefined" ? `${department} se trouve en ${zone}` : null;
     res.render("layouts/layout", {
       title: "Home - School and Public Holidays",
+      countdownData,
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: `../pages/regions/year${of}`,

@@ -12,6 +12,7 @@ const { zonesVacationData } = require("../utils/zones.util");
 const zoneA2024 = async (req, res) => {
   const zones = ["Zone A"];
   const year = "2024";
+  const countdownData = req?.holidayData?.countdownData;
 
   try {
     console.log("Fetching data using axios...");
@@ -44,6 +45,7 @@ const zoneA2024 = async (req, res) => {
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/a/year2024",
       vacations: updatedVacations,
+      countdownData,
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
@@ -54,6 +56,7 @@ const zoneA2024 = async (req, res) => {
 const zoneA2025 = async (req, res) => {
   const zones = ["Zone A"];
   const year = "2025";
+  const countdownData = req?.holidayData?.countdownData;
 
   try {
     console.log("Fetching data using axios...");
@@ -86,6 +89,7 @@ const zoneA2025 = async (req, res) => {
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/a/year2025",
       vacations: updatedVacations,
+      countdownData,
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
@@ -99,6 +103,7 @@ const zoneA2025 = async (req, res) => {
 const zoneB2024 = async (req, res) => {
   const zones = ["Zone B"];
   const year = "2024";
+  const countdownData = req?.holidayData?.countdownData;
 
   try {
     console.log("Fetching data using axios...");
@@ -131,6 +136,7 @@ const zoneB2024 = async (req, res) => {
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/b/year2024",
       vacations: updatedVacations,
+      countdownData,
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
@@ -141,6 +147,7 @@ const zoneB2024 = async (req, res) => {
 const zoneB2025 = async (req, res) => {
   const zones = ["Zone B"];
   const year = "2025";
+  const countdownData = req?.holidayData?.countdownData;
 
   try {
     console.log("Fetching data using axios...");
@@ -173,6 +180,7 @@ const zoneB2025 = async (req, res) => {
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/b/year2025",
       vacations: updatedVacations,
+      countdownData,
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
@@ -182,632 +190,642 @@ const zoneB2025 = async (req, res) => {
 
 // **** ZONE B END ********************************
 
-
-
 // *** ZONE C START ********************************
 const zoneC2024 = async (req, res) => {
-    const zones = ["Zone C"];
-    const year = "2024";
-  
-    try {
-      console.log("Fetching data using axios...");
-  
-      // Build API URLs
-      const holidayAPIs = buildHolidayAPIs({
-        baseURL: BASE_URL,
-        zones,
-        year,
-        descriptions: descriptionApiParams,
-      });
-  
-      // Fetch holiday data
-      const holidayData = await fetchHolidayData(holidayAPIs);
-  
-      // Map holiday data to date ranges
-      const holidayRanges = mapHolidayDataToRanges(
-        holidayData,
-        getOverallDateRange
-      );
-      // Update vacations dynamically
-      const updatedVacations = updateVacationsWithHolidays(
-        zonesVacationData,
-        holidayRanges,
-        descriptionApiParams
-      );
-      res.render("layouts/layout", {
-        title: "Home - School and Public Holidays",
-        description:
-          "Bienvenue sur le calendrier officiel des vacances scolaires.",
-        content: "../pages/zones/c/year2024",
-        vacations: updatedVacations,
-      });
-    } catch (error) {
-      console.error("Error fetching data with axios:", error.message);
-      res.status(500).send("Error fetching data");
-    }
-  };
-  
-  const zoneC2025 = async (req, res) => {
-    const zones = ["Zone C"];
-    const year = "2025";
-  
-    try {
-      console.log("Fetching data using axios...");
-  
-      // Build API URLs
-      const holidayAPIs = buildHolidayAPIs({
-        baseURL: BASE_URL,
-        zones,
-        year,
-        descriptions: descriptionApiParams,
-      });
-  
-      // Fetch holiday data
-      const holidayData = await fetchHolidayData(holidayAPIs);
-  
-      // Map holiday data to date ranges
-      const holidayRanges = mapHolidayDataToRanges(
-        holidayData,
-        getOverallDateRange
-      );
-      // Update vacations dynamically
-      const updatedVacations = updateVacationsWithHolidays(
-        zonesVacationData,
-        holidayRanges,
-        descriptionApiParams
-      );
-      res.render("layouts/layout", {
-        title: "Home - School and Public Holidays",
-        description:
-          "Bienvenue sur le calendrier officiel des vacances scolaires.",
-        content: "../pages/zones/c/year2025",
-        vacations: updatedVacations,
-      });
-    } catch (error) {
-      console.error("Error fetching data with axios:", error.message);
-      res.status(500).send("Error fetching data");
-    }
-  };
-  
-  // **** ZONE C END ********************************
+  const zones = ["Zone C"];
+  const year = "2024";
+  const countdownData = req?.holidayData?.countdownData;
 
+  try {
+    console.log("Fetching data using axios...");
 
+    // Build API URLs
+    const holidayAPIs = buildHolidayAPIs({
+      baseURL: BASE_URL,
+      zones,
+      year,
+      descriptions: descriptionApiParams,
+    });
+
+    // Fetch holiday data
+    const holidayData = await fetchHolidayData(holidayAPIs);
+
+    // Map holiday data to date ranges
+    const holidayRanges = mapHolidayDataToRanges(
+      holidayData,
+      getOverallDateRange
+    );
+    // Update vacations dynamically
+    const updatedVacations = updateVacationsWithHolidays(
+      zonesVacationData,
+      holidayRanges,
+      descriptionApiParams
+    );
+    res.render("layouts/layout", {
+      title: "Home - School and Public Holidays",
+      description:
+        "Bienvenue sur le calendrier officiel des vacances scolaires.",
+      content: "../pages/zones/c/year2024",
+      vacations: updatedVacations,
+      countdownData,
+    });
+  } catch (error) {
+    console.error("Error fetching data with axios:", error.message);
+    res.status(500).send("Error fetching data");
+  }
+};
+
+const zoneC2025 = async (req, res) => {
+  const zones = ["Zone C"];
+  const year = "2025";
+  const countdownData = req?.holidayData?.countdownData;
+
+  try {
+    console.log("Fetching data using axios...");
+
+    // Build API URLs
+    const holidayAPIs = buildHolidayAPIs({
+      baseURL: BASE_URL,
+      zones,
+      year,
+      descriptions: descriptionApiParams,
+    });
+
+    // Fetch holiday data
+    const holidayData = await fetchHolidayData(holidayAPIs);
+
+    // Map holiday data to date ranges
+    const holidayRanges = mapHolidayDataToRanges(
+      holidayData,
+      getOverallDateRange
+    );
+    // Update vacations dynamically
+    const updatedVacations = updateVacationsWithHolidays(
+      zonesVacationData,
+      holidayRanges,
+      descriptionApiParams
+    );
+    res.render("layouts/layout", {
+      title: "Home - School and Public Holidays",
+      description:
+        "Bienvenue sur le calendrier officiel des vacances scolaires.",
+      content: "../pages/zones/c/year2025",
+      vacations: updatedVacations,
+      countdownData,
+    });
+  } catch (error) {
+    console.error("Error fetching data with axios:", error.message);
+    res.status(500).send("Error fetching data");
+  }
+};
+
+// **** ZONE C END ********************************
 
 // *** ZONE Corse START ********************************
 const zoneCorse2024 = async (req, res) => {
-    const zones = ["Corse"];
-    const year = "2024";
-  
-    try {
-      console.log("Fetching data using axios...");
-  
-      // Build API URLs
-      const holidayAPIs = buildHolidayAPIs({
-        baseURL: BASE_URL,
-        zones,
-        year,
-        descriptions: descriptionApiParams,
-      });
-  
-      // Fetch holiday data
-      const holidayData = await fetchHolidayData(holidayAPIs);
-  
-      // Map holiday data to date ranges
-      const holidayRanges = mapHolidayDataToRanges(
-        holidayData,
-        getOverallDateRange
-      );
-      // Update vacations dynamically
-      const updatedVacations = updateVacationsWithHolidays(
-        zonesVacationData,
-        holidayRanges,
-        descriptionApiParams
-      );
-      res.render("layouts/layout", {
-        title: "Home - School and Public Holidays",
-        description:
-          "Bienvenue sur le calendrier officiel des vacances scolaires.",
-        content: "../pages/zones/corse/year2024",
-        vacations: updatedVacations,
-      });
-    } catch (error) {
-      console.error("Error fetching data with axios:", error.message);
-      res.status(500).send("Error fetching data");
-    }
-  };
-  
-  const zoneCorse2025 = async (req, res) => {
-    const zones = ["Corse"];
-    const year = "2025";
-  
-    try {
-      console.log("Fetching data using axios...");
-  
-      // Build API URLs
-      const holidayAPIs = buildHolidayAPIs({
-        baseURL: BASE_URL,
-        zones,
-        year,
-        descriptions: descriptionApiParams,
-      });
-  
-      // Fetch holiday data
-      const holidayData = await fetchHolidayData(holidayAPIs);
-  
-      // Map holiday data to date ranges
-      const holidayRanges = mapHolidayDataToRanges(
-        holidayData,
-        getOverallDateRange
-      );
-      // Update vacations dynamically
-      const updatedVacations = updateVacationsWithHolidays(
-        zonesVacationData,
-        holidayRanges,
-        descriptionApiParams
-      );
-      res.render("layouts/layout", {
-        title: "Home - School and Public Holidays",
-        description:
-          "Bienvenue sur le calendrier officiel des vacances scolaires.",
-        content: "../pages/zones/corse/year2025",
-        vacations: updatedVacations,
-      });
-    } catch (error) {
-      console.error("Error fetching data with axios:", error.message);
-      res.status(500).send("Error fetching data");
-    }
-  };
-  
-  // **** ZONE C END ********************************
+  const zones = ["Corse"];
+  const year = "2024";
+  const countdownData = req?.holidayData?.countdownData;
 
+  try {
+    console.log("Fetching data using axios...");
 
+    // Build API URLs
+    const holidayAPIs = buildHolidayAPIs({
+      baseURL: BASE_URL,
+      zones,
+      year,
+      descriptions: descriptionApiParams,
+    });
+
+    // Fetch holiday data
+    const holidayData = await fetchHolidayData(holidayAPIs);
+
+    // Map holiday data to date ranges
+    const holidayRanges = mapHolidayDataToRanges(
+      holidayData,
+      getOverallDateRange
+    );
+    // Update vacations dynamically
+    const updatedVacations = updateVacationsWithHolidays(
+      zonesVacationData,
+      holidayRanges,
+      descriptionApiParams
+    );
+    res.render("layouts/layout", {
+      title: "Home - School and Public Holidays",
+      description:
+        "Bienvenue sur le calendrier officiel des vacances scolaires.",
+      content: "../pages/zones/corse/year2024",
+      vacations: updatedVacations,
+      countdownData,
+    });
+  } catch (error) {
+    console.error("Error fetching data with axios:", error.message);
+    res.status(500).send("Error fetching data");
+  }
+};
+
+const zoneCorse2025 = async (req, res) => {
+  const zones = ["Corse"];
+  const year = "2025";
+  const countdownData = req?.holidayData?.countdownData;
+
+  try {
+    console.log("Fetching data using axios...");
+
+    // Build API URLs
+    const holidayAPIs = buildHolidayAPIs({
+      baseURL: BASE_URL,
+      zones,
+      year,
+      descriptions: descriptionApiParams,
+    });
+
+    // Fetch holiday data
+    const holidayData = await fetchHolidayData(holidayAPIs);
+
+    // Map holiday data to date ranges
+    const holidayRanges = mapHolidayDataToRanges(
+      holidayData,
+      getOverallDateRange
+    );
+    // Update vacations dynamically
+    const updatedVacations = updateVacationsWithHolidays(
+      zonesVacationData,
+      holidayRanges,
+      descriptionApiParams
+    );
+    res.render("layouts/layout", {
+      title: "Home - School and Public Holidays",
+      description:
+        "Bienvenue sur le calendrier officiel des vacances scolaires.",
+      content: "../pages/zones/corse/year2025",
+      vacations: updatedVacations,
+      countdownData,
+    });
+  } catch (error) {
+    console.error("Error fetching data with axios:", error.message);
+    res.status(500).send("Error fetching data");
+  }
+};
+
+// **** ZONE C END ********************************
 
 // *** ZONE Guadeloupe START ********************************
 const zoneGuadeloupe2024 = async (req, res) => {
-    const zones = ["Guadeloupe"];
-    const year = "2024";
-  
-    try {
-      console.log("Fetching data using axios...");
-  
-      // Build API URLs
-      const holidayAPIs = buildHolidayAPIs({
-        baseURL: BASE_URL,
-        zones,
-        year,
-        descriptions: descriptionApiParams,
-      });
-  
-      // Fetch holiday data
-      const holidayData = await fetchHolidayData(holidayAPIs);
-  
-      // Map holiday data to date ranges
-      const holidayRanges = mapHolidayDataToRanges(
-        holidayData,
-        getOverallDateRange
-      );
-      // Update vacations dynamically
-      const updatedVacations = updateVacationsWithHolidays(
-        zonesVacationData,
-        holidayRanges,
-        descriptionApiParams
-      );
-      res.render("layouts/layout", {
-        title: "Home - School and Public Holidays",
-        description:
-          "Bienvenue sur le calendrier officiel des vacances scolaires.",
-        content: "../pages/zones/guadeloupe/year2024",
-        vacations: updatedVacations,
-      });
-    } catch (error) {
-      console.error("Error fetching data with axios:", error.message);
-      res.status(500).send("Error fetching data");
-    }
-  };
-  
-  const zoneGuadeloupe2025 = async (req, res) => {
-    const zones = ["Guadeloupe"];
-    const year = "2025";
-  
-    try {
-      console.log("Fetching data using axios...");
-  
-      // Build API URLs
-      const holidayAPIs = buildHolidayAPIs({
-        baseURL: BASE_URL,
-        zones,
-        year,
-        descriptions: descriptionApiParams,
-      });
-  
-      // Fetch holiday data
-      const holidayData = await fetchHolidayData(holidayAPIs);
-  
-      // Map holiday data to date ranges
-      const holidayRanges = mapHolidayDataToRanges(
-        holidayData,
-        getOverallDateRange
-      );
-      // Update vacations dynamically
-      const updatedVacations = updateVacationsWithHolidays(
-        zonesVacationData,
-        holidayRanges,
-        descriptionApiParams
-      );
-      res.render("layouts/layout", {
-        title: "Home - School and Public Holidays",
-        description:
-          "Bienvenue sur le calendrier officiel des vacances scolaires.",
-        content: "../pages/zones/guadeloupe/year2025",
-        vacations: updatedVacations,
-      });
-    } catch (error) {
-      console.error("Error fetching data with axios:", error.message);
-      res.status(500).send("Error fetching data");
-    }
-  };
-  
-  // **** ZONE C END ********************************
+  const zones = ["Guadeloupe"];
+  const year = "2024";
+  const countdownData = req?.holidayData?.countdownData;
 
+  try {
+    console.log("Fetching data using axios...");
 
+    // Build API URLs
+    const holidayAPIs = buildHolidayAPIs({
+      baseURL: BASE_URL,
+      zones,
+      year,
+      descriptions: descriptionApiParams,
+    });
 
+    // Fetch holiday data
+    const holidayData = await fetchHolidayData(holidayAPIs);
+
+    // Map holiday data to date ranges
+    const holidayRanges = mapHolidayDataToRanges(
+      holidayData,
+      getOverallDateRange
+    );
+    // Update vacations dynamically
+    const updatedVacations = updateVacationsWithHolidays(
+      zonesVacationData,
+      holidayRanges,
+      descriptionApiParams
+    );
+    res.render("layouts/layout", {
+      title: "Home - School and Public Holidays",
+      description:
+        "Bienvenue sur le calendrier officiel des vacances scolaires.",
+      content: "../pages/zones/guadeloupe/year2024",
+      vacations: updatedVacations,
+      countdownData,
+    });
+  } catch (error) {
+    console.error("Error fetching data with axios:", error.message);
+    res.status(500).send("Error fetching data");
+  }
+};
+
+const zoneGuadeloupe2025 = async (req, res) => {
+  const zones = ["Guadeloupe"];
+  const year = "2025";
+  const countdownData = req?.holidayData?.countdownData;
+
+  try {
+    console.log("Fetching data using axios...");
+
+    // Build API URLs
+    const holidayAPIs = buildHolidayAPIs({
+      baseURL: BASE_URL,
+      zones,
+      year,
+      descriptions: descriptionApiParams,
+    });
+
+    // Fetch holiday data
+    const holidayData = await fetchHolidayData(holidayAPIs);
+
+    // Map holiday data to date ranges
+    const holidayRanges = mapHolidayDataToRanges(
+      holidayData,
+      getOverallDateRange
+    );
+    // Update vacations dynamically
+    const updatedVacations = updateVacationsWithHolidays(
+      zonesVacationData,
+      holidayRanges,
+      descriptionApiParams
+    );
+    res.render("layouts/layout", {
+      title: "Home - School and Public Holidays",
+      description:
+        "Bienvenue sur le calendrier officiel des vacances scolaires.",
+      content: "../pages/zones/guadeloupe/year2025",
+      vacations: updatedVacations,
+      countdownData,
+    });
+  } catch (error) {
+    console.error("Error fetching data with axios:", error.message);
+    res.status(500).send("Error fetching data");
+  }
+};
+
+// **** ZONE C END ********************************
 
 // *** ZONE Guyane START ********************************
 const zoneGuyane2024 = async (req, res) => {
-    const zones = ["Guyane"];
-    const year = "2024";
-  
-    try {
-      console.log("Fetching data using axios...");
-  
-      // Build API URLs
-      const holidayAPIs = buildHolidayAPIs({
-        baseURL: BASE_URL,
-        zones,
-        year,
-        descriptions: descriptionApiParams,
-      });
-  
-      // Fetch holiday data
-      const holidayData = await fetchHolidayData(holidayAPIs);
-  
-      // Map holiday data to date ranges
-      const holidayRanges = mapHolidayDataToRanges(
-        holidayData,
-        getOverallDateRange
-      );
-      // Update vacations dynamically
-      const updatedVacations = updateVacationsWithHolidays(
-        zonesVacationData,
-        holidayRanges,
-        descriptionApiParams
-      );
-      res.render("layouts/layout", {
-        title: "Home - School and Public Holidays",
-        description:
-          "Bienvenue sur le calendrier officiel des vacances scolaires.",
-        content: "../pages/zones/guyane/year2024",
-        vacations: updatedVacations,
-      });
-    } catch (error) {
-      console.error("Error fetching data with axios:", error.message);
-      res.status(500).send("Error fetching data");
-    }
-  };
-  
-  const zoneGuyane2025 = async (req, res) => {
-    const zones = ["Guyane"];
-    const year = "2025";
-  
-    try {
-      console.log("Fetching data using axios...");
-  
-      // Build API URLs
-      const holidayAPIs = buildHolidayAPIs({
-        baseURL: BASE_URL,
-        zones,
-        year,
-        descriptions: descriptionApiParams,
-      });
-  
-      // Fetch holiday data
-      const holidayData = await fetchHolidayData(holidayAPIs);
-  
-      // Map holiday data to date ranges
-      const holidayRanges = mapHolidayDataToRanges(
-        holidayData,
-        getOverallDateRange
-      );
-      // Update vacations dynamically
-      const updatedVacations = updateVacationsWithHolidays(
-        zonesVacationData,
-        holidayRanges,
-        descriptionApiParams
-      );
-      res.render("layouts/layout", {
-        title: "Home - School and Public Holidays",
-        description:
-          "Bienvenue sur le calendrier officiel des vacances scolaires.",
-        content: "../pages/zones/guyane/year2025",
-        vacations: updatedVacations,
-      });
-    } catch (error) {
-      console.error("Error fetching data with axios:", error.message);
-      res.status(500).send("Error fetching data");
-    }
-  };
-  
-  // **** ZONE C END ********************************
+  const zones = ["Guyane"];
+  const year = "2024";
+  const countdownData = req?.holidayData?.countdownData;
 
+  try {
+    console.log("Fetching data using axios...");
 
+    // Build API URLs
+    const holidayAPIs = buildHolidayAPIs({
+      baseURL: BASE_URL,
+      zones,
+      year,
+      descriptions: descriptionApiParams,
+    });
 
+    // Fetch holiday data
+    const holidayData = await fetchHolidayData(holidayAPIs);
+
+    // Map holiday data to date ranges
+    const holidayRanges = mapHolidayDataToRanges(
+      holidayData,
+      getOverallDateRange
+    );
+    // Update vacations dynamically
+    const updatedVacations = updateVacationsWithHolidays(
+      zonesVacationData,
+      holidayRanges,
+      descriptionApiParams
+    );
+    res.render("layouts/layout", {
+      title: "Home - School and Public Holidays",
+      description:
+        "Bienvenue sur le calendrier officiel des vacances scolaires.",
+      content: "../pages/zones/guyane/year2024",
+      vacations: updatedVacations,
+      countdownData,
+    });
+  } catch (error) {
+    console.error("Error fetching data with axios:", error.message);
+    res.status(500).send("Error fetching data");
+  }
+};
+
+const zoneGuyane2025 = async (req, res) => {
+  const zones = ["Guyane"];
+  const year = "2025";
+  const countdownData = req?.holidayData?.countdownData;
+
+  try {
+    console.log("Fetching data using axios...");
+
+    // Build API URLs
+    const holidayAPIs = buildHolidayAPIs({
+      baseURL: BASE_URL,
+      zones,
+      year,
+      descriptions: descriptionApiParams,
+    });
+
+    // Fetch holiday data
+    const holidayData = await fetchHolidayData(holidayAPIs);
+
+    // Map holiday data to date ranges
+    const holidayRanges = mapHolidayDataToRanges(
+      holidayData,
+      getOverallDateRange
+    );
+    // Update vacations dynamically
+    const updatedVacations = updateVacationsWithHolidays(
+      zonesVacationData,
+      holidayRanges,
+      descriptionApiParams
+    );
+    res.render("layouts/layout", {
+      title: "Home - School and Public Holidays",
+      description:
+        "Bienvenue sur le calendrier officiel des vacances scolaires.",
+      content: "../pages/zones/guyane/year2025",
+      vacations: updatedVacations,
+      countdownData,
+    });
+  } catch (error) {
+    console.error("Error fetching data with axios:", error.message);
+    res.status(500).send("Error fetching data");
+  }
+};
+
+// **** ZONE C END ********************************
 
 // *** ZONE Martinique START ********************************
 const zoneMartinique2024 = async (req, res) => {
-    const zones = ["Martinique"];
-    const year = "2024";
-  
-    try {
-      console.log("Fetching data using axios...");
-  
-      // Build API URLs
-      const holidayAPIs = buildHolidayAPIs({
-        baseURL: BASE_URL,
-        zones,
-        year,
-        descriptions: descriptionApiParams,
-      });
-  
-      // Fetch holiday data
-      const holidayData = await fetchHolidayData(holidayAPIs);
-  
-      // Map holiday data to date ranges
-      const holidayRanges = mapHolidayDataToRanges(
-        holidayData,
-        getOverallDateRange
-      );
-      // Update vacations dynamically
-      const updatedVacations = updateVacationsWithHolidays(
-        zonesVacationData,
-        holidayRanges,
-        descriptionApiParams
-      );
-      res.render("layouts/layout", {
-        title: "Home - School and Public Holidays",
-        description:
-          "Bienvenue sur le calendrier officiel des vacances scolaires.",
-        content: "../pages/zones/martinique/year2024",
-        vacations: updatedVacations,
-      });
-    } catch (error) {
-      console.error("Error fetching data with axios:", error.message);
-      res.status(500).send("Error fetching data");
-    }
-  };
-  
-  const zoneMartinique2025 = async (req, res) => {
-    const zones = ["Martinique"];
-    const year = "2025";
-  
-    try {
-      console.log("Fetching data using axios...");
-  
-      // Build API URLs
-      const holidayAPIs = buildHolidayAPIs({
-        baseURL: BASE_URL,
-        zones,
-        year,
-        descriptions: descriptionApiParams,
-      });
-  
-      // Fetch holiday data
-      const holidayData = await fetchHolidayData(holidayAPIs);
-  
-      // Map holiday data to date ranges
-      const holidayRanges = mapHolidayDataToRanges(
-        holidayData,
-        getOverallDateRange
-      );
-      // Update vacations dynamically
-      const updatedVacations = updateVacationsWithHolidays(
-        zonesVacationData,
-        holidayRanges,
-        descriptionApiParams
-      );
-      res.render("layouts/layout", {
-        title: "Home - School and Public Holidays",
-        description:
-          "Bienvenue sur le calendrier officiel des vacances scolaires.",
-        content: "../pages/zones/martinique/year2025",
-        vacations: updatedVacations,
-      });
-    } catch (error) {
-      console.error("Error fetching data with axios:", error.message);
-      res.status(500).send("Error fetching data");
-    }
-  };
-  
-  // **** ZONE Martinique END ********************************
+  const zones = ["Martinique"];
+  const year = "2024";
+  const countdownData = req?.holidayData?.countdownData;
 
+  try {
+    console.log("Fetching data using axios...");
 
+    // Build API URLs
+    const holidayAPIs = buildHolidayAPIs({
+      baseURL: BASE_URL,
+      zones,
+      year,
+      descriptions: descriptionApiParams,
+    });
 
+    // Fetch holiday data
+    const holidayData = await fetchHolidayData(holidayAPIs);
+
+    // Map holiday data to date ranges
+    const holidayRanges = mapHolidayDataToRanges(
+      holidayData,
+      getOverallDateRange
+    );
+    // Update vacations dynamically
+    const updatedVacations = updateVacationsWithHolidays(
+      zonesVacationData,
+      holidayRanges,
+      descriptionApiParams
+    );
+    res.render("layouts/layout", {
+      title: "Home - School and Public Holidays",
+      description:
+        "Bienvenue sur le calendrier officiel des vacances scolaires.",
+      content: "../pages/zones/martinique/year2024",
+      vacations: updatedVacations,
+      countdownData,
+    });
+  } catch (error) {
+    console.error("Error fetching data with axios:", error.message);
+    res.status(500).send("Error fetching data");
+  }
+};
+
+const zoneMartinique2025 = async (req, res) => {
+  const zones = ["Martinique"];
+  const year = "2025";
+  const countdownData = req?.holidayData?.countdownData;
+
+  try {
+    console.log("Fetching data using axios...");
+
+    // Build API URLs
+    const holidayAPIs = buildHolidayAPIs({
+      baseURL: BASE_URL,
+      zones,
+      year,
+      descriptions: descriptionApiParams,
+    });
+
+    // Fetch holiday data
+    const holidayData = await fetchHolidayData(holidayAPIs);
+
+    // Map holiday data to date ranges
+    const holidayRanges = mapHolidayDataToRanges(
+      holidayData,
+      getOverallDateRange
+    );
+    // Update vacations dynamically
+    const updatedVacations = updateVacationsWithHolidays(
+      zonesVacationData,
+      holidayRanges,
+      descriptionApiParams
+    );
+    res.render("layouts/layout", {
+      title: "Home - School and Public Holidays",
+      description:
+        "Bienvenue sur le calendrier officiel des vacances scolaires.",
+      content: "../pages/zones/martinique/year2025",
+      vacations: updatedVacations,
+      countdownData,
+    });
+  } catch (error) {
+    console.error("Error fetching data with axios:", error.message);
+    res.status(500).send("Error fetching data");
+  }
+};
+
+// **** ZONE Martinique END ********************************
 
 // *** ZONE Mayotte START ********************************
 const zoneMayotte2024 = async (req, res) => {
-    const zones = ["Mayotte"];
-    const year = "2024";
-  
-    try {
-      console.log("Fetching data using axios...");
-  
-      // Build API URLs
-      const holidayAPIs = buildHolidayAPIs({
-        baseURL: BASE_URL,
-        zones,
-        year,
-        descriptions: descriptionApiParams,
-      });
-  
-      // Fetch holiday data
-      const holidayData = await fetchHolidayData(holidayAPIs);
-  
-      // Map holiday data to date ranges
-      const holidayRanges = mapHolidayDataToRanges(
-        holidayData,
-        getOverallDateRange
-      );
-      // Update vacations dynamically
-      const updatedVacations = updateVacationsWithHolidays(
-        zonesVacationData,
-        holidayRanges,
-        descriptionApiParams
-      );
-      res.render("layouts/layout", {
-        title: "Home - School and Public Holidays",
-        description:
-          "Bienvenue sur le calendrier officiel des vacances scolaires.",
-        content: "../pages/zones/mayotte/year2024",
-        vacations: updatedVacations,
-      });
-    } catch (error) {
-      console.error("Error fetching data with axios:", error.message);
-      res.status(500).send("Error fetching data");
-    }
-  };
-  
-  const zoneMayotte2025 = async (req, res) => {
-    const zones = ["Mayotte"];
-    const year = "2025";
-  
-    try {
-      console.log("Fetching data using axios...");
-  
-      // Build API URLs
-      const holidayAPIs = buildHolidayAPIs({
-        baseURL: BASE_URL,
-        zones,
-        year,
-        descriptions: descriptionApiParams,
-      });
-  
-      // Fetch holiday data
-      const holidayData = await fetchHolidayData(holidayAPIs);
-  
-      // Map holiday data to date ranges
-      const holidayRanges = mapHolidayDataToRanges(
-        holidayData,
-        getOverallDateRange
-      );
-      // Update vacations dynamically
-      const updatedVacations = updateVacationsWithHolidays(
-        zonesVacationData,
-        holidayRanges,
-        descriptionApiParams
-      );
-      res.render("layouts/layout", {
-        title: "Home - School and Public Holidays",
-        description:
-          "Bienvenue sur le calendrier officiel des vacances scolaires.",
-        content: "../pages/zones/mayotte/year2025",
-        vacations: updatedVacations,
-      });
-    } catch (error) {
-      console.error("Error fetching data with axios:", error.message);
-      res.status(500).send("Error fetching data");
-    }
-  };
-  
-  // **** ZONE Mayotte END ********************************
+  const zones = ["Mayotte"];
+  const year = "2024";
+  const countdownData = req?.holidayData?.countdownData;
 
+  try {
+    console.log("Fetching data using axios...");
 
+    // Build API URLs
+    const holidayAPIs = buildHolidayAPIs({
+      baseURL: BASE_URL,
+      zones,
+      year,
+      descriptions: descriptionApiParams,
+    });
 
+    // Fetch holiday data
+    const holidayData = await fetchHolidayData(holidayAPIs);
+
+    // Map holiday data to date ranges
+    const holidayRanges = mapHolidayDataToRanges(
+      holidayData,
+      getOverallDateRange
+    );
+    // Update vacations dynamically
+    const updatedVacations = updateVacationsWithHolidays(
+      zonesVacationData,
+      holidayRanges,
+      descriptionApiParams
+    );
+    res.render("layouts/layout", {
+      title: "Home - School and Public Holidays",
+      description:
+        "Bienvenue sur le calendrier officiel des vacances scolaires.",
+      content: "../pages/zones/mayotte/year2024",
+      vacations: updatedVacations,
+      countdownData,
+    });
+  } catch (error) {
+    console.error("Error fetching data with axios:", error.message);
+    res.status(500).send("Error fetching data");
+  }
+};
+
+const zoneMayotte2025 = async (req, res) => {
+  const zones = ["Mayotte"];
+  const year = "2025";
+  const countdownData = req?.holidayData?.countdownData;
+
+  try {
+    console.log("Fetching data using axios...");
+
+    // Build API URLs
+    const holidayAPIs = buildHolidayAPIs({
+      baseURL: BASE_URL,
+      zones,
+      year,
+      descriptions: descriptionApiParams,
+    });
+
+    // Fetch holiday data
+    const holidayData = await fetchHolidayData(holidayAPIs);
+
+    // Map holiday data to date ranges
+    const holidayRanges = mapHolidayDataToRanges(
+      holidayData,
+      getOverallDateRange
+    );
+    // Update vacations dynamically
+    const updatedVacations = updateVacationsWithHolidays(
+      zonesVacationData,
+      holidayRanges,
+      descriptionApiParams
+    );
+    res.render("layouts/layout", {
+      title: "Home - School and Public Holidays",
+      description:
+        "Bienvenue sur le calendrier officiel des vacances scolaires.",
+      content: "../pages/zones/mayotte/year2025",
+      vacations: updatedVacations,
+      countdownData,
+    });
+  } catch (error) {
+    console.error("Error fetching data with axios:", error.message);
+    res.status(500).send("Error fetching data");
+  }
+};
+
+// **** ZONE Mayotte END ********************************
 
 // *** ZONE Réunion START ********************************
 const zoneRéunion2024 = async (req, res) => {
-    const zones = ["Réunion"];
-    const year = "2024";
-  
-    try {
-      console.log("Fetching data using axios...");
-  
-      // Build API URLs
-      const holidayAPIs = buildHolidayAPIs({
-        baseURL: BASE_URL,
-        zones,
-        year,
-        descriptions: descriptionApiParams,
-      });
-  
-      // Fetch holiday data
-      const holidayData = await fetchHolidayData(holidayAPIs);
-  
-      // Map holiday data to date ranges
-      const holidayRanges = mapHolidayDataToRanges(
-        holidayData,
-        getOverallDateRange
-      );
-      // Update vacations dynamically
-      const updatedVacations = updateVacationsWithHolidays(
-        zonesVacationData,
-        holidayRanges,
-        descriptionApiParams
-      );
-      res.render("layouts/layout", {
-        title: "Home - School and Public Holidays",
-        description:
-          "Bienvenue sur le calendrier officiel des vacances scolaires.",
-        content: "../pages/zones/réunion/year2024",
-        vacations: updatedVacations,
-      });
-    } catch (error) {
-      console.error("Error fetching data with axios:", error.message);
-      res.status(500).send("Error fetching data");
-    }
-  };
-  
-  const zoneRéunion2025 = async (req, res) => {
-    const zones = ["Réunion"];
-    const year = "2025";
-  
-    try {
-      console.log("Fetching data using axios...");
-  
-      // Build API URLs
-      const holidayAPIs = buildHolidayAPIs({
-        baseURL: BASE_URL,
-        zones,
-        year,
-        descriptions: descriptionApiParams,
-      });
-  
-      // Fetch holiday data
-      const holidayData = await fetchHolidayData(holidayAPIs);
-  
-      // Map holiday data to date ranges
-      const holidayRanges = mapHolidayDataToRanges(
-        holidayData,
-        getOverallDateRange
-      );
-      // Update vacations dynamically
-      const updatedVacations = updateVacationsWithHolidays(
-        zonesVacationData,
-        holidayRanges,
-        descriptionApiParams
-      );
-      res.render("layouts/layout", {
-        title: "Home - School and Public Holidays",
-        description:
-          "Bienvenue sur le calendrier officiel des vacances scolaires.",
-        content: "../pages/zones/réunion/year2025",
-        vacations: updatedVacations,
-      });
-    } catch (error) {
-      console.error("Error fetching data with axios:", error.message);
-      res.status(500).send("Error fetching data");
-    }
-  };
-  
-  // **** ZONE Mayotte END ********************************
+  const zones = ["Réunion"];
+  const year = "2024";
+  const countdownData = req?.holidayData?.countdownData;
+
+  try {
+    console.log("Fetching data using axios...");
+
+    // Build API URLs
+    const holidayAPIs = buildHolidayAPIs({
+      baseURL: BASE_URL,
+      zones,
+      year,
+      descriptions: descriptionApiParams,
+    });
+
+    // Fetch holiday data
+    const holidayData = await fetchHolidayData(holidayAPIs);
+
+    // Map holiday data to date ranges
+    const holidayRanges = mapHolidayDataToRanges(
+      holidayData,
+      getOverallDateRange
+    );
+    // Update vacations dynamically
+    const updatedVacations = updateVacationsWithHolidays(
+      zonesVacationData,
+      holidayRanges,
+      descriptionApiParams
+    );
+    res.render("layouts/layout", {
+      title: "Home - School and Public Holidays",
+      description:
+        "Bienvenue sur le calendrier officiel des vacances scolaires.",
+      content: "../pages/zones/réunion/year2024",
+      vacations: updatedVacations,
+      countdownData,
+    });
+  } catch (error) {
+    console.error("Error fetching data with axios:", error.message);
+    res.status(500).send("Error fetching data");
+  }
+};
+
+const zoneRéunion2025 = async (req, res) => {
+  const zones = ["Réunion"];
+  const year = "2025";
+  const countdownData = req?.holidayData?.countdownData;
+
+  try {
+    console.log("Fetching data using axios...");
+
+    // Build API URLs
+    const holidayAPIs = buildHolidayAPIs({
+      baseURL: BASE_URL,
+      zones,
+      year,
+      descriptions: descriptionApiParams,
+    });
+
+    // Fetch holiday data
+    const holidayData = await fetchHolidayData(holidayAPIs);
+
+    // Map holiday data to date ranges
+    const holidayRanges = mapHolidayDataToRanges(
+      holidayData,
+      getOverallDateRange
+    );
+    // Update vacations dynamically
+    const updatedVacations = updateVacationsWithHolidays(
+      zonesVacationData,
+      holidayRanges,
+      descriptionApiParams
+    );
+    res.render("layouts/layout", {
+      title: "Home - School and Public Holidays",
+      description:
+        "Bienvenue sur le calendrier officiel des vacances scolaires.",
+      content: "../pages/zones/réunion/year2025",
+      vacations: updatedVacations,
+      countdownData,
+    });
+  } catch (error) {
+    console.error("Error fetching data with axios:", error.message);
+    res.status(500).send("Error fetching data");
+  }
+};
+
+// **** ZONE Mayotte END ********************************
 
 module.exports = {
   zoneA2024,

@@ -3,6 +3,7 @@ const express = require("express");
 const path = require("path");
 
 const webRoutes = require("./routes/web");
+const fetchHolidayDataMiddleware = require("./middlewares/counterData");
 
 const app = express();
 
@@ -14,17 +15,18 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+// get counter data for all routes to access in the layout
+app.use(fetchHolidayDataMiddleware);
 // Routes
 app.use("/", webRoutes);
 
 // 404 Not Found Handler
 app.use((req, res, next) => {
-    res.render("layouts/layout", {
-        title: "Home - School and Public Holidays",
-        description:
-          "Bienvenue sur le calendrier officiel des vacances scolaires.",
-        content: `../pages/common/not-found`,
-      });
+  res.render("layouts/layout", {
+    title: "Home - School and Public Holidays",
+    description: "Bienvenue sur le calendrier officiel des vacances scolaires.",
+    content: `../pages/common/not-found`,
+  });
 });
 
 // Global Error Handler
@@ -32,8 +34,7 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.render("layouts/layout", {
     title: "Home - School and Public Holidays",
-    description:
-      "Bienvenue sur le calendrier officiel des vacances scolaires.",
+    description: "Bienvenue sur le calendrier officiel des vacances scolaires.",
     content: `../pages/common/error`,
   });
 });

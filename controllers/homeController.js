@@ -9,6 +9,8 @@ const {
   firstThreeVacations,
   lastTwoVacations,
   menuData25,
+  regions,
+  academies,
 } = require("../utils/home.util");
 const {
   fetchHolidayData,
@@ -24,7 +26,7 @@ const Fuse = require("fuse.js");
 const home2024 = async (req, res) => {
   const zones = ["Zone A", "Zone B", "Zone C"];
   const year = "2024";
-
+  const countdownData = req?.holidayData?.countdownData;
   try {
     console.log("Fetching data using axios...");
 
@@ -88,6 +90,7 @@ const home2024 = async (req, res) => {
       vacation: updatedVacation,
       vacation2: updatedVacation2 || [],
       lastTwoVacations: updatedLastTwoVacations || [],
+      countdownData,
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
@@ -98,6 +101,8 @@ const home2024 = async (req, res) => {
 const home2025 = async (req, res) => {
   const zones = ["Zone A", "Zone B", "Zone C"];
   const year = "2025";
+  const countdownData = req?.holidayData?.countdownData;
+
 
   try {
     console.log("Fetching data using axios...");
@@ -163,6 +168,7 @@ const home2025 = async (req, res) => {
       vacation: updatedVacation,
       vacation2: updatedVacation2 || [],
       lastTwoVacations: updatedLastTwoVacations || [],
+      countdownData
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
@@ -170,67 +176,9 @@ const home2025 = async (req, res) => {
   }
 };
 
-const regions = [
-  "Auvergne-Rhône-Alpes",
-  "Bourgogne-Franche-Comté",
-  "Nouvelle-Aquitaine",
-  "Grand Est",
-  "Hauts-de-France",
-  "Normandie",
-  "Pays de la Loire",
-  "Bretagne",
-  "Centre-Val de Loire",
-  "Île-de-France",
-  "Occitanie",
-  "Provence-Alpes-Côte d'Azur",
-  "Guadeloupe",
-  "Guyane",
-  "Martinique",
-  "La Réunion",
-  "Mayotte",
-];
-
-const academies = [
-  "Aix-Marseille",
-  "Amiens",
-  "Besançon",
-  "Bordeaux",
-  "Caen",
-  "Clermont-Ferrand",
-  "Corse",
-  "Créteil",
-  "Dijon",
-  "Grenoble",
-  "Guadeloupe",
-  "Guyane",
-  "Lille",
-  "Limoges",
-  "Lyon",
-  "Martinique",
-  "Mayotte",
-  "Montpellier",
-  "Nancy-Metz",
-  "Nantes",
-  "Nice",
-  "Normandie",
-  "Nouvelle Calédonie",
-  "Orléans-Tours",
-  "Paris",
-  "Poitiers",
-  "Polynésie",
-  "Reims",
-  "Rennes",
-  "Réunion",
-  "Rouen",
-  "Saint Pierre et Miquelon",
-  "Strasbourg",
-  "Toulouse",
-  "Versailles",
-  "Wallis et Futuna",
-];
-
 const search = async (req, res) => {
   const query = req.query.q;
+
   const fuseOptions = {
     includeScore: true, // Provides relevance score
     threshold: 0.4, // Lower values mean stricter matching
@@ -267,6 +215,7 @@ const search = async (req, res) => {
 };
 
 const map = async (req, res, next) => {
+
   try {
     // Render the page with the holiday ranges and structured data
     res.render("layouts/layout", {
