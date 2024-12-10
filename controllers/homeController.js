@@ -23,7 +23,7 @@ const {
 } = require("../utils/common");
 const Fuse = require("fuse.js");
 
-const home2024 = async (req, res) => {
+const home2024 = async (req, res, next) => {
   const zones = ["Zone A", "Zone B", "Zone C"];
   const year = "2024";
   const countdownData = req?.holidayData?.countdownData;
@@ -94,11 +94,12 @@ const home2024 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error)
   }
 };
 
-const home2025 = async (req, res) => {
+const home2025 = async (req, res, next) => {
   const zones = ["Zone A", "Zone B", "Zone C"];
   const year = "2025";
   const countdownData = req?.holidayData?.countdownData;
@@ -172,11 +173,12 @@ const home2025 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error)
   }
 };
 
-const search = async (req, res) => {
+const search = async (req, res, next) => {
   const query = req.query.q;
 
   const fuseOptions = {
@@ -195,22 +197,23 @@ const search = async (req, res) => {
       res.redirect(
         `/regions/year?of=2024&region_name=${encodeURIComponent(
           resultRegion[0].item
-        )}`
+        )}&zone=Zone A`
       );
     } else if (resultAcademy.length > 0) {
       res.redirect(
         `/regions/year?of=2024&page=academie&region_name=${encodeURIComponent(
           resultAcademy[0].item
-        )}`
+        )}&zone=Zone A`
       );
     } else {
       res.redirect(
-        `/regions/year?error="gAAAAABnUq1ClRQ8UBJpcyCGc8RggQjudGnJeliT65OESiGM-_Q2hKwPP5yFPKSkdprREHpdJuyUtUef47dN9HBWHfzmV8HglaP6FLjirMPnN2xQqj0LAkg="&of=2024`
+        `/regions/year?error="gAAAAABnUq1ClRQ8UBJpcyCGc8RggQjudGnJeliT65OESiGM-_Q2hKwPP5yFPKSkdprREHpdJuyUtUef47dN9HBWHfzmV8HglaP6FLjirMPnN2xQqj0LAkg="&of=2024&zone=Zone A`
       );
     }
   } catch (error) {
     console.error("Error processing search:", error.message);
-    res.status(500).send("Internal server error");
+    // res.status(500).send("Internal server error");
+    next(error)
   }
 };
 

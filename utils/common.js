@@ -72,7 +72,7 @@ const fetchHolidayData = async (apiUrls) => {
     urls.map((url) =>
       axios
         .get(url)
-        .then((res) => res.data.results)
+        .then((res, next) => res.data.results)
         .catch(() => [])
     )
   );

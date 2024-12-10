@@ -8,8 +8,9 @@ const {
 const { getOverallDateRange } = require("../../utils/home.util");
 const { zonesVacationData } = require("../../utils/zones.util");
 
-const region = async (req, res) => {
+const region = async (req, res, next) => {
   const countdownData = req?.holidayData?.countdownData;
+  const route = "regions"
   try {
     // Render the page with the holiday ranges and structured data
     res.render("layouts/layout", {
@@ -18,14 +19,16 @@ const region = async (req, res) => {
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/regions/regions",
+      route
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    next(error);
+    // res.status(500).send("Error fetching data");
   }
 };
 
-const commonRegion2024 = async (req, res) => {
+const commonRegion2024 = async (req, res, next) => {
   const countdownData = req?.holidayData?.countdownData;
   const { region_name, of, department, zone, page, error } = req.query;
   let zones = [];
@@ -82,7 +85,8 @@ const commonRegion2024 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error);
   }
 };
 

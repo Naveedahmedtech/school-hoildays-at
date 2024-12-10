@@ -10,7 +10,7 @@ const { zonesVacationData } = require("../../../utils/zones.util");
 
 const zones = ["Zone B"];
 const location = "Strasbourg";
-const strasbourg2024 = async (req, res) => {
+const strasbourg2024 = async (req, res, next) => {
   const countdownData = req?.holidayData?.countdownData;
 
   const year = "2024";
@@ -51,11 +51,12 @@ const strasbourg2024 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+next(error)
   }
 };
 
-const strasbourg2025 = async (req, res) => {
+const strasbourg2025 = async (req, res, next) => {
   const countdownData = req?.holidayData?.countdownData;
 
   const year = "2025";
@@ -95,7 +96,8 @@ const strasbourg2025 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+next(error)
   }
 };
 

@@ -3,7 +3,7 @@ const router = express.Router();
 const axios = require("../../utils/apiClient");
 const { API_PARAMS } = require("../../constants");
 
-router.get("/", async (req, res) => {
+router.get("/", async (req, res, next) => {
   try {
     const response = await axios.get("/", { params: API_PARAMS });
     const holidays = response.data.records.map((record) => ({
@@ -18,7 +18,8 @@ router.get("/", async (req, res) => {
     res.json(holidays);
   } catch (error) {
     console.error("Error fetching data:", error.message);
-    res.status(500).json({ error: "Error fetching holiday data" });
+    // res.status(500).json({ error: "Error fetching holiday data" });
+    next(error);
   }
 });
 

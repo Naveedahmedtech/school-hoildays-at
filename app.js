@@ -15,6 +15,13 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+
+app.use((req, res, next) => {
+  res.locals.route = req.path; // Set the current path as the `route` variable
+  next();
+});
+
+
 // get counter data for all routes to access in the layout
 app.use(fetchHolidayDataMiddleware);
 // Routes
@@ -26,6 +33,7 @@ app.use((req, res, next) => {
     title: "Home - School and Public Holidays",
     description: "Bienvenue sur le calendrier officiel des vacances scolaires.",
     content: `../pages/common/not-found`,
+    countdownData: [],
   });
 });
 
@@ -36,6 +44,7 @@ app.use((err, req, res, next) => {
     title: "Home - School and Public Holidays",
     description: "Bienvenue sur le calendrier officiel des vacances scolaires.",
     content: `../pages/common/error`,
+    countdownData: [],
   });
 });
 

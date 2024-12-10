@@ -18,7 +18,7 @@ const {
   transformToEarliestAndLatestDate,
 } = require("../utils/common");
 
-const winterFebVacation = async (req, res) => {
+const winterFebVacation = async (req, res, next) => {
   const zones = ["Zone A", "Zone B", "Zone C"];
   const year = { 2024: "2024", 2025: "2025", 2026: "2026" };
   const countdownData = req?.holidayData?.countdownData;
@@ -73,10 +73,11 @@ const winterFebVacation = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error)
   }
 };
-const springVacation = async (req, res) => {
+const springVacation = async (req, res, next) => {
   const zones = ["Zone A", "Zone B", "Zone C"];
   const year = { 2024: "2024", 2025: "2025", 2026: "2026" };
   const countdownData = req?.holidayData?.countdownData;
@@ -131,13 +132,14 @@ const springVacation = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error)
   }
 };
 
   
 
-const christmasVacation = async (req, res) => {
+const christmasVacation = async (req, res, next) => {
   const zones = ["Zone A", "Zone B", "Zone C"];
   const year = { 2024: "2024", 2025: "2025", 2026: "2026" };
   const countdownData = req?.holidayData?.countdownData;
@@ -182,12 +184,13 @@ const christmasVacation = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error)
   }
 };
 
 
-const allSaintsDayVacation = async (req, res) => {
+const allSaintsDayVacation = async (req, res, next) => {
     const zones = ["Zone A", "Zone B", "Zone C"];
     const year = { 2024: "2024", 2025: "2025", 2026: "2026" };
   const countdownData = req?.holidayData?.countdownData;
@@ -232,11 +235,12 @@ const allSaintsDayVacation = async (req, res) => {
       });
     } catch (error) {
       console.error("Error fetching data with axios:", error.message);
-      res.status(500).send("Error fetching data");
+      // res.status(500).send("Error fetching data");
+      next(error)
     }
   };
 
-const ascensionVacation = async (req, res) => {
+const ascensionVacation = async (req, res, next) => {
     const zones = ["Zone A", "Zone B", "Zone C"];
     const year = { 2024: "2024", 2025: "2025", 2026: "2026" };
   const countdownData = req?.holidayData?.countdownData;
@@ -281,13 +285,14 @@ const ascensionVacation = async (req, res) => {
       });
     } catch (error) {
       console.error("Error fetching data with axios:", error.message);
-      res.status(500).send("Error fetching data");
+      // res.status(500).send("Error fetching data");
+      next(error)
     }
   };
 
 
 
-  const longVacation = async (req, res) => {
+  const longVacation = async (req, res, next) => {
     const zone = "Polynésie";
     const year = { 2024: "2024", 2025: "2025", 2026: "2026" };
   const countdownData = req?.holidayData?.countdownData;
@@ -326,7 +331,8 @@ const ascensionVacation = async (req, res) => {
       });
     } catch (error) {
       console.error("Error fetching data with axios:", error.message);
-      res.status(500).send("Error fetching data");
+      // res.status(500).send("Error fetching data");
+      next(error)
     }
   };
 

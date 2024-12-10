@@ -9,7 +9,7 @@ const { getOverallDateRange } = require("../utils/home.util");
 const { zonesVacationData } = require("../utils/zones.util");
 
 // *** ZONE A *********
-const zoneA2024 = async (req, res) => {
+const zoneA2024 = async (req, res, next) => {
   const zones = ["Zone A"];
   const year = "2024";
   const countdownData = req?.holidayData?.countdownData;
@@ -49,11 +49,12 @@ const zoneA2024 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error);
   }
 };
 
-const zoneA2025 = async (req, res) => {
+const zoneA2025 = async (req, res, next) => {
   const zones = ["Zone A"];
   const year = "2025";
   const countdownData = req?.holidayData?.countdownData;
@@ -93,14 +94,15 @@ const zoneA2025 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error);
   }
 };
 
 // *** ZONE A END *********
 
 // *** ZONE B START ********************************
-const zoneB2024 = async (req, res) => {
+const zoneB2024 = async (req, res, next) => {
   const zones = ["Zone B"];
   const year = "2024";
   const countdownData = req?.holidayData?.countdownData;
@@ -140,11 +142,12 @@ const zoneB2024 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error);
   }
 };
 
-const zoneB2025 = async (req, res) => {
+const zoneB2025 = async (req, res, next) => {
   const zones = ["Zone B"];
   const year = "2025";
   const countdownData = req?.holidayData?.countdownData;
@@ -184,14 +187,15 @@ const zoneB2025 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error);
   }
 };
 
 // **** ZONE B END ********************************
 
 // *** ZONE C START ********************************
-const zoneC2024 = async (req, res) => {
+const zoneC2024 = async (req, res, next) => {
   const zones = ["Zone C"];
   const year = "2024";
   const countdownData = req?.holidayData?.countdownData;
@@ -231,11 +235,12 @@ const zoneC2024 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error);
   }
 };
 
-const zoneC2025 = async (req, res) => {
+const zoneC2025 = async (req, res, next) => {
   const zones = ["Zone C"];
   const year = "2025";
   const countdownData = req?.holidayData?.countdownData;
@@ -275,14 +280,15 @@ const zoneC2025 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error);
   }
 };
 
 // **** ZONE C END ********************************
 
 // *** ZONE Corse START ********************************
-const zoneCorse2024 = async (req, res) => {
+const zoneCorse2024 = async (req, res, next) => {
   const zones = ["Corse"];
   const year = "2024";
   const countdownData = req?.holidayData?.countdownData;
@@ -322,11 +328,12 @@ const zoneCorse2024 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error);
   }
 };
 
-const zoneCorse2025 = async (req, res) => {
+const zoneCorse2025 = async (req, res, next) => {
   const zones = ["Corse"];
   const year = "2025";
   const countdownData = req?.holidayData?.countdownData;
@@ -366,14 +373,15 @@ const zoneCorse2025 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error);
   }
 };
 
 // **** ZONE C END ********************************
 
 // *** ZONE Guadeloupe START ********************************
-const zoneGuadeloupe2024 = async (req, res) => {
+const zoneGuadeloupe2024 = async (req, res, next) => {
   const zones = ["Guadeloupe"];
   const year = "2024";
   const countdownData = req?.holidayData?.countdownData;
@@ -413,11 +421,12 @@ const zoneGuadeloupe2024 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error);
   }
 };
 
-const zoneGuadeloupe2025 = async (req, res) => {
+const zoneGuadeloupe2025 = async (req, res, next) => {
   const zones = ["Guadeloupe"];
   const year = "2025";
   const countdownData = req?.holidayData?.countdownData;
@@ -457,14 +466,15 @@ const zoneGuadeloupe2025 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error);
   }
 };
 
 // **** ZONE C END ********************************
 
 // *** ZONE Guyane START ********************************
-const zoneGuyane2024 = async (req, res) => {
+const zoneGuyane2024 = async (req, res, next) => {
   const zones = ["Guyane"];
   const year = "2024";
   const countdownData = req?.holidayData?.countdownData;
@@ -504,11 +514,12 @@ const zoneGuyane2024 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error);
   }
 };
 
-const zoneGuyane2025 = async (req, res) => {
+const zoneGuyane2025 = async (req, res, next) => {
   const zones = ["Guyane"];
   const year = "2025";
   const countdownData = req?.holidayData?.countdownData;
@@ -548,14 +559,15 @@ const zoneGuyane2025 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error);
   }
 };
 
 // **** ZONE C END ********************************
 
 // *** ZONE Martinique START ********************************
-const zoneMartinique2024 = async (req, res) => {
+const zoneMartinique2024 = async (req, res, next) => {
   const zones = ["Martinique"];
   const year = "2024";
   const countdownData = req?.holidayData?.countdownData;
@@ -595,11 +607,12 @@ const zoneMartinique2024 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error);
   }
 };
 
-const zoneMartinique2025 = async (req, res) => {
+const zoneMartinique2025 = async (req, res, next) => {
   const zones = ["Martinique"];
   const year = "2025";
   const countdownData = req?.holidayData?.countdownData;
@@ -639,14 +652,15 @@ const zoneMartinique2025 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error);
   }
 };
 
 // **** ZONE Martinique END ********************************
 
 // *** ZONE Mayotte START ********************************
-const zoneMayotte2024 = async (req, res) => {
+const zoneMayotte2024 = async (req, res, next) => {
   const zones = ["Mayotte"];
   const year = "2024";
   const countdownData = req?.holidayData?.countdownData;
@@ -686,11 +700,12 @@ const zoneMayotte2024 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error);
   }
 };
 
-const zoneMayotte2025 = async (req, res) => {
+const zoneMayotte2025 = async (req, res, next) => {
   const zones = ["Mayotte"];
   const year = "2025";
   const countdownData = req?.holidayData?.countdownData;
@@ -730,14 +745,15 @@ const zoneMayotte2025 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error);
   }
 };
 
 // **** ZONE Mayotte END ********************************
 
 // *** ZONE Réunion START ********************************
-const zoneRéunion2024 = async (req, res) => {
+const zoneRéunion2024 = async (req, res, next) => {
   const zones = ["Réunion"];
   const year = "2024";
   const countdownData = req?.holidayData?.countdownData;
@@ -777,11 +793,12 @@ const zoneRéunion2024 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error);
   }
 };
 
-const zoneRéunion2025 = async (req, res) => {
+const zoneRéunion2025 = async (req, res, next) => {
   const zones = ["Réunion"];
   const year = "2025";
   const countdownData = req?.holidayData?.countdownData;
@@ -821,7 +838,8 @@ const zoneRéunion2025 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error);
   }
 };
 

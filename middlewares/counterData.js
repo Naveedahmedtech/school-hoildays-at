@@ -47,20 +47,18 @@ const fetchEventsForZone = async (zone, year) => {
       .join("&");
 
     // Build the API URL
-    const url = `${BASE_URL}?limit=100&refine=zones:"${encodeURIComponent(
+    const url = `${BASE_URL}?refine=zones:"${encodeURIComponent(
       zone
-    )}"&refine=annee_scolaire:"${year}-${year + 1}"&${descriptionParams}`;
-
+    )}"&refine=annee_scolaire:"${year - 1}-${year}"&${descriptionParams}&order_by=end_date DESC`;
     // Make the API request
     const response = await axios.get(url);
-
-    if (response.data.records.length > 0) {
+    if (response.data.results.length > 0) {
       // Map results to a standardized format
-      return response.data.records.map((record) => ({
+      return response.data.results.map((record) => ({
         zone,
-        description: record.fields.description,
-        start_date: record.fields.start_date,
-        end_date: record.fields.end_date,
+        description: record.description,
+        start_date: record.start_date,
+        end_date: record.end_date,
       }));
     }
 

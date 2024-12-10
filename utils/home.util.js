@@ -70,8 +70,8 @@ let firstThreeVacations = [
     zoneC: "C",
     startDate: "samedi 13 octobre 2024",
     endDate: null, // Default value
-    className: "zZb off",
-    isOff: true,
+    className: "zZb",
+    isOff: false,
   },
   {
     link: "/vacances/noel/",
@@ -81,8 +81,8 @@ let firstThreeVacations = [
     zoneC: "C",
     startDate: "samedi 29 décembre 2024",
     endDate: null, // Default value
-    className: "zZc off",
-    isOff: true,
+    className: "zZc",
+    isOff: false,
   },
 ];
 

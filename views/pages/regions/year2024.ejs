@@ -29,15 +29,18 @@
     </div>
     <h1><%= mainHeading %></h1>
     <% if (subHeading) { %>
-    <div class="date ddA">
-      <span class="lesdates a" style="font-size: 20px"><%= subHeading %></span>
-    </div>
+      <div class="date <%= zone === 'Zone A' ? 'ddA' : zone === 'Zone B' ? 'ddB' : zone === 'Zone C' ? 'ddC' : 'ddCorse' %>">
+        <span class="lesdates <%= zone === 'Zone A' ? 'a' : zone === 'Zone B' ? 'b' : zone === 'Zone C' ? 'c' : 'corse' %>" style="font-size: 20px;">
+          <%= subHeading %>
+        </span>
+      </div>
+      
     <% } %> <% vacations.forEach(vacation => { %>
     <div class="dateTitre">
       <a href="<%= vacation.link %>"><%= vacation.title %></a>
     </div>
-    <div class="date dA">
-      <div class="zone zA"><span><%= zone %></span></div>
+    <div class="date <%= zone === 'Zone A' ? 'dA' : zone === 'Zone B' ? 'dB' : zone === 'Zone C' ? 'dC' : 'dCorse' %>">
+      <div class="zone <%= zone === 'Zone A' ? 'zA' : zone === 'Zone B' ? 'zB' : zone === 'Zone C' ? 'zC' : 'zCorse' %>"><span><%= zone %></span></div>
       <span class="lesdates">
         <% if (vacation.startDate) { %> Fin des cours :
         <b><%= vacation.startDate %></b><br />
