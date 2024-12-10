@@ -15,7 +15,7 @@
     </ul>
   </div>
 
-  <h1><%= pageTitle %></h1>
+  <h1><%= t(pageTitle) %> 2025-2026</h1>
   <div class="date taille25">&nbsp;</div>
 
   <% zones.forEach(zone => { %>
@@ -34,7 +34,7 @@
 
   <% firstThreeVacations.forEach((item) => { %>
   <div class="dateLibelle dLibelle taille25">
-    <a href="<%= item.link %>" class="noir b"><%= item.title %></a>
+    <a href="<%= item.link %>" class="noir b"><%= t(item.title) %></a>
   </div>
   <div class="date dZ <%= item?.isOff ? 'off' : '' %>">
     <div class="zone zZ">
@@ -51,7 +51,7 @@
   <div class="spacer"></div>
 
   <div class="dateLibelle dLibelle taille25">
-    <a href="<%= vacation.link %>" class="noir b"><%= vacation.title %></a>
+    <a href="<%= vacation.link %>" class="noir b"><%= t(vacation.title) %></a>
   </div>
 
   <% vacation2.zones.forEach((zone) => { %>
@@ -92,7 +92,7 @@
 
   <% lastTwoVacations.forEach((item) => { %>
   <div class="dateLibelle dLibelle taille25">
-    <a href="<%= item.link %>" class="noir b"><%= item.title %></a>
+    <a href="<%= item.link %>" class="noir b"><%= t(item.title) %></a>
   </div>
   <div class="date dZ <%= item?.isOff ? 'off' : '' %>">
     <div class="zone zZ">
@@ -112,7 +112,7 @@
 
   <!-- Corse and Overseas -->
   <div class="dateTitre">
-    <span>Calendrier de la Corse et l'Outre-Mer :</span>
+    <span><%= t('corsica_calendar') %></span>
   </div>
   <div class="date ddAutre">
     <span class="lesdates b f20">
@@ -177,7 +177,7 @@
 
   <!-- List of Academies -->
   <div class="dateTitre">
-    <span>Listes des académies par zone :</span>
+    <span><%= t('academies_by_zone') %></span>
   </div>
   <div class="date dA">
     <div class="zone zA"><span>Zone A</span></div>

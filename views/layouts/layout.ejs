@@ -2,7 +2,7 @@
   <html lang="fr">
     <head>
       <meta charset="UTF-8" />
-      <title>Vacances Scolaires liste des départements</title>
+      <title><%= title %></title>
       <meta
         name="description"
         content="Retrouvez le calendrier scolaire des vacances pour toutes les départements de la France."
@@ -16,6 +16,7 @@
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
   <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/home.css" />
   <link rel="canonical" href="https://vacances-scolaires.education/carte/" /></head>
     </head>
     <body>
@@ -29,24 +30,30 @@
             <input type="checkbox" id="btn" />
             <ul>
               <li>
-                <a href="/regions" class="<%= route && route === 'regions' ? 'on' : '' %>">Régions</a>
+                <a href="/regions" class="<%= route && route === 'regions' ? 'on' : '' %>"><%= t('regions') %></a>
               </li>
               <li>
-                <a href="/academie" class="<%= route && route === 'academie' ? 'on' : '' %>">Académies</a>
-              </li>                         
+                <a href="/academie" class="<%= route && route === 'academie' ? 'on' : '' %>"><%= t('academies') %></a>
+              </li> 
+              <li>
+                <select id="language-selector" aria-label="<%= t('select_language') %>">
+                  <option value="en" <%= language === 'en' ? 'selected' : '' %>>English</option>
+                  <option value="fr" <%= language === 'fr' ? 'selected' : '' %>>Français</option>
+                </select>
+              </li>                        
             </ul>
           </nav>
         </div>
         <div class="moteur">
           <div class="search" id="moteur">
             <form class="search-form" action="/recherche/">
-              <button type="submit" value="" id="bouton" aria-label="Recherche"></button>
+              <button type="submit" value="" id="bouton" aria-label="<%= t('search_button_aria_label') %>"></button>
               <div>
                 <input
                   type="text"
                   name="q"
                   id="recherche"
-                  placeholder="Chercher une académie, une région..."
+                  placeholder="<%= t('search_placeholder') %>"
                   autocomplete="off"
                 />
               </div>
@@ -82,13 +89,18 @@
             <div id="holidayNameA" class="holiday-name"></div>
           <span id="cCorse" class="lesdates countdown-display"></span>
         </div>
+        <br>
+<div class="centerdiv" style="width:296px;height:353px;">
+    <a href="/carte" title="Carte des zones des vacances scolaires"><img src="/images/france-vacances-scolaires.webp" alt="Carte des zones des vacances scolaires" width="296px" height="353px"/></a>
+</div>
     </aside>
         <div class="spacer"></div>
       </div>
       <footer>
-        <span class="margin5 b">© vacances-scolaires.education</span>
-        <a href="/cgu.php" class="margin5 b blanc">CGU</a>
+        <span class="margin5 b"><%= t('footer_text') %></span>
+        <a href="/cgu.php" class="margin5 b blanc"><%= t('footer_terms') %></a>
       </footer>
+      <!-- ! Countdown -->
       <script>
         // Default countdown data
         const defaultCountdownData = [
@@ -232,7 +244,7 @@
         updateCountdowns();
       </script>
       
-      
+      <script src="/js/switch-language.js"></script>
       
     </body>
 

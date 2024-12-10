@@ -1,4 +1,4 @@
-<div>
+<div class="main_container_home">
   <!-- Menu -->
   <div id="menu_annee">
     <ul>
@@ -17,7 +17,7 @@
   </div>
 
   <!-- Page Title -->
-  <h1><%= pageTitle %></h1>
+  <h1><%= t(pageTitle) %> 2024-2025</h1>
   <div class="date taille25">&nbsp;</div>
 
   <!-- Zones -->
@@ -118,7 +118,7 @@
 
   <!-- Corse and Overseas -->
   <div class="dateTitre">
-    <span>Calendrier de la Corse et l'Outre-Mer :</span>
+    <span><%= t('corsica_calendar') %></span>
   </div>
   <div class="date ddAutre">
     <span class="lesdates b f20">
@@ -183,7 +183,7 @@
 
   <!-- List of Academies -->
   <div class="dateTitre">
-    <span>Listes des académies par zone :</span>
+    <span><%= t('academies_by_zone') %></span>
   </div>
   <div class="date dA">
     <div class="zone zA"><span>Zone A</span></div>

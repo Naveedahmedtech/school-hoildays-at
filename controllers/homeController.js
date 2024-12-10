@@ -24,6 +24,8 @@ const {
 const Fuse = require("fuse.js");
 
 const home2024 = async (req, res, next) => {
+  console.log("Current Locale:", req.cookies);
+
   const zones = ["Zone A", "Zone B", "Zone C"];
   const year = "2024";
   const countdownData = req?.holidayData?.countdownData;
@@ -79,7 +81,7 @@ const home2024 = async (req, res, next) => {
 
     // Render the page with the holiday ranges and structured data
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      ////title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/home/home2024",
@@ -95,7 +97,7 @@ const home2024 = async (req, res, next) => {
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
     // res.status(500).send("Error fetching data");
-    next(error)
+    next(error);
   }
 };
 
@@ -103,7 +105,6 @@ const home2025 = async (req, res, next) => {
   const zones = ["Zone A", "Zone B", "Zone C"];
   const year = "2025";
   const countdownData = req?.holidayData?.countdownData;
-
 
   try {
     console.log("Fetching data using axios...");
@@ -150,6 +151,8 @@ const home2025 = async (req, res, next) => {
       updatedVacation2,
     ];
 
+    console.log("allData0", allData);
+
     const latestDate = findLatestDateFromAll(allData);
     const updatedWithReturnSchool = setLatestDateToRentrée(
       updatedFirstThreeVacations,
@@ -158,7 +161,7 @@ const home2025 = async (req, res, next) => {
 
     // Render the page with the holiday ranges and structured data
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      ////title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/home/home2025",
@@ -169,12 +172,12 @@ const home2025 = async (req, res, next) => {
       vacation: updatedVacation,
       vacation2: updatedVacation2 || [],
       lastTwoVacations: updatedLastTwoVacations || [],
-      countdownData
+      countdownData,
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
     // res.status(500).send("Error fetching data");
-    next(error)
+    next(error);
   }
 };
 
@@ -213,19 +216,21 @@ const search = async (req, res, next) => {
   } catch (error) {
     console.error("Error processing search:", error.message);
     // res.status(500).send("Internal server error");
-    next(error)
+    next(error);
   }
 };
 
 const map = async (req, res, next) => {
+  const countdownData = req?.holidayData?.countdownData;
 
   try {
     // Render the page with the holiday ranges and structured data
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/map/map",
+      countdownData,
     });
   } catch (error) {
     next(error);

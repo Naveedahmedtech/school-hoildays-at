@@ -61,7 +61,7 @@ const winterFebVacation = async (req, res, next) => {
     console.log("response", updatedVacation2024);
 
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/vacation/winter-vacation-february-vacation",
@@ -120,7 +120,7 @@ const springVacation = async (req, res, next) => {
     console.log("response", updatedVacation2024);
 
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/vacation/vacances-de-printemps-vacances-de-paques",
@@ -172,7 +172,7 @@ const christmasVacation = async (req, res, next) => {
     const christmasVacationData25 = transformToEarliestAndLatestDate(response25.data.results, christmasVacationData);
     const christmasVacationData26 = transformToEarliestAndLatestDate(response26.data.results, christmasVacationData);
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/vacation/christmas-vacation",
@@ -223,7 +223,7 @@ const allSaintsDayVacation = async (req, res, next) => {
       const ascensionVacationData25 = transformToEarliestAndLatestDate(response25.data.results, ascensionVacationData);
       const ascensionVacationData26 = transformToEarliestAndLatestDate(response26.data.results, ascensionVacationData);
       res.render("layouts/layout", {
-        title: "Home - School and Public Holidays",
+        //title: "Home - School and Public Holidays",
         description:
           "Bienvenue sur le calendrier officiel des vacances scolaires.",
         content: "../pages/vacation/all-saint-holidays",
@@ -273,7 +273,7 @@ const ascensionVacation = async (req, res, next) => {
       const allSaintsDayVacationData25 = transformToEarliestAndLatestDate(response25.data.results, allSaintsDayVacationData);
       const allSaintsDayVacationData26 = transformToEarliestAndLatestDate(response26.data.results, allSaintsDayVacationData);
       res.render("layouts/layout", {
-        title: "Home - School and Public Holidays",
+        //title: "Home - School and Public Holidays",
         description:
           "Bienvenue sur le calendrier officiel des vacances scolaires.",
         content: "../pages/vacation/ascension",
@@ -319,7 +319,7 @@ const ascensionVacation = async (req, res, next) => {
       const longVacationData25 = transformToEarliestAndLatestDate(response25.data.results, longVacationData);
       const longVacationData26 = transformToEarliestAndLatestDate(response26.data.results, longVacationData);
       res.render("layouts/layout", {
-        title: "Home - School and Public Holidays",
+        //title: "Home - School and Public Holidays",
         description:
           "Bienvenue sur le calendrier officiel des vacances scolaires.",
         content: "../pages/vacation/long-vacation",

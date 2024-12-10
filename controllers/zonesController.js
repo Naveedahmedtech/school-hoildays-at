@@ -40,7 +40,7 @@ const zoneA2024 = async (req, res, next) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/a/year2024",
@@ -85,7 +85,7 @@ const zoneA2025 = async (req, res, next) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/a/year2025",
@@ -133,7 +133,7 @@ const zoneB2024 = async (req, res, next) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/b/year2024",
@@ -178,7 +178,7 @@ const zoneB2025 = async (req, res, next) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/b/year2025",
@@ -226,7 +226,7 @@ const zoneC2024 = async (req, res, next) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/c/year2024",
@@ -271,7 +271,7 @@ const zoneC2025 = async (req, res, next) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/c/year2025",
@@ -319,7 +319,7 @@ const zoneCorse2024 = async (req, res, next) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/corse/year2024",
@@ -364,7 +364,7 @@ const zoneCorse2025 = async (req, res, next) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/corse/year2025",
@@ -412,7 +412,7 @@ const zoneGuadeloupe2024 = async (req, res, next) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/guadeloupe/year2024",
@@ -457,7 +457,7 @@ const zoneGuadeloupe2025 = async (req, res, next) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/guadeloupe/year2025",
@@ -505,7 +505,7 @@ const zoneGuyane2024 = async (req, res, next) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/guyane/year2024",
@@ -550,7 +550,7 @@ const zoneGuyane2025 = async (req, res, next) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/guyane/year2025",
@@ -598,7 +598,7 @@ const zoneMartinique2024 = async (req, res, next) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/martinique/year2024",
@@ -643,7 +643,7 @@ const zoneMartinique2025 = async (req, res, next) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/martinique/year2025",
@@ -691,7 +691,7 @@ const zoneMayotte2024 = async (req, res, next) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/mayotte/year2024",
@@ -736,7 +736,7 @@ const zoneMayotte2025 = async (req, res, next) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/mayotte/year2025",
@@ -784,7 +784,7 @@ const zoneRéunion2024 = async (req, res, next) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/réunion/year2024",
@@ -829,7 +829,7 @@ const zoneRéunion2025 = async (req, res, next) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/réunion/year2025",
