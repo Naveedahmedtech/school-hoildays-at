@@ -4,8 +4,8 @@ const path = require("path");
 
 const webRoutes = require("./routes/web");
 const fetchHolidayDataMiddleware = require("./middlewares/counterData");
-const i18next = require("i18next");
-const middleware = require("i18next-http-middleware");
+const i18nextMiddleware = require("i18next-http-middleware");
+const { i18next } = require("./middlewares/i18n");
 
 const app = express();
 
@@ -17,48 +17,31 @@ app.use(express.static(path.join(__dirname, "public")));
 // Set view engine and views directory
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+
 app.use((req, res, next) => {
-  res.locals.route = req.path; 
+  res.locals.route = req.path;
   const titles = {
-    '/': 'Vacances Scolaires',
-    '/annee-2025-2026': 'Vacances Scolaires 2025-2026 - Zone B',
-    '/carte': 'Carte des Zones de Vacances Scolaires - Calendrier Officiel',
-    '/recherche': 'Recherche - Vacances Scolaires en France',
-    '/academie': 'Académies - Vacances Scolaires Officielles',
-    '/regions': 'Régions - Vacances Scolaires Officielles'
+    "/": "Vacances Scolaires",
+    "/annee-2025-2026": "Vacances Scolaires 2025-2026 - Zone B",
+    "/carte": "Carte des Zones de Vacances Scolaires - Calendrier Officiel",
+    "/recherche": "Recherche - Vacances Scolaires en France",
+    "/academie": "Académies - Vacances Scolaires Officielles",
+    "/regions": "Régions - Vacances Scolaires Officielles",
   };
 
-  res.locals.title = titles[req.path] || titles['/'];
+  res.locals.title = titles[req.path] || titles["/"];
   next();
 });
 
-i18next.init(
-  {
-    backend: {
-      loadPath: "./locales/{{lng}}/translation.json",
-    },
-    fallbackLng: "en",
-    preload: ["en", "fr"],
-    saveMissing: true,
-    detection: {
-      order: ["cookie", "querystring", "header"],
-      caches: ["cookie"],
-    },
-    supportedLngs: ["en", "fr"],
-  },
-  (err, t) => {
-    if (err) return console.error(err);
-    i18next.languages = i18next.options.preload; 
-  }
-);
 
 
 //  handle i18next
-app.use(middleware.handle(i18next));
+app.use(i18nextMiddleware.handle(i18next));
+
 
 app.use((req, res, next) => {
-  res.locals.t = req.t; 
-
+  res.locals.t = req.t;
+  console.log(req.t("school_holidays"));
   next();
 });
 
@@ -66,7 +49,7 @@ app.use((req, res, next) => {
 app.use(fetchHolidayDataMiddleware);
 // Routes
 app.use("/", webRoutes);
- 
+
 // 404 Not Found Handler
 app.use((req, res, next) => {
   res.render("layouts/layout", {
@@ -75,7 +58,7 @@ app.use((req, res, next) => {
     countdownData: [],
   });
 });
- 
+
 // Global Error Handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
