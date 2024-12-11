@@ -47,8 +47,7 @@
         <div class="moteur">
           <div class="search" id="moteur">
             <form class="search-form" action="/recherche/">
-              <button type="submit" value="" id="bouton" aria-label="<%= t('search_button_aria_label') %>"></button>
-              <div>
+              <div class="input-wrapper">
                 <input
                   type="text"
                   name="q"
@@ -56,10 +55,12 @@
                   placeholder="<%= t('search_placeholder') %>"
                   autocomplete="off"
                 />
+                <button type="submit" id="bouton" aria-label="<%= t('search_button_aria_label') %>"></button>
               </div>
             </form>
           </div>
         </div>
+        
       </header>
       <div class="main" style="margin-top: 20px; min-height: 100vh;">
       <main id="main">

@@ -3,9 +3,11 @@ const express = require("express");
 const path = require("path");
 
 const webRoutes = require("./routes/web");
+const apiRoutes = require("./routes/api");
 const fetchHolidayDataMiddleware = require("./middlewares/counterData");
 const i18next = require("i18next");
 const middleware = require("i18next-http-middleware");
+const backend = require("i18next-fs-backend");
 
 const app = express();
 
@@ -32,10 +34,12 @@ app.use((req, res, next) => {
   next();
 });
 
-i18next.init(
-  {
+i18next
+  .use(backend)
+  .use(middleware.LanguageDetector)
+  .init({
     backend: {
-      loadPath: "./locales/{{lng}}/translation.json",
+      loadPath: "./locales/{{lng}}/translation.json", // Path to translation files
     },
     fallbackLng: "en",
     preload: ["en", "fr"],
@@ -43,14 +47,13 @@ i18next.init(
     detection: {
       order: ["cookie", "querystring", "header"],
       caches: ["cookie"],
+      cookieSecure: false,
+      lookupCookie: "i18next",
     },
     supportedLngs: ["en", "fr"],
-  },
-  (err, t) => {
-    if (err) return console.error(err);
-    i18next.languages = i18next.options.preload; 
-  }
-);
+    nonExplicitSupportedLngs: true,
+  });
+
 
 
 //  handle i18next
@@ -66,6 +69,8 @@ app.use((req, res, next) => {
 app.use(fetchHolidayDataMiddleware);
 // Routes
 app.use("/", webRoutes);
+app.use("/api", apiRoutes);
+
  
 // 404 Not Found Handler
 app.use((req, res, next) => {
