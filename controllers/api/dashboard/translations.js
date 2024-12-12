@@ -1,4 +1,8 @@
+const i18next  = require("i18next");
 const { prisma } = require("../../../lib/prisma");
+const {
+  generateTranslationFiles,
+} = require("../../../utils/generateTranslationFiles");
 
 const translationController = {
   getTranslations: async (req, res) => {
@@ -38,32 +42,42 @@ const translationController = {
   },
 
   updateTranslation: async (req, res) => {
-    const { translations } = req.body; 
+    const { translations } = req.body;
 
     try {
-      if (!translations || typeof translations !== 'object') {
+      if (!translations || typeof translations !== "object") {
         return res.status(400).json({ message: "Invalid payload." });
       }
 
-      const updatePromises = Object.entries(translations).map(async ([key, langTranslations]) => {
-        const existingRecord = await prisma.dynamicContent.findUnique({ where: { key } });
+      const updatePromises = Object.entries(translations).map(
+        async ([key, langTranslations]) => {
+          const existingRecord = await prisma.dynamicContent.findUnique({
+            where: { key },
+          });
 
-        if (!existingRecord) {
-          throw new Error(`Translation key '${key}' not found.`);
-        }
+          if (!existingRecord) {
+            throw new Error(`Translation key '${key}' not found.`);
+          }
 
-        return prisma.dynamicContent.update({
-          where: { key },
-          data: {
-            translations: {
-              ...existingRecord.translations,
-              ...langTranslations, // Merge new translations with existing ones
+          return prisma.dynamicContent.update({
+            where: { key },
+            data: {
+              translations: {
+                ...existingRecord.translations,
+                ...langTranslations, // Merge new translations with existing ones
+              },
             },
-          },
-        });
-      });
+          });
+        }
+      );
 
       const updatedTranslations = await Promise.all(updatePromises);
+      await generateTranslationFiles();
+
+      // Reload resources in i18next dynamically
+      i18next.reloadResources(["en", "fr"], () => {
+        console.log("Translation files reloaded into i18next.");
+      });
 
       res.status(200).json({
         message: "Translations updated successfully",

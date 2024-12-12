@@ -7,6 +7,8 @@ const router = express.Router();
 router.get("/dashboard", authMiddleware, adminController.dashboard);
 router.get("/regions", authMiddleware, adminController.regions);
 router.get("/academie", authMiddleware, adminController.academies);
+router.get("/map", authMiddleware, adminController.map);
+
 router.get("/auth/signin", adminController.signin);
 
 module.exports = router;

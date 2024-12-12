@@ -42,14 +42,21 @@
               <a
                 href="/admin/regions"
                 class="<%= route && route === '/admin/regions' ? 'on' : '' %>"
-                ><%= t('regions') %></a
+                >Regions</a
               >
             </li>
             <li>
               <a
                 href="/admin/academie"
                 class="<%= route && route === '/admin/academie' ? 'on' : '' %>"
-                ><%= t('academies') %></a
+                >Academies</a
+              >
+            </li>
+            <li>
+              <a
+                href="/admin/map"
+                class="<%= route && route === '/admin/map' ? 'on' : '' %>"
+                >Map</a
               >
             </li>
             <li>
@@ -67,5 +74,7 @@
       <a href="/cgu.php" class="margin5 b blanc"><%= t('footer_terms') %></a>
     </footer>
     <script src="/js/signout.js"></script>
+    <script src="/js/api.js"></script>
+<script src="/js/lang-filter.js"></script>
   </body>
 </html>

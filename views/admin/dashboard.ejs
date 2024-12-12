@@ -3,8 +3,17 @@
     <form id="translation-form" class="dashboard-form">
       <h2>Update Home Content</h2>
 
-      <!-- Section for Home Title -->
+      <!-- Language Selection Filter -->
       <div class="form-group">
+        <label for="language-select">Select Language:</label>
+        <select id="language-select" class="language-filter">
+          <option value="en">English</option>
+          <option value="fr">French</option>
+        </select>
+      </div>
+
+      <!-- Section for Home Title -->
+      <div class="form-group lang-field lang-en">
         <label for="home-title-en">Home Title (EN):</label>
         <input
           type="text"
@@ -16,7 +25,7 @@
         />
       </div>
 
-      <div class="form-group">
+      <div class="form-group lang-field lang-fr">
         <label for="home-title-fr">Home Title (FR):</label>
         <input
           type="text"
@@ -28,8 +37,83 @@
         />
       </div>
 
+      <!-- Search placeholder for Home page -->
+      <div class="form-group lang-field lang-en">
+        <label for="search-placeholder-en">Search Placeholder (EN):</label>
+        <input
+          type="text"
+          id="search-placeholder-en"
+          name="search_placeholder[en]"
+          placeholder="Enter Search Placeholder in English"
+          value="<%= translations.en.search_placeholder || '' %>"
+          required
+        />
+      </div>
+
+      <div class="form-group lang-field lang-fr">
+        <label for="search-placeholder-fr">Search Placeholder (FR):</label>
+        <input
+          type="text"
+          id="search-placeholder-fr"
+          name="search_placeholder[fr]"
+          placeholder="Enter Search Placeholder in French"
+          value="<%= translations.fr.search_placeholder || '' %>"
+          required
+        />
+      </div>
+
+      <!-- Regions -->
+      <div class="form-group lang-field lang-en">
+        <label for="regions-en">Navigation Link Text (EN):</label>
+        <input
+          type="text"
+          id="regions-en"
+          name="regions[en]"
+          placeholder="Enter Regions in English"
+          value="<%= translations.en.regions || '' %>"
+          required
+        />
+      </div>
+
+      <div class="form-group lang-field lang-fr">
+        <label for="regions-fr">Navigation Link Text (FR):</label>
+        <input
+          type="text"
+          id="regions-fr"
+          name="regions[fr]"
+          placeholder="Enter Regions in French"
+          value="<%= translations.fr.regions || '' %>"
+          required
+        />
+      </div>
+
+      <!-- Academies -->
+      <div class="form-group lang-field lang-en">
+        <label for="academies-en">Navigation Link Text (EN):</label>
+        <input
+          type="text"
+          id="academies-en"
+          name="academies[en]"
+          placeholder="Enter Academies in English"
+          value="<%= translations.en.academies || '' %>"
+          required
+        />
+      </div>
+
+      <div class="form-group lang-field lang-fr">
+        <label for="academies-fr">Navigation Link Text (FR):</label>
+        <input
+          type="text"
+          id="academies-fr"
+          name="academies[fr]"
+          placeholder="Enter Academies in French"
+          value="<%= translations.fr.academies || '' %>"
+          required
+        />
+      </div>
+
       <!-- Section for Corsica and Overseas Territories Calendar -->
-      <div class="form-group">
+      <div class="form-group lang-field lang-en">
         <label for="corsica-calendar-en">Corsica Calendar (EN):</label>
         <input
           type="text"
@@ -41,7 +125,7 @@
         />
       </div>
 
-      <div class="form-group">
+      <div class="form-group lang-field lang-fr">
         <label for="corsica-calendar-fr">Corsica Calendar (FR):</label>
         <input
           type="text"
@@ -54,7 +138,7 @@
       </div>
 
       <!-- Section for List of Academies by Zone -->
-      <div class="form-group">
+      <div class="form-group lang-field lang-en">
         <label for="academies-zone-en">List of Academies by Zone (EN):</label>
         <input
           type="text"
@@ -66,7 +150,7 @@
         />
       </div>
 
-      <div class="form-group">
+      <div class="form-group lang-field lang-fr">
         <label for="academies-zone-fr">List of Academies by Zone (FR):</label>
         <input
           type="text"
@@ -83,5 +167,3 @@
     </form>
   </div>
 </div>
-
-<script src="/js/api.js"></script>

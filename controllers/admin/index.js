@@ -7,7 +7,7 @@ const apiUtil = async (keys) => {
         params: {
           keys: keys.join(","),
         },
-      },
+      }
     );
     return response.data.translations.reduce((acc, item) => {
       const { key, translations: langTranslations } = item;
@@ -28,7 +28,10 @@ const dashboard = async (req, res, next) => {
     "school_holidays",
     "corsica_calendar",
     "academies_by_zone",
-  ]; 
+    "search_placeholder",
+    "regions",
+    "academies",
+  ];
 
   try {
     const translations = await apiUtil(translationKeys);
@@ -43,9 +46,7 @@ const dashboard = async (req, res, next) => {
 };
 
 const regions = async (req, res, next) => {
-  const translationKeys = [
-    "regions_zone_france",
-  ]; 
+  const translationKeys = ["regions_zone_france"];
 
   try {
     const translations = await apiUtil(translationKeys);
@@ -60,14 +61,28 @@ const regions = async (req, res, next) => {
 };
 
 const academies = async (req, res, next) => {
-  const translationKeys = [
-    "academies_zone_france",
-  ]; 
+  const translationKeys = ["academies_zone_france"];
 
   try {
     const translations = await apiUtil(translationKeys);
     res.render("admin/layout", {
       content: "./academie",
+      translations,
+    });
+  } catch (error) {
+    console.error("Error fetching translations with axios:", error.message);
+    next(error);
+  }
+};
+
+const map = async (req, res, next) => {
+  const translationKeys = ["map_school_holiday_zones", "map_holiday_zones_abc"];
+
+  try {
+    const translations = await apiUtil(translationKeys);
+    console.log(translations);
+    res.render("admin/layout", {
+      content: "./map",
       translations,
     });
   } catch (error) {
@@ -85,5 +100,4 @@ const signin = async (req, res, next) => {
   }
 };
 
-
-module.exports = { dashboard, regions, academies, signin };
+module.exports = { dashboard, regions, academies, map, signin };

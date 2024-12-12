@@ -1,3 +1,8 @@
+// const { generateTranslationFiles } = require("./utils/generateTranslationFiles");
+
+// (async () => {
+//   await generateTranslationFiles(); 
+// })();
 const app = require("./app");
 
 const PORT = process.env.PORT || 3000;

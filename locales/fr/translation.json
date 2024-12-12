@@ -1,4 +1,5 @@
 {
+  "common.welcome_message": "Bienvenue sur notre site Web!",
   "welcome": "Bienvenue",
   "school_holidays": "Vacances scolaires",
   "regions": "Régions",
@@ -28,5 +29,4 @@
   "map_holiday_zones_abc": "La carte des vacances scolaires des zones A, B et C.",
   "academy": "académie",
   "located_in": "se trouve en"
-
 }
