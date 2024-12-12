@@ -8,11 +8,13 @@ const fetchHolidayDataMiddleware = require("./middlewares/counterData");
 const i18next = require("i18next");
 const middleware = require("i18next-http-middleware");
 const backend = require("i18next-fs-backend");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 
 // Middleware to parse incoming requests
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 

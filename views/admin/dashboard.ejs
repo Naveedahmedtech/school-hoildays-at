@@ -1,0 +1,87 @@
+<div class="dashboard-container">
+  <div class="dashboard">
+    <form id="translation-form" class="dashboard-form">
+      <h2>Update Home Content</h2>
+
+      <!-- Section for Home Title -->
+      <div class="form-group">
+        <label for="home-title-en">Home Title (EN):</label>
+        <input
+          type="text"
+          id="home-title-en"
+          name="school_holidays[en]"
+          placeholder="Enter Home Title in English"
+          value="<%= translations.en.school_holidays || '' %>"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="home-title-fr">Home Title (FR):</label>
+        <input
+          type="text"
+          id="home-title-fr"
+          name="school_holidays[fr]"
+          placeholder="Enter Home Title in French"
+          value="<%= translations.fr.school_holidays || '' %>"
+          required
+        />
+      </div>
+
+      <!-- Section for Corsica and Overseas Territories Calendar -->
+      <div class="form-group">
+        <label for="corsica-calendar-en">Corsica Calendar (EN):</label>
+        <input
+          type="text"
+          id="corsica-calendar-en"
+          name="corsica_calendar[en]"
+          placeholder="Enter Corsica Calendar in English"
+          value="<%= translations.en.corsica_calendar || '' %>"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="corsica-calendar-fr">Corsica Calendar (FR):</label>
+        <input
+          type="text"
+          id="corsica-calendar-fr"
+          name="corsica_calendar[fr]"
+          placeholder="Enter Corsica Calendar in French"
+          value="<%= translations.fr.corsica_calendar || '' %>"
+          required
+        />
+      </div>
+
+      <!-- Section for List of Academies by Zone -->
+      <div class="form-group">
+        <label for="academies-zone-en">List of Academies by Zone (EN):</label>
+        <input
+          type="text"
+          id="academies-zone-en"
+          name="academies_by_zone[en]"
+          placeholder="Enter List of Academies by Zone in English"
+          value="<%= translations.en.academies_by_zone || '' %>"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="academies-zone-fr">List of Academies by Zone (FR):</label>
+        <input
+          type="text"
+          id="academies-zone-fr"
+          name="academies_by_zone[fr]"
+          placeholder="Enter List of Academies by Zone in French"
+          value="<%= translations.fr.academies_by_zone || '' %>"
+          required
+        />
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn-submit">Update Translations</button>
+    </form>
+  </div>
+</div>
+
+<script src="/js/api.js"></script>

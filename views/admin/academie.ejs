@@ -1,0 +1,38 @@
+<div class="dashboard-container">
+    <div class="dashboard">
+      <form id="translation-form" class="dashboard-form">
+        <h2>Update Academie Content</h2>
+  
+        <!-- Section for Home Title -->
+        <div class="form-group">
+          <label for="home-title-en">Top Title (EN):</label>
+          <input
+            type="text"
+            id="home-title-en"
+            name="academies_zone_france[en]"
+            placeholder="Enter Home Title in English"
+            value="<%= translations.en.academies_zone_france || '' %>"
+            required
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="home-title-fr">Top Title (FR):</label>
+          <input
+            type="text"
+            id="home-title-fr"
+            name="academies_zone_france[fr]"
+            placeholder="Enter Home Title in French"
+            value="<%= translations.fr.academies_zone_france || '' %>"
+            required
+          />
+        </div>
+  
+        <!-- Submit Button -->
+        <button type="submit" class="btn-submit">Update Translations</button>
+      </form>
+    </div>
+  </div>
+  
+  <script src="/js/api.js"></script>
+  

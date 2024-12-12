@@ -1,0 +1,221 @@
+.dashboard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.dashboard {
+  max-width: 800px;
+  width: 100%;
+  margin: auto;
+  padding: 25px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background: #f7f8fc;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard h1 {
+  text-align: center;
+  color: #4a4a4a;
+  margin-bottom: 25px;
+  font-size: 28px;
+  text-transform: uppercase;
+}
+
+.dashboard-form {
+  padding: 20px;
+}
+
+.dashboard-form h2 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: #fff;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  border-color: #000091;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.btn-submit {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #000091;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-submit:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.btn-submit:active {
+  background-color: #004080;
+  transform: translateY(1px);
+}
+.signout-button {
+  margin-top: 6px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.signout-button:hover {
+  background-color: #c0392b;
+}
+
+.signout-button:active {
+  background-color: #a93226;
+}
+
+.signout-button:focus {
+  outline: none;
+  box-shadow: 0 0 4px #e74c3c;
+}
+
+/* dropdown */
+.nav .dropbtn {
+  display: inline-flex; /* Ensure the text and icon are treated as one row */
+  align-items: center; /* Align both vertically */
+  justify-content: center;
+  gap: 5px; /* Adjust spacing between text and icon */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 15px;
+  background: none;
+  border: none;
+  text-transform: capitalize; /* Optional: Makes text lowercase with a capital first letter */
+}
+
+.nav .icon {
+  font-size: 14px; /* Matches the size of the text */
+  transition: transform 0.3s ease; /* Smooth rotation animation */
+}
+
+.nav .dropdown:hover .icon {
+  transform: rotate(180deg); /* Rotate icon on hover */
+}
+
+.nav .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 150px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  border-radius: 6px;
+  overflow: hidden;
+  text-align: left; /* Align links to the left */
+}
+
+.nav .dropdown-content a {
+  color: #333;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav .dropdown-content a:hover {
+  background-color: #f0f0f0;
+  color: #000091;
+}
+
+.nav .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Adjust for responsiveness */
+@media (max-width: 768px) {
+  .nav .dropbtn {
+    font-size: 14px;
+  }
+
+  .nav .icon {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 20px;
+  }
+
+  .form-group input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .btn-submit {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard {
+    padding: 15px;
+  }
+
+  .dashboard h1 {
+    font-size: 24px;
+  }
+
+  .form-group label {
+    font-size: 14px;
+  }
+
+  .form-group input {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .btn-submit {
+    font-size: 14px;
+    padding: 8px;
+  }
+}

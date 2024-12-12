@@ -1,5 +1,7 @@
 const express = require("express");
 const i18next  = require("i18next");
+const dashboardRoutes = require("./dashboard");
+const authRoutes= require("./auth");
 
 const router = express.Router();
 
@@ -18,5 +20,9 @@ router.post("/change-language", (req, res) => {
     res.cookie('i18next', lng, { maxAge: 365 * 24 * 60 * 60 * 1000 }); // 1 year
     res.json({ message: 'Language changed successfully', language: lng });
   });
+
+  router.use("/dashboard", dashboardRoutes);
+  router.use("/auth", authRoutes);
+
 
 module.exports = router;
