@@ -17,7 +17,9 @@
   <meta name="theme-color" content="#ffffff">
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/css/home.css" />
-  <link rel="canonical" href="https://vacances-scolaires.education/carte/" /></head>
+  <link rel="canonical" href="https://vacances-scolaires.education/carte/" />
+
+</head>
     </head>
     <body>
       <header class="fixed">
@@ -62,11 +64,14 @@
         </div>
         
       </header>
-      <div class="main" style="margin-top: 20px; min-height: 100vh;">
+      <!-- <div class="digiespace"></div> -->
+<div class="digiHaut"></div>
+      <div class="main" style="min-height: 80vh;">
       <main id="main">
         <%- include(content) %>
       </main>
       <aside id="aside">
+        <!-- <div class="digiColonne"></div> -->
         <div class="date dA tailleC">
           <div class="zone zA"><span>Zone A</span></div>
           <div id="holidayNameA" class="holiday-name"></div>
@@ -101,8 +106,13 @@
         <span class="margin5 b"><%= t('footer_text') %></span>
         <a href="/cgu.php" class="margin5 b blanc"><%= t('footer_terms') %></a>
       </footer>
+      <script>
+        <%- scriptContent %>
+        <%- scriptContent %>
+    </script>
       <!-- ! Countdown -->
       <script>
+    
         // Default countdown data
         const defaultCountdownData = [
           { zone: "Zone A", countdown_start_date: null },
@@ -244,9 +254,9 @@
         setInterval(updateCountdowns, 1000);
         updateCountdowns();
       </script>
-      
+
       <script src="/js/switch-language.js"></script>
-      
+
     </body>
 
   </html>

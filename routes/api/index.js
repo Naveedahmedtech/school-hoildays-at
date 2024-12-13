@@ -1,12 +1,13 @@
 const express = require("express");
 const i18next  = require("i18next");
 const dashboardRoutes = require("./dashboard");
-const authRoutes= require("./auth");
+const authRoutes = require("./auth");
+const adsRoutes = require("./ads");
 
 const router = express.Router();
 
 router.post("/change-language", (req, res) => {
-    const { lng } = req.body; // Assume the language code is sent in the request body
+    const { lng } = req.body; 
   
     if (!lng) {
       return res.status(400).json({ error: 'Language code is required' });
@@ -23,6 +24,8 @@ router.post("/change-language", (req, res) => {
 
   router.use("/dashboard", dashboardRoutes);
   router.use("/auth", authRoutes);
+  router.use("/ads", adsRoutes);
+
 
 
 module.exports = router;

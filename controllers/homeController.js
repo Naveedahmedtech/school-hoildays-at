@@ -22,6 +22,7 @@ const {
   setLatestDateToRentrée,
 } = require("../utils/common");
 const Fuse = require("fuse.js");
+const { default: axios } = require("axios");
 
 const home2024 = async (req, res, next) => {
   console.log("Current Locale:", req.cookies);
@@ -78,7 +79,16 @@ const home2024 = async (req, res, next) => {
       updatedFirstThreeVacations,
       latestDate
     );
-
+    let scriptContent;
+    const response = await axios.get(`${process.env.baseUrl}/api/ads/scripts`);
+    response.data.ads.forEach((ad) => {
+      if (ad.type === "background") {
+        scriptContent = ad.script || "";
+      }
+      //  else if (ad.type === "aside") {
+      //   const asideScriptContent = ad.script || "";
+      // }
+    });
     // Render the page with the holiday ranges and structured data
     res.render("layouts/layout", {
       ////title: "Home - School and Public Holidays",
@@ -93,6 +103,7 @@ const home2024 = async (req, res, next) => {
       vacation2: updatedVacation2 || [],
       lastTwoVacations: updatedLastTwoVacations || [],
       countdownData,
+      scriptContent: scriptContent || null,
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);

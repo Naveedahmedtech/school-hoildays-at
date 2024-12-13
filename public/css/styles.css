@@ -930,7 +930,7 @@ nav input {
     nav .logo {
         box-sizing: border-box;
         padding-left: 50px;
-        width: 100%
+        width: 300px
     }
 
     .show+a,

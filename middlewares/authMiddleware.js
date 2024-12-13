@@ -1,7 +1,16 @@
 const jwt = require("jsonwebtoken");
 
 const authMiddleware = (req, res, next) => {
-  const token = req.cookies.jwt; 
+  const token = req.cookies.jwt;
+  // Define private routes that require authentication
+  const privateRoutes = [
+    "/admin/dashboard",
+    "/admin/map",
+    "/admin/create-user",
+    "/admin/update-user",
+    "/admin/regions",
+    "/admin/academies",
+  ];
 
   if (!token) {
     // return res.status(401).json({ message: "Access denied, no token provided" });
@@ -10,10 +19,18 @@ const authMiddleware = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded; 
+    req.user = decoded;
     next();
   } catch (error) {
-    res.status(403).json({ message: "Invalid token" });
+    if (error.name === "TokenExpiredError") {
+      console.warn("Token expired. Redirecting to sign-in.");
+
+      // Redirect to sign-in only if the route is private
+      if (privateRoutes.includes(req.path)) {
+        return res.redirect("/admin/auth/signin");
+      }
+    }
+    next(error);
   }
 };
 
