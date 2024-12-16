@@ -10,8 +10,10 @@ const { zonesVacationData } = require("../../../utils/zones.util");
 
 const zones = ["Zone A"];
 const location = "Besançon";
-const besancon2024 = async (req, res) => {
+const besancon2024 = async (req, res, next) => {
   const year = "2024";
+  const countdownData = req?.holidayData?.countdownData;
+
 
   try {
     console.log("Fetching data using axios...");
@@ -40,6 +42,7 @@ const besancon2024 = async (req, res) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
+      countdownData,
       title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
@@ -48,12 +51,15 @@ const besancon2024 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+next(error)
   }
 };
 
-const besancon2025 = async (req, res) => {
+const besancon2025 = async (req, res, next) => {
   const year = "2025";
+  const countdownData = req?.holidayData?.countdownData;
+
 
   try {
     console.log("Fetching data using axios...");
@@ -81,6 +87,7 @@ const besancon2025 = async (req, res) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
+      countdownData,
       title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
@@ -89,7 +96,8 @@ const besancon2025 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+next(error)
   }
 };
 

@@ -33,6 +33,7 @@ const axios = require("axios");
  * @returns {Object} API URLs mapped by holiday keys.
  */
 const buildHolidayAPIs = ({ baseURL, zones, year, descriptions, location }) => {
+  console.log({ baseURL, zones, year, descriptions, location });
   return Object.keys(descriptions).reduce((apis, key) => {
     // Base query 
     let query = `${baseURL}?refine=zones:${zones.join(
@@ -72,7 +73,7 @@ const fetchHolidayData = async (apiUrls) => {
     urls.map((url) =>
       axios
         .get(url)
-        .then((res) => res.data.results)
+        .then((res, next) => res.data.results)
         .catch(() => [])
     )
   );

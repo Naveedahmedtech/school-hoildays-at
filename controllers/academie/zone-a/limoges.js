@@ -10,7 +10,8 @@ const { zonesVacationData } = require("../../../utils/zones.util");
 
 const zones = ["Zone A"];
 const location = "Limoges";
-const limoges2024 = async (req, res) => {
+const limoges2024 = async (req, res, next) => {
+  const countdownData = req?.holidayData?.countdownData;
   const year = "2024";
 
   try {
@@ -40,6 +41,7 @@ const limoges2024 = async (req, res) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
+      countdownData,
       title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
@@ -48,11 +50,13 @@ const limoges2024 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+next(error)
   }
 };
 
-const limoges2025 = async (req, res) => {
+const limoges2025 = async (req, res, next) => {
+  const countdownData = req?.holidayData?.countdownData;
   const year = "2025";
 
   try {
@@ -81,6 +85,7 @@ const limoges2025 = async (req, res) => {
       descriptionApiParams
     );
     res.render("layouts/layout", {
+      countdownData,
       title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
@@ -89,7 +94,8 @@ const limoges2025 = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+next(error)
   }
 };
 

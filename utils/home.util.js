@@ -5,7 +5,7 @@ let christmasVacationData = [
     zoneA: "A",
     zoneB: "B",
     zoneC: "C",
-    startDate: "samedi 07 décembre 2024",
+    startDate: "samedi 07 décembre ",
     endDate: null, // Default value
     className: "zZc off",
     isOff: true,
@@ -18,7 +18,7 @@ let allSaintsDayVacationData = [
     zoneA: "A",
     zoneB: "B",
     zoneC: "C",
-    startDate: "samedi 9 octobre 2024",
+    startDate: "samedi 9 octobre ",
     endDate: null, // Default value
     className: "zZb off",
     isOff: true,
@@ -27,11 +27,11 @@ let allSaintsDayVacationData = [
 let ascensionVacationData = [
   {
     link: "/vacances/ascension/",
-    title: "Pont de l'Ascension 2024",
+    title: "Pont de l'Ascension ",
     zoneA: "A",
     zoneB: "B",
     zoneC: "C",
-    startDate: "mercredi 28 mai 2024",
+    startDate: "mercredi 28 mai ",
     endDate: null, // Default value
     className: "zZb",
     isOff: false,
@@ -40,11 +40,11 @@ let ascensionVacationData = [
 let longVacationData = [
   {
     link: "/vacances/grandes",
-    title: "Grandes Vacances 2024",
+    title: "Grandes Vacances ",
     zoneA: "A",
     zoneB: "B",
     zoneC: "C",
-    startDate: "samedi 5 juillet 2024",
+    startDate: "samedi 5 juillet ",
     endDate: null, // Default value
     className: "zZc",
     isOff: false,
@@ -57,7 +57,7 @@ let firstThreeVacations = [
   //   zoneA: "A",
   //   zoneB: "B",
   //   zoneC: "C",
-  //   startDate: "lundi 26 septembre 2024",
+  //   startDate: "lundi 26 septembre ",
   //   endDate: null, // Default value
   //   className: "zZa off",
   //   isOff: true,
@@ -68,10 +68,10 @@ let firstThreeVacations = [
     zoneA: "A",
     zoneB: "B",
     zoneC: "C",
-    startDate: "samedi 13 octobre 2024",
+    startDate: "samedi 13 octobre ",
     endDate: null, // Default value
-    className: "zZb off",
-    isOff: true,
+    className: "zZb",
+    isOff: false,
   },
   {
     link: "/vacances/noel/",
@@ -79,10 +79,10 @@ let firstThreeVacations = [
     zoneA: "A",
     zoneB: "B",
     zoneC: "C",
-    startDate: "samedi 29 décembre 2024",
+    startDate: "samedi 29 décembre ",
     endDate: null, // Default value
-    className: "zZc off",
-    isOff: true,
+    className: "zZc",
+    isOff: false,
   },
 ];
 
@@ -94,22 +94,22 @@ let vacation = {
       className: "dB",
       zoneClass: "zB",
       zoneName: "Zone B",
-      endOfClasses: "samedi 2 février 2024",
-      dayOfResumption: "lundi 02 février 2024",
+      endOfClasses: "samedi 2 février ",
+      dayOfResumption: "lundi 02 février ",
     },
     {
       className: "dC",
       zoneClass: "zC",
       zoneName: "Zone C",
-      endOfClasses: "samedi 3 février 2024",
-      dayOfResumption: "lundi 03 mars 2024",
+      endOfClasses: "samedi 3 février ",
+      dayOfResumption: "lundi 03 mars ",
     },
     {
       className: "dA",
       zoneClass: "zA",
       zoneName: "Zone A",
-      endOfClasses: "samedi 10 février 2024",
-      dayOfResumption: "lundi 01 mars 2024",
+      endOfClasses: "samedi 10 février ",
+      dayOfResumption: "lundi 01 mars ",
     },
   ],
 };
@@ -122,22 +122,22 @@ const vacation2 = {
       className: "dB",
       zoneClass: "zB",
       zoneName: "Zone B",
-      endOfClasses: "samedi 5 avril 2024",
-      dayOfResumption: "mardi 22 avril 2024",
+      endOfClasses: "samedi 5 avril ",
+      dayOfResumption: "mardi 22 avril ",
     },
     {
       className: "dC",
       zoneClass: "zC",
       zoneName: "Zone C",
-      endOfClasses: "samedi 12 avril 2024",
-      dayOfResumption: "lundi 28 avril 2024",
+      endOfClasses: "samedi 12 avril ",
+      dayOfResumption: "lundi 28 avril ",
     },
     {
       className: "dA",
       zoneClass: "zA",
       zoneName: "Zone A",
-      endOfClasses: "samedi 19 avril 2024",
-      dayOfResumption: "lundi 5 mai 2024",
+      endOfClasses: "samedi 19 avril ",
+      dayOfResumption: "lundi 5 mai ",
     },
   ],
 };
@@ -146,7 +146,7 @@ const menuData24 = [
   {
     href: "/",
     id: "actif",
-    title: "vacances scolaires 2024",
+    title: "vacances scolaires ",
     text: "2024-2025",
   },
   {
@@ -160,13 +160,13 @@ const menuData25 = [
   {
     href: "/",
     id: "",
-    title: "vacances scolaires 2024",
+    title: "vacances scolaires",
     text: "2024-2025",
   },
   {
     href: "/annee-2025-2026",
     id: "actif",
-    title: "vacances scolaires 2026",
+    title: "vacances scolaires",
     text: "2025-2026",
   },
 ];
@@ -191,27 +191,27 @@ const myZones = [
   },
 ];
 
-const pageTitle = "Vacances scolaires 2024-2025";
+const pageTitle = "school_holidays";
 
 let lastTwoVacations = [
   {
     link: "/vacances/ascension/",
-    title: "Pont de l'Ascension 2024",
+    title: "Pont de l'Ascension ",
     zoneA: "A",
     zoneB: "B",
     zoneC: "C",
-    startDate: "mercredi 28 mai 2024",
+    startDate: "mercredi 28 mai ",
     endDate: null, // Default value
     className: "zZb",
     isOff: false,
   },
   {
     link: "/vacances/grandes",
-    title: "Grandes Vacances 2024",
+    title: "Grandes Vacances ",
     zoneA: "A",
     zoneB: "B",
     zoneC: "C",
-    startDate: "samedi 5 juillet 2024",
+    startDate: "samedi 5 juillet ",
     endDate: null, // Default value
     className: "zZc",
     isOff: false,
@@ -250,6 +250,65 @@ function getOverallDateRange(rawData) {
   };
 }
 
+const regions = [
+  "Auvergne-Rhône-Alpes",
+  "Bourgogne-Franche-Comté",
+  "Nouvelle-Aquitaine",
+  "Grand Est",
+  "Hauts-de-France",
+  "Normandie",
+  "Pays de la Loire",
+  "Bretagne",
+  "Centre-Val de Loire",
+  "Île-de-France",
+  "Occitanie",
+  "Provence-Alpes-Côte d'Azur",
+  "Guadeloupe",
+  "Guyane",
+  "Martinique",
+  "La Réunion",
+  "Mayotte",
+];
+
+const academies = [
+  "Aix-Marseille",
+  "Amiens",
+  "Besançon",
+  "Bordeaux",
+  "Caen",
+  "Clermont-Ferrand",
+  "Corse",
+  "Créteil",
+  "Dijon",
+  "Grenoble",
+  "Guadeloupe",
+  "Guyane",
+  "Lille",
+  "Limoges",
+  "Lyon",
+  "Martinique",
+  "Mayotte",
+  "Montpellier",
+  "Nancy-Metz",
+  "Nantes",
+  "Nice",
+  "Normandie",
+  "Nouvelle Calédonie",
+  "Orléans-Tours",
+  "Paris",
+  "Poitiers",
+  "Polynésie",
+  "Reims",
+  "Rennes",
+  "Réunion",
+  "Rouen",
+  "Saint Pierre et Miquelon",
+  "Strasbourg",
+  "Toulouse",
+  "Versailles",
+  "Wallis et Futuna",
+];
+
 module.exports = {
   firstThreeVacations,
   vacation,
@@ -264,4 +323,6 @@ module.exports = {
   allSaintsDayVacationData,
   ascensionVacationData,
   longVacationData,
+  regions,
+  academies,
 };

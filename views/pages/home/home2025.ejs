@@ -1,216 +1,229 @@
 <div>
-<div id="menu_annee">
+  <div id="menu_annee">
     <ul>
       <% menuData.forEach(item => { %>
-        <li>
-          <a href="<%= item.href %>" id="<%= item.id %>" title="<%= item.title %>">
-            <%= item.text %>
-          </a>
-        </li>
+      <li>
+        <a
+          href="<%= item.href %>"
+          id="<%= item.id %>"
+          title="<%= item.title %>"
+        >
+          <%= item.text %>
+        </a>
+      </li>
       <% }) %>
     </ul>
   </div>
-  
-  <h1><%= pageTitle %></h1>
+
+  <h1><%= t(pageTitle) %> 2025-2026</h1>
   <div class="date taille25">&nbsp;</div>
-  
+
   <% zones.forEach(zone => { %>
-    <div class="date dd<%= zone.text.charAt(zone.text.length - 1) %> taille33">
-      <a
-        href="<%= zone.href %>"
-        class="<%= zone.className %>"
-        title="<%= zone.title %>"
-      >
-        <%= zone.text %>
-      </a>
-    </div>
-  <% }) %>
-      <div class="spacer"></div>
-      <% firstThreeVacations.forEach((item) => { %>
-        <div class="dateLibelle dLibelle taille25">
-          <a href="<%= item.link %>" class="noir b"><%= item.title %></a>
-        </div>
-        <div class="date dZ <%= item?.isOff ? 'off' : '' %>">
-          <div class="zone zZ">
-            <div class=<%= item.className %>><%= item.zoneA %></div>
-            <div class=<%= item.className %>><%= item.zoneB %></div>
-            <div class=<%= item.className %>><%= item.zoneC %></div>
-          </div>
-          <span class="lesdates">
-            Jour de reprise : <b><%= item.endDate %></b>
-          </span>
-        </div>
-      <% }); %>
-      <div class="spacer"></div>
-      <div class="dateLibelle dLibelle taille25">
-        <a href="<%= vacation.link %>" class="noir b"><%= vacation.title %></a>
-      </div>
-      <!-- vacation 2 -->
-      
-      <% vacation2.zones.forEach((zone) => { %>
-        <div class="date <%= zone.className %> taille33">
-          <div class="zone <%= zone.zoneClass %>"><span><%= zone.zoneName %></span></div>
-          <span class="lesdates">
-            <div class="mobile">Fin des cours :</div>
-            <b><%= zone.endOfClasses %></b><br />
-            <div class="mobile">Jour de reprise :</div>
-            <b><%= zone.dayOfResumption %></b>
-          </span>
-        </div>
-      <% }); %>
-      <div class="spacer"></div>
-      <div class="dateLibelle dLibelle taille25">
-        <a href="<%= vacation2.link %>" class="noir b"><%= vacation2.title %></a>
-      </div>
-    
-      <% vacation2.zones.forEach((zone) => { %>
-        <div class="date <%= zone.className %> taille33">
-          <div class="zone <%= zone.zoneClass %>"><span><%= zone.zoneName %></span></div>
-          <span class="lesdates">
-            <div class="mobile">Fin des cours :</div>
-            <b><%= zone.endOfClasses %></b><br />
-            <div class="mobile">Jour de reprise :</div>
-            <b><%= zone.dayOfResumption %></b>
-          </span>
-        </div>
-      <% }); %>
-      <div class="spacer"></div>
-      <% lastTwoVacations.forEach((item) => { %>
-        <div class="dateLibelle dLibelle taille25">
-          <a href="<%= item.link %>" class="noir b"><%= item.title %></a>
-        </div>
-        <div class="date dZ <%= item?.isOff ? 'off' : '' %>">
-          <div class="zone zZ">
-            <div class=<%= item.className %>><%= item.zoneA %></div>
-            <div class=<%= item.className %>><%= item.zoneB %></div>
-            <div class=<%= item.className %>><%= item.zoneC %></div>
-          </div>
-          <span class="lesdates">
-            Jour de reprise : <b><%= item.endDate %></b>
-          </span>
-        </div>
-      <% }); %>
-      <div class="spacer"></div>
-      <div class="spacer"></div>
-      <div class="spacer"></div>
-      <div class="dateTitre">
-        <span>Calendrier de la corse et l'outre-mer :</span>
-      </div>
-      <div class="date ddAutre">
-        <span class="lesdates b f20"
-          ><a
-            href="/zones/corse-year-2024"
-            class="noir"
-            title="vacances scolaires Corse"
-            >Corse</a
-          ></span
-        >
-      </div>
-      <div class="date ddAutre">
-        <span class="lesdates b f20"
-          ><a
-            href="/zones/guadeloupe-year-2025"
-            class="noir"
-            title="vacances scolaires Guadeloupe"
-            >Guadeloupe</a
-          ></span
-        >
-      </div>
-      <div class="date ddAutre">
-        <span class="lesdates b f20"
-          ><a
-            href="/zones/guyane-year-2024"
-            class="noir"
-            title="vacances scolaires Guyane"
-            >Guyane</a
-          ></span
-        >
-      </div>
-      <div class="date ddAutre">
-        <span class="lesdates b f20"
-          ><a
-            href="/zones/martinique-year-2024"
-            class="noir"
-            title="vacances scolaires Martinique"
-            >Martinique</a
-          ></span
-        >
-      </div>
-      <div class="date ddAutre">
-        <span class="lesdates b f20"
-          ><a
-            href="/zones/mayotte-year-2024"
-            class="noir"
-            title="vacances scolaires Mayotte"
-            >Mayotte</a
-          ></span
-        >
-      </div>
-      <div class="date ddAutre">
-        <span class="lesdates b f20"
-          ><a
-            href="/zones/reunion-year-2024"
-            class="noir"
-            title="vacances scolaires Réunion"
-            >Réunion</a
-          ></span
-        >
-      </div>
-      <div class="spacer"></div>
-      <div class="dateTitre">
-        <span>Listes des académies par zone :</span>
-      </div>
-      <div class="date dA">
-        <div class="zone zA"><span>Zone A</span></div>
-        <span class="lesdates"
-        >
-        <a href="/academie/besancon-year-2024" class="noir">Besançon</a>,
-        <a href="/academie/bordeaux-year-2024" class="noir">Bordeaux</a>,
-        <a href="/academie/clermont-ferrand-year-2024" class="noir">Clermont-Ferrand</a>,
-          <a href="/academie/dijon-year-2024" class="noir">Dijon</a>,
-          <a href="/academie/grenoble-year-2024" class="noir">Grenoble</a>,
-          <a href="/academie/limoges-year-2024" class="noir">Limoges</a>,
-          <a href="/academie/lyon-year-2024" class="noir">Lyon</a>,
-          <a href="/academie/poitiers-year-2024" class="noir">Poitiers</a>
-          </span
-        >
-      </div>
-      <div class="date dB">
-        <div class="zone zB"><span>Zone B</span></div>
-        <span class="lesdates"
-          >
-          <a href="/academie/aix-marseille-year-2024" class="noir">Aix-Marseille</a>,
-          <a href="/academie/amiens-year-2024" class="noir">Amiens</a>,
-          <a href="/academie/caen-year-2024" class="noir">Caen</a>,
-          <a href="/academie/lille-year-2024" class="noir">Lille</a>,
-          <a href="/academie/nancy-metz-year-2024" class="noir">Nancy-Metz</a>,
-          <a href="/academie/nantes-year-2024" class="noir">Nantes</a>,
-          <a href="/academie/nice-year-2024" class="noir">Nice</a>,
-          <a href="/academie/orleans-tours-year-2024" class="noir">Orléans-Tours</a>,
-          <a href="/academie/reims-year-2024" class="noir">Reims</a>,
-          <a href="/academie/rennes-year-2024" class="noir">Rennes</a>,
-          <a href="/academie/rouen-year-2024" class="noir">Rouen</a>,
-          <a href="/academie/strasbourg-year-2024" class="noir">Strasbourg</a>  
-          </span
-        >
-      </div>
-      <div class="date dC">
-        <div class="zone zC"><span>Zone C</span></div>
-        <span class="lesdates"
-          >
-          <a href="/academie/creteil-year-2024" class="noir">Créteil</a>,
-          <a href="/academie/montpellier-year-2024" class="noir">Montpellier</a>,
-          <a href="/academie/paris-year-2024" class="noir">Paris</a>,
-          <a href="/academie/toulouse-year-2024" class="noir">Toulouse</a>,
-          <a href="/academie/versailles-year-2024" class="noir">Versailles</a>          
-          </span
-        >
-      </div>
-      <div class="date dCorse">
-        <div class="zone zCorse"><span>Corse</span></div>
-        <span class="lesdates"
-          ><a href="/academie/corse-year-2024" class="noir">Corse</a></span
-        >
-      </div>
-    </main>
+  <div class="date dd<%= zone.text.charAt(zone.text.length - 1) %> taille33">
+    <a
+      href="<%= zone.href %>"
+      class="<%= zone.className %>"
+      title="<%= zone.title %>"
+    >
+      <%= zone.text %>
+    </a>
   </div>
+  <% }) %>
+
+  <div class="spacer"></div>
+
+  <% firstThreeVacations.forEach((item) => { %>
+  <div class="dateLibelle dLibelle taille25">
+    <a href="<%= item.link %>" class="noir b"><%= t(item.title) %></a>
+  </div>
+  <div class="date dZ <%= item?.isOff ? 'off' : '' %>">
+    <div class="zone zZ">
+      <div class="<%= item.className %>"><%= item.zoneA %></div>
+      <div class="<%= item.className %>"><%= item.zoneB %></div>
+      <div class="<%= item.className %>"><%= item.zoneC %></div>
+    </div>
+    <span class="lesdates">
+      Fin des cours : <b><%= item.startDate %></b><br />
+      Jour de reprise : <b><%= item.endDate %></b> </span>
+  </div>
+  <% }); %>
+
+  <div class="spacer"></div>
+
+  <div class="dateLibelle dLibelle taille25">
+    <a href="<%= vacation.link %>" class="noir b"><%= t(vacation.title) %></a>
+  </div>
+
+  <% vacation2.zones.forEach((zone) => { %>
+  <div class="date <%= zone.className %> taille33">
+    <div class="zone <%= zone.zoneClass %>">
+      <span><%= zone.zoneName %></span>
+    </div>
+    <span class="lesdates">
+      <div class="mobile">Fin des cours :</div>
+      <b><%= zone.endOfClasses %></b><br />
+      <div class="mobile">Jour de reprise :</div>
+      <b><%= zone.dayOfResumption %></b>
+    </span>
+  </div>
+  <% }); %>
+
+  <div class="spacer"></div>
+
+  <div class="dateLibelle dLibelle taille25">
+    <a href="<%= vacation2.link %>" class="noir b"><%= vacation2.title %></a>
+  </div>
+
+  <% vacation2.zones.forEach((zone) => { %>
+  <div class="date <%= zone.className %> taille33">
+    <div class="zone <%= zone.zoneClass %>">
+      <span><%= zone.zoneName %></span>
+    </div>
+    <span class="lesdates">
+      <div class="mobile">Fin des cours :</div>
+      <b><%= zone.endOfClasses %></b><br />
+      <div class="mobile">Jour de reprise :</div>
+      <b><%= zone.dayOfResumption %></b>
+    </span>
+  </div>
+  <% }); %>
+
+  <div class="spacer"></div>
+
+  <% lastTwoVacations.forEach((item) => { %>
+  <div class="dateLibelle dLibelle taille25">
+    <a href="<%= item.link %>" class="noir b"><%= t(item.title) %></a>
+  </div>
+  <div class="date dZ <%= item?.isOff ? 'off' : '' %>">
+    <div class="zone zZ">
+      <div class="<%= item.className %>"><%= item.zoneA %></div>
+      <div class="<%= item.className %>"><%= item.zoneB %></div>
+      <div class="<%= item.className %>"><%= item.zoneC %></div>
+    </div>
+    <span class="lesdates">
+      Fin des cours : <b><%= item.startDate %></b><br />
+      Jour de reprise : <b><%= item.endDate %></b>
+    </span>
+  </div>
+  <% }); %>
+
+  <div class="spacer"></div>
+  <div class="spacer"></div>
+
+  <!-- Corse and Overseas -->
+  <div class="dateTitre">
+    <span><%= t('corsica_calendar') %></span>
+  </div>
+  <div class="date ddAutre">
+    <span class="lesdates b f20">
+      <a
+        href="/zones/corse-year-2024"
+        class="noir"
+        title="vacances scolaires Corse"
+        >Corse</a
+      >
+    </span>
+  </div>
+  <div class="date ddAutre">
+    <span class="lesdates b f20"
+      ><a
+        href="/zones/guadeloupe-year-2025"
+        class="noir"
+        title="vacances scolaires Guadeloupe"
+        >Guadeloupe</a
+      ></span
+    >
+  </div>
+  <div class="date ddAutre">
+    <span class="lesdates b f20"
+      ><a
+        href="/zones/guyane-year-2024"
+        class="noir"
+        title="vacances scolaires Guyane"
+        >Guyane</a
+      ></span
+    >
+  </div>
+  <div class="date ddAutre">
+    <span class="lesdates b f20"
+      ><a
+        href="/zones/martinique-year-2024"
+        class="noir"
+        title="vacances scolaires Martinique"
+        >Martinique</a
+      ></span
+    >
+  </div>
+  <div class="date ddAutre">
+    <span class="lesdates b f20"
+      ><a
+        href="/zones/mayotte-year-2024"
+        class="noir"
+        title="vacances scolaires Mayotte"
+        >Mayotte</a
+      ></span
+    >
+  </div>
+  <div class="date ddAutre">
+    <span class="lesdates b f20"
+      ><a
+        href="/zones/reunion-year-2024"
+        class="noir"
+        title="vacances scolaires Réunion"
+        >Réunion</a
+      ></span
+    >
+  </div>
+
+  <!-- List of Academies -->
+  <div class="dateTitre">
+    <span><%= t('academies_by_zone') %></span>
+  </div>
+  <div class="date dA">
+    <div class="zone zA"><span>Zone A</span></div>
+    <span class="lesdates">
+      <a href="/academie/besancon-year-2024" class="noir">Besançon</a>,
+      <a href="/academie/bordeaux-year-2024" class="noir">Bordeaux</a>,
+      <a href="/academie/clermont-ferrand-year-2024" class="noir"
+        >Clermont-Ferrand</a
+      >, <a href="/academie/dijon-year-2024" class="noir">Dijon</a>,
+      <a href="/academie/grenoble-year-2024" class="noir">Grenoble</a>,
+      <a href="/academie/limoges-year-2024" class="noir">Limoges</a>,
+      <a href="/academie/lyon-year-2024" class="noir">Lyon</a>,
+      <a href="/academie/poitiers-year-2024" class="noir">Poitiers</a>
+    </span>
+  </div>
+  <div class="date dB">
+    <div class="zone zB"><span>Zone B</span></div>
+    <span class="lesdates">
+      <a href="/academie/aix-marseille-year-2024" class="noir">Aix-Marseille</a
+      >, <a href="/academie/amiens-year-2024" class="noir">Amiens</a>,
+      <a href="/academie/caen-year-2024" class="noir">Caen</a>,
+      <a href="/academie/lille-year-2024" class="noir">Lille</a>,
+      <a href="/academie/nancy-metz-year-2024" class="noir">Nancy-Metz</a>,
+      <a href="/academie/nantes-year-2024" class="noir">Nantes</a>,
+      <a href="/academie/nice-year-2024" class="noir">Nice</a>,
+      <a href="/academie/orleans-tours-year-2024" class="noir">Orléans-Tours</a
+      >, <a href="/academie/reims-year-2024" class="noir">Reims</a>,
+      <a href="/academie/rennes-year-2024" class="noir">Rennes</a>,
+      <a href="/academie/rouen-year-2024" class="noir">Rouen</a>,
+      <a href="/academie/strasbourg-year-2024" class="noir">Strasbourg</a>
+    </span>
+  </div>
+  <div class="date dC">
+    <div class="zone zC"><span>Zone C</span></div>
+    <span class="lesdates">
+      <a href="/academie/creteil-year-2024" class="noir">Créteil</a>,
+      <a href="/academie/montpellier-year-2024" class="noir">Montpellier</a>,
+      <a href="/academie/paris-year-2024" class="noir">Paris</a>,
+      <a href="/academie/toulouse-year-2024" class="noir">Toulouse</a>,
+      <a href="/academie/versailles-year-2024" class="noir">Versailles</a>
+    </span>
+  </div>
+  <div class="date dCorse">
+    <div class="zone zCorse"><span>Corse</span></div>
+    <span class="lesdates"
+      ><a href="/academie/corse-year-2024" class="noir">Corse</a></span
+    >
+  </div>
+</div>

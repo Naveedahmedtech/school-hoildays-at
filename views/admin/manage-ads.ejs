@@ -1,0 +1,232 @@
+<div class="ads-management-container">
+  <div class="ads-management-header">
+    <h1>Ads Management</h1>
+    <p>Manage your website's advertisements effectively.</p>
+  </div>
+
+  <div class="ads-management-content">
+    <div id="ads-status">
+      <div class="ad-section">
+        <h2>Background Ad</h2>
+        <div id="background-ad-controls" class="ad-controls">
+          <textarea
+            id="background-ad-script"
+            name="backgroundAdScript"
+            rows="5"
+            placeholder="Paste your background ad script here..."
+          ></textarea>
+          <div class="action-buttons">
+            <button id="background-save" class="btn-save">Save</button>
+            <button id="background-delete" class="btn-delete">Delete</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-section">
+        <h2>Aside Ad</h2>
+        <div id="aside-ad-controls" class="ad-controls">
+          <textarea
+            id="aside-ad-script"
+            name="asideAdScript"
+            rows="5"
+            placeholder="Paste your aside ad script here..."
+          ></textarea>
+          <div class="action-buttons">
+            <button id="aside-save" class="btn-save">Save</button>
+            <button id="aside-delete" class="btn-delete">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const backgroundAdTextarea = document.getElementById(
+      "background-ad-script"
+    );
+    const asideAdTextarea = document.getElementById("aside-ad-script");
+
+    const fetchAds = async () => {
+      try {
+        const response = await fetch("/api/ads/scripts", {
+          credentials: "include",
+        });
+        if (response.ok) {
+          const data = await response.json();
+
+          // Iterate over the ads array and update textareas based on ad type
+          data.ads.forEach((ad) => {
+            if (ad.type === "background") {
+              backgroundAdTextarea.value = ad.script || "";
+            } else if (ad.type === "aside") {
+              asideAdTextarea.value = ad.script || "";
+            }
+          });
+        } else {
+          console.error("Failed to fetch ad scripts.");
+        }
+      } catch (error) {
+        console.error("Error fetching ad scripts:", error);
+      }
+    };
+
+    const saveAd = async (type, script) => {
+      try {
+        const response = await fetch(`/api/ads/scripts/${type}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ script }),
+          credentials: "include",
+        });
+
+        if (response.ok) {
+          alert(`${type} ad saved successfully.`);
+        } else {
+          alert(`Failed to save ${type} ad.`);
+        }
+      } catch (error) {
+        console.error(`Error saving ${type} ad:`, error);
+        alert(`An error occurred while saving the ${type} ad.`);
+      }
+    };
+
+    const deleteAd = async (type) => {
+      try {
+        const response = await fetch(`/api/ads/scripts/${type}`, {
+          method: "DELETE",
+          credentials: "include",
+        });
+
+        if (response.ok) {
+          alert(`${type} ad deleted successfully.`);
+          if (type === "background") {
+            backgroundAdTextarea.value = "";
+          } else if (type === "aside") {
+            asideAdTextarea.value = "";
+          }
+        } else {
+          alert(`Failed to delete ${type} ad.`);
+        }
+      } catch (error) {
+        console.error(`Error deleting ${type} ad:`, error);
+        alert(`An error occurred while deleting the ${type} ad.`);
+      }
+    };
+
+    document.getElementById("background-save").addEventListener("click", () => {
+      saveAd("background", backgroundAdTextarea.value);
+    });
+
+    document
+      .getElementById("background-delete")
+      .addEventListener("click", () => {
+        deleteAd("background");
+      });
+
+    document.getElementById("aside-save").addEventListener("click", () => {
+      saveAd("aside", asideAdTextarea.value);
+    });
+
+    document.getElementById("aside-delete").addEventListener("click", () => {
+      deleteAd("aside");
+    });
+
+    fetchAds();
+  });
+</script>
+
+<style>
+  .ads-management-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+
+  .ads-management-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .ads-management-header h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .ads-management-header p {
+    font-size: 1.2rem;
+    color: #666;
+  }
+
+  .ad-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .ad-section h2 {
+    font-size: 1.5rem;
+    color: #444;
+    margin-bottom: 10px;
+  }
+
+  .ad-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .ad-controls textarea {
+    max-width: 100%; /* Prevent overflow beyond the container */
+    width: calc(100% - 30px); /* Adjust width to account for padding */
+    padding: 10px; /* Consistent padding */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    resize: vertical; /* Allow resizing only vertically */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow-wrap: break-word; /* Prevent content overflow */
+  }
+
+  .action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  .btn-save,
+  .btn-delete {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .btn-save {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+  .btn-save:hover {
+    background-color: #0056b3;
+  }
+
+  .btn-delete {
+    background-color: #dc3545;
+    color: #fff;
+  }
+
+  .btn-delete:hover {
+    background-color: #c82333;
+  }
+</style>

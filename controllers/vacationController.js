@@ -18,9 +18,11 @@ const {
   transformToEarliestAndLatestDate,
 } = require("../utils/common");
 
-const winterFebVacation = async (req, res) => {
+const winterFebVacation = async (req, res, next) => {
   const zones = ["Zone A", "Zone B", "Zone C"];
   const year = { 2024: "2024", 2025: "2025", 2026: "2026" };
+  const countdownData = req?.holidayData?.countdownData;
+
 
   try {
     console.log("Fetching data using axios w...");
@@ -59,23 +61,27 @@ const winterFebVacation = async (req, res) => {
     console.log("response", updatedVacation2024);
 
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/vacation/winter-vacation-february-vacation",
       vacation2024: updatedVacation2024,
       vacation2025: updatedVacation2025,
       vacation2026: updatedVacation2026,
-      zones: myZones
+      zones: myZones,
+      countdownData
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error)
   }
 };
-const springVacation = async (req, res) => {
+const springVacation = async (req, res, next) => {
   const zones = ["Zone A", "Zone B", "Zone C"];
   const year = { 2024: "2024", 2025: "2025", 2026: "2026" };
+  const countdownData = req?.holidayData?.countdownData;
+
 
   try {
     console.log("Fetching data using axios w...");
@@ -114,26 +120,30 @@ const springVacation = async (req, res) => {
     console.log("response", updatedVacation2024);
 
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/vacation/vacances-de-printemps-vacances-de-paques",
       vacation2024: updatedVacation2024,
       vacation2025: updatedVacation2025,
       vacation2026: updatedVacation2026,
-      zones: myZones
+      zones: myZones,
+      countdownData
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error)
   }
 };
 
   
 
-const christmasVacation = async (req, res) => {
+const christmasVacation = async (req, res, next) => {
   const zones = ["Zone A", "Zone B", "Zone C"];
   const year = { 2024: "2024", 2025: "2025", 2026: "2026" };
+  const countdownData = req?.holidayData?.countdownData;
+
 
   try {
     console.log("Fetching data using axios w...");
@@ -162,25 +172,29 @@ const christmasVacation = async (req, res) => {
     const christmasVacationData25 = transformToEarliestAndLatestDate(response25.data.results, christmasVacationData);
     const christmasVacationData26 = transformToEarliestAndLatestDate(response26.data.results, christmasVacationData);
     res.render("layouts/layout", {
-      title: "Home - School and Public Holidays",
+      //title: "Home - School and Public Holidays",
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/vacation/christmas-vacation",
       vacation2024: christmasVacationData24,
       vacation2025: christmasVacationData25,
       vacation2026: christmasVacationData26,
-      zones: myZones
+      zones: myZones,
+      countdownData
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
-    res.status(500).send("Error fetching data");
+    // res.status(500).send("Error fetching data");
+    next(error)
   }
 };
 
 
-const allSaintsDayVacation = async (req, res) => {
+const allSaintsDayVacation = async (req, res, next) => {
     const zones = ["Zone A", "Zone B", "Zone C"];
     const year = { 2024: "2024", 2025: "2025", 2026: "2026" };
+  const countdownData = req?.holidayData?.countdownData;
+
   
     try {
       console.log("Fetching data using axios w...");
@@ -209,24 +223,28 @@ const allSaintsDayVacation = async (req, res) => {
       const ascensionVacationData25 = transformToEarliestAndLatestDate(response25.data.results, ascensionVacationData);
       const ascensionVacationData26 = transformToEarliestAndLatestDate(response26.data.results, ascensionVacationData);
       res.render("layouts/layout", {
-        title: "Home - School and Public Holidays",
+        //title: "Home - School and Public Holidays",
         description:
           "Bienvenue sur le calendrier officiel des vacances scolaires.",
         content: "../pages/vacation/all-saint-holidays",
         vacation2024: ascensionVacationData24,
         vacation2025: ascensionVacationData25,
         vacation2026: ascensionVacationData26,
-        zones: myZones
+        zones: myZones,
+        countdownData
       });
     } catch (error) {
       console.error("Error fetching data with axios:", error.message);
-      res.status(500).send("Error fetching data");
+      // res.status(500).send("Error fetching data");
+      next(error)
     }
   };
 
-const ascensionVacation = async (req, res) => {
+const ascensionVacation = async (req, res, next) => {
     const zones = ["Zone A", "Zone B", "Zone C"];
     const year = { 2024: "2024", 2025: "2025", 2026: "2026" };
+  const countdownData = req?.holidayData?.countdownData;
+
   
     try {
       console.log("Fetching data using axios w...");
@@ -255,26 +273,30 @@ const ascensionVacation = async (req, res) => {
       const allSaintsDayVacationData25 = transformToEarliestAndLatestDate(response25.data.results, allSaintsDayVacationData);
       const allSaintsDayVacationData26 = transformToEarliestAndLatestDate(response26.data.results, allSaintsDayVacationData);
       res.render("layouts/layout", {
-        title: "Home - School and Public Holidays",
+        //title: "Home - School and Public Holidays",
         description:
           "Bienvenue sur le calendrier officiel des vacances scolaires.",
         content: "../pages/vacation/ascension",
         vacation2024: allSaintsDayVacationData24,
         vacation2025: allSaintsDayVacationData25,
         vacation2026: allSaintsDayVacationData26,
-        zones: myZones
+        zones: myZones,
+        countdownData
       });
     } catch (error) {
       console.error("Error fetching data with axios:", error.message);
-      res.status(500).send("Error fetching data");
+      // res.status(500).send("Error fetching data");
+      next(error)
     }
   };
 
 
 
-  const longVacation = async (req, res) => {
+  const longVacation = async (req, res, next) => {
     const zone = "Polynésie";
     const year = { 2024: "2024", 2025: "2025", 2026: "2026" };
+  const countdownData = req?.holidayData?.countdownData;
+
   
     try {
       console.log("Fetching data using axios w...");
@@ -297,18 +319,20 @@ const ascensionVacation = async (req, res) => {
       const longVacationData25 = transformToEarliestAndLatestDate(response25.data.results, longVacationData);
       const longVacationData26 = transformToEarliestAndLatestDate(response26.data.results, longVacationData);
       res.render("layouts/layout", {
-        title: "Home - School and Public Holidays",
+        //title: "Home - School and Public Holidays",
         description:
           "Bienvenue sur le calendrier officiel des vacances scolaires.",
         content: "../pages/vacation/long-vacation",
         vacation2024: longVacationData24,
         vacation2025: longVacationData25,
         vacation2026: longVacationData26,
-        zones: myZones
+        zones: myZones,
+        countdownData
       });
     } catch (error) {
       console.error("Error fetching data with axios:", error.message);
-      res.status(500).send("Error fetching data");
+      // res.status(500).send("Error fetching data");
+      next(error)
     }
   };
 

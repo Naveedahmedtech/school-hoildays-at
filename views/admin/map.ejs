@@ -1,0 +1,76 @@
+<div class="dashboard-container">
+  <div class="dashboard">
+    <form id="translation-form" class="dashboard-form">
+      <h2>Update Map Content</h2>
+
+      <!-- Language Selection Filter -->
+      <div class="form-group">
+        <label for="language-select">Select Language:</label>
+        <select id="language-select" class="language-filter">
+          <option value="en">English</option>
+          <option value="fr">French</option>
+        </select>
+      </div>
+      <!-- Map School Holiday Zones -->
+      <div class="form-group lang-field lang-en">
+        <label for="map-school-holiday-zones-en"
+          >Main Heading (EN):</label
+        >
+        <input
+          type="text"
+          id="map-school-holiday-zones-en"
+          name="map_school_holiday_zones[en]"
+          placeholder="Enter Map School Holiday Zones in English"
+          value="<%= translations.en.map_school_holiday_zones || '' %>"
+          required
+        />
+      </div>
+
+      <div class="form-group lang-field lang-fr">
+        <label for="map-school-holiday-zones-fr"
+          >Main Heading (FR):</label
+        >
+        <input
+          type="text"
+          id="map-school-holiday-zones-fr"
+          name="map_school_holiday_zones[fr]"
+          placeholder="Enter Map School Holiday Zones in French"
+          value="<%= translations.fr.map_school_holiday_zones || '' %>"
+          required
+        />
+      </div>
+
+      <!-- Map Holiday Zones ABC -->
+      <div class="form-group lang-field lang-en">
+        <label for="map-holiday-zones-abc-en"
+          >Sub Heading (EN):</label
+        >
+        <input
+          type="text"
+          id="map-holiday-zones-abc-en"
+          name="map_holiday_zones_abc[en]"
+          placeholder="Enter Map Holiday Zones ABC in English"
+          value="<%= translations.en.map_holiday_zones_abc || '' %>"
+          required
+        />
+      </div>
+
+      <div class="form-group lang-field lang-fr">
+        <label for="map-holiday-zones-abc-fr"
+          >Sub Heading (FR):</label
+        >
+        <input
+          type="text"
+          id="map-holiday-zones-abc-fr"
+          name="map_holiday_zones_abc[fr]"
+          placeholder="Enter Map Holiday Zones ABC in French"
+          value="<%= translations.fr.map_holiday_zones_abc || '' %>"
+          required
+        />
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn-submit">Update Translations</button>
+    </form>
+  </div>
+</div>
