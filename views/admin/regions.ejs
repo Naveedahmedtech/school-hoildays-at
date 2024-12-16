@@ -1,0 +1,45 @@
+<div class="dashboard-container">
+  <div class="dashboard">
+    <form id="translation-form" class="dashboard-form">
+      <h2>Update Regions Content</h2>
+
+      <!-- Language Selection Filter -->
+      <div class="form-group">
+        <label for="language-select">Select Language:</label>
+        <select id="language-select" class="language-filter">
+          <option value="en">English</option>
+          <option value="fr">French</option>
+        </select>
+      </div>
+
+      <!-- Section for Home Title -->
+      <div class="form-group lang-field lang-en">
+        <label for="home-title-en">Top Title (EN):</label>
+        <input
+          type="text"
+          id="home-title-en"
+          name="regions_zone_france[en]"
+          placeholder="Enter Home Title in English"
+          value="<%= translations.en.regions_zone_france || '' %>"
+          required
+        />
+      </div>
+
+      <div class="form-group lang-field lang-fr">
+        <label for="home-title-fr">Top Title (FR):</label>
+        <input
+          type="text"
+          id="home-title-fr"
+          name="regions_zone_france[fr]"
+          placeholder="Enter Home Title in French"
+          value="<%= translations.fr.regions_zone_france || '' %>"
+          required
+        />
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn-submit">Update Translations</button>
+    </form>
+  </div>
+</div>
+

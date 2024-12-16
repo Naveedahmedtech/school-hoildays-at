@@ -172,19 +172,19 @@ const menuData25 = [
 ];
 const myZones = [
   {
-    href: "/zones/b-year-",
+    href: "/zones/b-year-2024",
     className: "lesdates b noir f20",
     title: "vacances scolaires zone B",
     text: "Zone B",
   },
   {
-    href: "/zones/c-year-",
+    href: "/zones/c-year-2024",
     className: "lesdates b noir f20",
     title: "vacances scolaires zone C",
     text: "Zone C",
   },
   {
-    href: "/zones/a-year-",
+    href: "/zones/a-year-2024",
     className: "lesdates b noir f20",
     title: "vacances scolaires zone A",
     text: "Zone A",

@@ -1,10 +1,9 @@
 {
-  "common.welcome_message": "Welcome to our website!",
   "welcome": "Welcome",
   "school_holidays": "School Holidays",
   "regions": "Regions",
   "academies": "Academies",
-  "search_placeholder": "Search for an academy, a region..",
+  "search_placeholder": "Search for an academy, a region...",
   "search_button_aria_label": "Search",
   "zone": "Zone",
   "footer_text": "© dates vacations",
@@ -18,15 +17,14 @@
   "ascension": "Ascension Bridge",
   "summer_holidays": "Summer Holidays",
   "zone_label": "Zone",
-  "start_date": "Start Date",
-  "end_date": "End Date",
   "no_end_date": "No end date",
   "end_of_classes": "End of Classes",
   "resumption_day": "Day of Resumption",
   "regions_zone_france": "Regions Zone of France",
   "academies_zone_france": "Academies Zone of France",
-  "map_school_holiday_zones": "Map of School Holiday Zones in Frances",
+  "map_school_holiday_zones": "Map of School Holiday Zones in France",
   "map_holiday_zones_abc": "The map of school holidays for zones A, B, and C.",
   "academy": "academy",
   "located_in": "is located in"
 }
+

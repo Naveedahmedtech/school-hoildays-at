@@ -24,4 +24,21 @@ router.post("/change-language", (req, res) => {
   res.json({ message: "Language changed successfully", language: lng });
 });
 
+router.get("/access-denied", (req, res) => {
+  try {
+    res.render("admin/access-denied");
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get("/test", (req, res) => {
+  try {
+    res.render("test");
+  } catch (error) {
+    next(error);
+  }
+});
+
+
 module.exports = router;

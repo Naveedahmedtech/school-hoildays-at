@@ -3,52 +3,62 @@ const express = require("express");
 const path = require("path");
 
 const webRoutes = require("./routes/web");
+const apiRoutes = require("./routes/api");
 const fetchHolidayDataMiddleware = require("./middlewares/counterData");
-const i18nextMiddleware = require("i18next-http-middleware");
-const { i18next } = require("./middlewares/i18n");
+const i18next = require("i18next");
+const middleware = require("i18next-http-middleware");
+const backend = require("i18next-fs-backend");
+const cookieParser = require("cookie-parser");
+const generateTranslationsMiddleware = require("./middlewares/generateTranslationsMiddleware");
+const saveTokenMiddleware = require("./middlewares/saveTokenMiddleware");
+const { default: axios } = require("axios");
+
 
 const app = express();
 
 // Middleware to parse incoming requests
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+
+// app.use(generateTranslationsMiddleware);
 
 // Set view engine and views directory
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.use((req, res, next) => {
-  res.locals.route = req.path;
-  const titles = {
-    "/": "Vacances Scolaires",
-    "/annee-2025-2026": "Vacances Scolaires 2025-2026 - Zone B",
-    "/carte": "Carte des Zones de Vacances Scolaires - Calendrier Officiel",
-    "/recherche": "Recherche - Vacances Scolaires en France",
-    "/academie": "Académies - Vacances Scolaires Officielles",
-    "/regions": "Régions - Vacances Scolaires Officielles",
-  };
+i18next
+  .use(backend)
+  .use(middleware.LanguageDetector)
+  .init({
+    backend: {
+      loadPath: "./locales/{{lng}}/translation.json", // Path to translation files
+      cache: false,
+    },
+    fallbackLng: "en",
+    preload: ["en", "fr"],
+    saveMissing: true,
+    detection: {
+      order: ["cookie", "querystring", "header"],
+      caches: ["cookie"],
+      cookieSecure: false,
+      lookupCookie: "i18next",
+    },
+    supportedLngs: ["en", "fr"],
+    nonExplicitSupportedLngs: true,
+  });
 
-  res.locals.title = titles[req.path] || titles["/"];
-  next();
-});
+app.use(middleware.handle(i18next));
+app.use(saveTokenMiddleware);
 
-
-
-//  handle i18next
-app.use(i18nextMiddleware.handle(i18next));
-
-
-app.use((req, res, next) => {
-  res.locals.t = req.t;
-  console.log(req.t("school_holidays"));
-  next();
-});
 
 // get counter data for all routes to access in the layout
 app.use(fetchHolidayDataMiddleware);
+
 // Routes
 app.use("/", webRoutes);
+app.use("/api", apiRoutes);
 
 // 404 Not Found Handler
 app.use((req, res, next) => {
@@ -66,6 +76,7 @@ app.use((err, req, res, next) => {
     description: "Bienvenue sur le calendrier officiel des vacances scolaires.",
     content: `../pages/common/error`,
     countdownData: [],
+    scriptContent: null,
   });
 });
 

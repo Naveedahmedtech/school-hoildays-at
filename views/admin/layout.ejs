@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= title %></title>
+    <meta
+      name="description"
+      content="Retrouvez le calendrier scolaire des vacances pour toutes les départements de la France."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon.png"
+    />
+    <link rel="manifest" href="/images/favicon.png" />
+    <link rel="mask-icon" href="/images/favicon.png" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/users.css" />
+    <link rel="stylesheet" href="/css/signin.css" />
+  </head>
+  <body>
+    <header class="fixed">
+      <div class="nav">
+        <nav>
+          <% if (user && (user.permissions.includes('manage content') || user.role === 'ADMIN')) { %>
+          <a href="/admin/dashboard" class="logo"></a>
+          <% } else { %>
+          <a  class="logo"></a>
+          <% } %>
+          
+          <label for="btn" id="burger" class="icon" onclick="burger()">
+            <span class="fa fa-bars icon_span"></span>
+          </label>
+          <input type="checkbox" id="btn" />
+          <ul>
+            <% if (user && (user.permissions.includes('manage content') || user.role === 'ADMIN')) { %>
+            <li>
+              <a
+                href="/admin/regions"
+                class="<%= route && route === '/admin/regions' ? 'on' : '' %>"
+                >Regions</a
+              >
+            </li>
+            <li>
+              <a
+                href="/admin/academie"
+                class="<%= route && route === '/admin/academie' ? 'on' : '' %>"
+                >Academies</a
+              >
+            </li>
+            <li>
+              <a
+                href="/admin/map"
+                class="<%= route && route === '/admin/map' ? 'on' : '' %>"
+                >Map</a
+              >
+            </li>
+            <% } %> <% if (user && (user.permissions.includes('manage ads') || user.role === 'ADMIN')) { %>
+            <li>
+              <a
+                href="/admin/manage-ads"
+                class="<%= route && route === '/admin/manage-ads' ? 'on' : '' %>"
+                >Manage Ads</a
+              >
+            </li>
+            <% } %> <% if (user && user.role === 'ADMIN') { %>
+            <li>
+              <a
+                href="/admin/users"
+                class="<%= route && route === '/admin/users' ? 'on' : '' %>"
+                >Users</a
+              >
+            </li>
+            <% } %>
+            <li>
+              <button id="signout-btn" class="signout-button">Logout</button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <%- include(content) %>
+    <footer>
+      <span class="margin5 b"><%= t('footer_text') %></span>
+      <a href="/cgu.php" class="margin5 b blanc"><%= t('footer_terms') %></a>
+    </footer>
+    <script>
+      console.log("EJS ", <%- JSON.stringify(user || {}) %>);
+    </script>
+    <script src="/js/signout.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/lang-filter.js"></script>
+  </body>
+</html>
