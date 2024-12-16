@@ -32,5 +32,13 @@ router.get("/access-denied", (req, res) => {
   }
 });
 
+router.get("/test", (req, res) => {
+  try {
+    res.render("test");
+  } catch (error) {
+    next(error);
+  }
+});
+
 
 module.exports = router;
