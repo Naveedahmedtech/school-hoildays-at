@@ -33,7 +33,6 @@ const axios = require("axios");
  * @returns {Object} API URLs mapped by holiday keys.
  */
 const buildHolidayAPIs = ({ baseURL, zones, year, descriptions, location }) => {
-  console.log({ baseURL, zones, year, descriptions, location });
   return Object.keys(descriptions).reduce((apis, key) => {
     // Base query 
     let query = `${baseURL}?refine=zones:${zones.join(
@@ -285,7 +284,6 @@ const setLatestDateToRentrée = (vacations, latestDate) => {
   // Find the "Rentrée scolaire" object and update its endDate
   return vacations.map((vacation) => {
     if (vacation.title === "Rentrée scolaire") {
-      console.log("vacation: ", vacation)
       return {
         ...vacation,
         endDate: latestDate, // Set the latest date

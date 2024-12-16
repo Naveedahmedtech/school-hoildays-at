@@ -25,7 +25,6 @@ const Fuse = require("fuse.js");
 const { default: axios } = require("axios");
 
 const home2024 = async (req, res, next) => {
-  console.log("Current Locale:", req.cookies);
 
   const zones = ["Zone A", "Zone B", "Zone C"];
   const year = "2024";
@@ -49,8 +48,6 @@ const home2024 = async (req, res, next) => {
       holidayData,
       getOverallDateRange
     );
-
-    // console.log("Holiday Date Ranges:", holidayData);
 
     // Update firstThreeVacations dynamically
     const updatedFirstThreeVacations = updateVacationsWithHolidays(

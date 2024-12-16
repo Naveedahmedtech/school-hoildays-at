@@ -13,6 +13,7 @@ const generateTranslationsMiddleware = require("./middlewares/generateTranslatio
 const saveTokenMiddleware = require("./middlewares/saveTokenMiddleware");
 const { default: axios } = require("axios");
 
+
 const app = express();
 
 // Middleware to parse incoming requests
