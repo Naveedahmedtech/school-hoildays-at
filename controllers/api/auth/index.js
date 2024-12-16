@@ -59,7 +59,7 @@ const authController = {
           permissions: user.permissions,
           email: user.email,
         },
-        process.env.JWT_SECRET,
+        process.env.JWT_SECRET || "_secret_key_",
         { expiresIn: "1h" } // Token expires in 1 hour
       );
       const maxAge =

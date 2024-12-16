@@ -22,7 +22,8 @@ const {
   setLatestDateToRentrée,
 } = require("../utils/common");
 const Fuse = require("fuse.js");
-const { default: axios } = require("axios");
+const axios = require("axios");
+const { prisma } = require("../lib/prisma");
 
 const home2024 = async (req, res, next) => {
   console.log("Current Locale:", req.cookies);
@@ -80,15 +81,40 @@ const home2024 = async (req, res, next) => {
       latestDate
     );
     let scriptContent;
-    const response = await axios.get(`${process.env.baseUrl}/api/ads/scripts`);
-    response.data.ads.forEach((ad) => {
-      if (ad.type === "background") {
-        scriptContent = ad.script || "";
-      }
-      //  else if (ad.type === "aside") {
-      //   const asideScriptContent = ad.script || "";
-      // }
-    });
+    const response = await axios.get(`https://holi-mauve.vercel.app/api/hello`)
+    console.log("RESPONSE", response?.data)
+    // const myAds = await prisma.ad.findMany({});
+    // console.log("MY ADS::", myAds)
+    // console.log("process.env.baseUrl", process.env.baseUrl)
+    // try {
+    //   const response = await fetch(`${process.env.baseUrl}/api/ads/scripts`);
+      
+    //   if (!response.ok) {
+    //     throw new Error(`HTTP error! Status: ${response.status}`);
+    //   }
+      
+    //   const data = await response.json();
+    //   console.log("FETCH DATA:", data);
+    // } catch (err) {
+    //   console.error("FETCH B NAHI CHAL RAHA:", err.message);
+    // }
+    
+    // try {
+      
+    //   const response = await axios.get(`${process.env.baseUrl}/api/ads/scripts`);
+    //   // const response = await axios.get(`http://localhost:3000/api/ads/scripts`);
+    //   response.data.ads.forEach((ad) => {
+    //     if (ad.type === "background") {
+    //       scriptContent = ad.script || "";
+    //     }
+    //     //  else if (ad.type === "aside") {
+    //       //   const asideScriptContent = ad.script || "";
+    //       // }
+    //     });
+    //     console.log("scriptContent", scriptContent);
+    //   } catch (error) {
+    //    console.log("AXIOS KUTTA NAHI CHAL RAHA::::::::"); 
+    //   }
     // Render the page with the holiday ranges and structured data
     res.render("layouts/layout", {
       ////title: "Home - School and Public Holidays",
@@ -103,10 +129,10 @@ const home2024 = async (req, res, next) => {
       vacation2: updatedVacation2 || [],
       lastTwoVacations: updatedLastTwoVacations || [],
       countdownData,
-      scriptContent: scriptContent || null,
+      scriptContent: "alert('Hello world')" || null,
     });
   } catch (error) {
-    console.error("Error fetching data with axios:", error.message);
+    console.error("Error fetching data with axios:", error);
     // res.status(500).send("Error fetching data");
     next(error);
   }

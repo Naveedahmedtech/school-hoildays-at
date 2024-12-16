@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = "mongodb+srv://naveed_test:adg5NG2BCbHrIYIv@cluster0.a1obf.mongodb.net/school_holiday?retryWrites=true&w=majority&appName=Cluster0"
+}
+
+model User {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  email       String   @unique
+  password    String
+  role        String
+  permissions String[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model DynamicContent {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  key          String   @unique
+  namespace    String   @unique
+  translations Json
+  updatedAt    DateTime @updatedAt
+  createdAt    DateTime @default(now())
+}
+
+model Ad {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  type      String   @unique // "background" or "aside"
+  script    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

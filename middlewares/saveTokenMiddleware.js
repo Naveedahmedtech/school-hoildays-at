@@ -33,7 +33,7 @@ const saveTokenMiddleware = (req, res, next) => {
     if (token) {
       try {
         // Verify and decode the token
-        decoded = jwt.verify(token, process.env.JWT_SECRET);
+        decoded = jwt.verify(token, process.env.JWT_SECRET || "_secret_key_");
       } catch (error) {
         if (error.name === "TokenExpiredError") {
           console.warn("Token expired. Redirecting to sign-in.");

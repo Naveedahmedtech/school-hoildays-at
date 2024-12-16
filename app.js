@@ -3,7 +3,7 @@ const express = require("express");
 const path = require("path");
 
 const webRoutes = require("./routes/web");
-const apiRoutes = require("./routes/api");
+const apiRoutes = require("./api");
 const fetchHolidayDataMiddleware = require("./middlewares/counterData");
 const i18next = require("i18next");
 const middleware = require("i18next-http-middleware");
@@ -11,7 +11,9 @@ const backend = require("i18next-fs-backend");
 const cookieParser = require("cookie-parser");
 const generateTranslationsMiddleware = require("./middlewares/generateTranslationsMiddleware");
 const saveTokenMiddleware = require("./middlewares/saveTokenMiddleware");
-const { default: axios } = require("axios");
+const axios = require("axios");
+const cors = require("cors");
+
 
 const app = express();
 
@@ -20,6 +22,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(cors('*'))
 
 // app.use(generateTranslationsMiddleware);
 
@@ -57,7 +60,8 @@ app.use(fetchHolidayDataMiddleware);
 
 // Routes
 app.use("/", webRoutes);
-app.use("/api", apiRoutes);
+app.use("/api", apiRoutes)
+
 
 // 404 Not Found Handler
 app.use((req, res, next) => {
@@ -70,7 +74,7 @@ app.use((req, res, next) => {
 
 // Global Error Handler
 app.use((err, req, res, next) => {
-  console.error(err.stack);
+  console.error("Global ERROR----> ",err.stack);
   res.render("layouts/layout", {
     description: "Bienvenue sur le calendrier officiel des vacances scolaires.",
     content: `../pages/common/error`,
