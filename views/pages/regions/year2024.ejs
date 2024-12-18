@@ -1,5 +1,4 @@
-<div class="main">
-  <main id="main">
+<div>
     <% if (error) { %>
     <!-- Show Error Message -->
     <div style="text-align: center; padding: 50px; height: 70vh;">
@@ -7,25 +6,29 @@
     </div>
     <% } else { %>
     <!-- Show Main Content -->
+  <!-- Menu -->
+  <div class="dropdown-container-home">
+
+    <!-- Dropdown to select a year -->
+  <select id="yearDropdown" onchange="navigateToYearRegions()">
+  <% for (let tempYear = 2017; tempYear <= 2025; tempYear++) { %>
+    <option value="<%= tempYear %>" <%= tempYear === year ? 'selected' : '' %>>
+      <%= tempYear %>
+    </option>  
+  <% } %>
+  </select>
+  
     <div id="menu_annee">
       <ul>
         <li>
           <a
-            href="<%= pageURL24 %>"
-            id="<%= isActiveURL24 ? 'actif' : '' %>"
-            title="vacances scolaires 2025 zone A"
-            >2024-2025</a
+          id="actif"
           >
-        </li>
-        <li>
-          <a
-            href="<%= pageURL25 %>"
-            id="<%= isActiveURL25 ? 'actif' : '' %>"
-            title="vacances scolaires 2026 zone A"
-            >2025-2026</a
-          >
+          <%= year %>
+          </a>
         </li>
       </ul>
+     </div>
     </div>
     <h1><%= mainHeading %></h1>
     <% if (subHeading) { %>
@@ -52,5 +55,14 @@
     <% }); %>
     <div class="spacer"></div>
     <% } %>
-  </main>
 </div>
+
+<script>
+  function navigateToYearRegions() {
+    const dropdown = document.getElementById('yearDropdown');
+    const selectedYear = dropdown.value;
+    console.log("selectedYear", selectedYear);
+    window.location.href = `/regions/year?of=${selectedYear}&region_name=<%= region_name %>&zone=<%= zone %>&department=<%= department %>`;
+  }
+</script>
+

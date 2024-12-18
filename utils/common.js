@@ -26,19 +26,24 @@ const axios = require("axios");
 //   }, {});
 // };
 
-
 /**
  * Build API URLs for holidays.
  * @param {Object} params - Description API parameters and other configurations.
  * @returns {Object} API URLs mapped by holiday keys.
  */
 const buildHolidayAPIs = ({ baseURL, zones, year, descriptions, location }) => {
-  console.log({ baseURL, zones, year, descriptions, location });
+  console.log(`${baseURL}?refine=zones:${zones.join(
+      "&refine=zones:"
+    )}&refine=description:${
+      descriptions["Winter_Holidays"]
+    }&refine=start_date:${year}&order_by=end_date DESC&limit=1`)
   return Object.keys(descriptions).reduce((apis, key) => {
-    // Base query 
+    // Base query
     let query = `${baseURL}?refine=zones:${zones.join(
       "&refine=zones:"
-    )}&refine=description:${descriptions[key]}&refine=start_date:${year}&order_by=end_date DESC&limit=1`;
+    )}&refine=description:${
+      descriptions[key]
+    }&refine=start_date:${year}&order_by=end_date DESC&limit=1`;
 
     // Special case for "Grandes Vacances"
     if (
@@ -58,7 +63,6 @@ const buildHolidayAPIs = ({ baseURL, zones, year, descriptions, location }) => {
     return apis;
   }, {});
 };
-
 
 /**
  * Fetch holiday data from APIs.
@@ -131,6 +135,13 @@ const updateVacationsWithHolidays = (
         month: "long",
         day: "numeric",
       });
+
+      // Add Off: true if end_date has passed
+      if (new Date(end_date) < new Date()) {
+        vacation.isOff = true;
+      } else {
+        vacation.isOff = false;
+      }
     }
 
     return vacation;
@@ -170,6 +181,13 @@ const updateVacationZones = (vacation, holidayData) => {
         month: "long",
         day: "numeric",
       });
+
+      // Add Off: true if end_date has passed
+      if (new Date(matchingHoliday.end_date) < new Date()) {
+        zone.isOff = true;
+      } else {
+        zone.isOff = false;
+      }
     }
 
     return zone;
@@ -280,12 +298,11 @@ const findLatestDateFromAll = (datasets) => {
     : null;
 };
 
-
 const setLatestDateToRentrée = (vacations, latestDate) => {
   // Find the "Rentrée scolaire" object and update its endDate
   return vacations.map((vacation) => {
     if (vacation.title === "Rentrée scolaire") {
-      console.log("vacation: ", vacation)
+      console.log("vacation: ", vacation);
       return {
         ...vacation,
         endDate: latestDate, // Set the latest date
@@ -303,5 +320,5 @@ module.exports = {
   updateVacationZones,
   transformToEarliestAndLatestDate,
   findLatestDateFromAll,
-  setLatestDateToRentrée
+  setLatestDateToRentrée,
 };

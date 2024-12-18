@@ -4,8 +4,6 @@
   "school_holidays": "Vacances scolaires",
   "regions": "Régions",
   "academies": "Académies",
-  "about_nav": "À propos",
-  "departments": "Départements",
   "search_placeholder": "Chercher une académie, une région...",
   "search_button_aria_label": "Recherche",
   "zone": "Zone",
@@ -60,20 +58,5 @@
     },
     "commitmentTitle": "Notre engagement",
     "commitmentText": "Nous nous engageons à vous offrir un service fiable et actualisé, tout en améliorant continuellement le site pour le rendre encore plus complet et pratique. dates-vacances.education est là pour vous aider à organiser l’année scolaire en toute simplicité !"
-  },
-  "home": {
-    "title": "Accueil : comment naviguer sur le site",
-    "intro": "Sur la page d’accueil, vous pouvez repérer en un clin d’œil les prochaines dates clés : il suffit de regarder les blocs de couleur correspondant à votre zone scolaire. Nous affichons également un compte à rebours indiquant combien de mois, jours et heures restent avant l’arrivée des vacances. Pour trouver l’information qui vous intéresse, plusieurs options s’offrent à vous :",
-    "searchTitle": "Barre de recherche",
-    "searchDescription": "En haut de la page, saisissez le nom d’une académie (ex. : “Lyon”) ou d’une région (ex. : “Occitanie”). Vous serez redirigé vers le calendrier officiel correspondant.",
-    "yearTabsTitle": "Onglets des années scolaires",
-    "yearTabsDescription": "Juste sous la barre de recherche, sélectionnez l’année (2024-2025, 2025-2026, etc.) pour afficher les dates exactes des différentes vacances.",
-    "zonesTablesTitle": "Tableaux par zones",
-    "zonesTablesDescription": "Dans la partie centrale, vous trouverez les calendriers de Zones A, B et C, ainsi que les périodes spécifiques pour la Corse et l’Outre-Mer. Chaque tableau récapitule les vacances de la Toussaint, de Noël, d’Hiver, de Printemps et les Grandes Vacances, avec les dates de début et de reprise des cours.",
-    "interactiveMapTitle": "Carte interactive",
-    "interactiveMapDescription": "Au besoin, consultez la carte de France pour visualiser d’un coup d’œil quelle zone scolaire correspond à votre région académique.",
-    "linksTitle": "Liens vers l’Outre-Mer",
-    "linksDescription": "En bas du tableau, des boutons de navigation vous dirigent vers les calendriers spécifiques de la Corse, Guadeloupe, Guyane, Martinique, Mayotte et La Réunion.",
-    "footerText": "Grâce à ces différentes fonctionnalités, vous pouvez planifier vos déplacements, prévoir vos séjours ou simplement vous assurer de ne pas rater la rentrée. Notre plateforme a été pensée pour être accessible à tous : élèves, parents, enseignants, professionnels du tourisme et toute autre personne désireuse de connaître les dates exactes des vacances scolaires. Nous espérons que dates-vacances.education vous accompagnera tout au long de l’année. Bonne navigation !"
   }
 }

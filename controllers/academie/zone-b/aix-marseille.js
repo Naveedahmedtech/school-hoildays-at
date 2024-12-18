@@ -11,12 +11,9 @@ const { zonesVacationData } = require("../../../utils/zones.util");
 const zones = ["Zone B"];
 const location = "Aix-Marseille";
 const aixMarseille2024 = async (req, res, next) => {
+  const { year = "2024", region_name: academie_name = "Aix-Marseille" } = req.query;
   const countdownData = req?.holidayData?.countdownData;
-
-  const year = "2024";
-
   try {
-    console.log("Fetching data using axios...");
 
     // Build API URLs
     const holidayAPIs = buildHolidayAPIs({
@@ -24,7 +21,7 @@ const aixMarseille2024 = async (req, res, next) => {
       zones,
       year,
       descriptions: descriptionApiParams,
-      location,
+      location: academie_name,
     });
 
     // Fetch holiday data
@@ -48,6 +45,7 @@ const aixMarseille2024 = async (req, res, next) => {
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
       content: "../pages/zones/b/academie/aix-marseille/year2024",
       vacations: updatedVacations,
+      academie_name,
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);

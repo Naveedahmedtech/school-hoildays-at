@@ -11,6 +11,7 @@ const {
   menuData25,
   regions,
   academies,
+  departments
 } = require("../utils/home.util");
 const {
   fetchHolidayData,
@@ -23,17 +24,12 @@ const {
 } = require("../utils/common");
 const Fuse = require("fuse.js");
 const axios = require("axios");
-const { prisma } = require("../lib/prisma");
 
 const home2024 = async (req, res, next) => {
-  console.log("Current Locale:", req.cookies);
-
+  const { year = "2024" } = req.query;
   const zones = ["Zone A", "Zone B", "Zone C"];
-  const year = "2024";
   const countdownData = req?.holidayData?.countdownData;
   try {
-    console.log("Fetching data using axios...");
-
     // Build API URLs
     const holidayAPIs = buildHolidayAPIs({
       baseURL: BASE_URL,
@@ -51,8 +47,6 @@ const home2024 = async (req, res, next) => {
       getOverallDateRange
     );
 
-    // console.log("Holiday Date Ranges:", holidayData);
-
     // Update firstThreeVacations dynamically
     const updatedFirstThreeVacations = updateVacationsWithHolidays(
       firstThreeVacations,
@@ -68,6 +62,7 @@ const home2024 = async (req, res, next) => {
     // Update vacation zones dynamically
     const updatedVacation = updateVacationZones(vacation, holidayData);
     const updatedVacation2 = updateVacationZones(vacation2, holidayData);
+    
     const allData = [
       updatedFirstThreeVacations,
       updatedLastTwoVacations,
@@ -81,40 +76,17 @@ const home2024 = async (req, res, next) => {
       latestDate
     );
     let scriptContent;
-    const response = await axios.get(`https://holi-mauve.vercel.app/api/hello`)
-    console.log("RESPONSE", response?.data)
-    // const myAds = await prisma.ad.findMany({});
-    // console.log("MY ADS::", myAds)
-    // console.log("process.env.baseUrl", process.env.baseUrl)
-    // try {
-    //   const response = await fetch(`${process.env.baseUrl}/api/ads/scripts`);
-      
-    //   if (!response.ok) {
-    //     throw new Error(`HTTP error! Status: ${response.status}`);
-    //   }
-      
-    //   const data = await response.json();
-    //   console.log("FETCH DATA:", data);
-    // } catch (err) {
-    //   console.error("FETCH B NAHI CHAL RAHA:", err.message);
-    // }
-    
-    // try {
-      
-    //   const response = await axios.get(`${process.env.baseUrl}/api/ads/scripts`);
-    //   // const response = await axios.get(`http://localhost:3000/api/ads/scripts`);
-    //   response.data.ads.forEach((ad) => {
-    //     if (ad.type === "background") {
-    //       scriptContent = ad.script || "";
-    //     }
-    //     //  else if (ad.type === "aside") {
-    //       //   const asideScriptContent = ad.script || "";
-    //       // }
-    //     });
-    //     console.log("scriptContent", scriptContent);
-    //   } catch (error) {
-    //    console.log("AXIOS KUTTA NAHI CHAL RAHA::::::::"); 
-    //   }
+    const response = await axios.get(
+      `https://holi-three.vercel.app/api/ads/scripts`
+    );
+    response.data.ads.forEach((ad) => {
+      if (ad.type === "background") {
+        scriptContent = ad.script || "";
+      }
+      //  else if (ad.type === "aside") {
+      //   const asideScriptContent = ad.script || "";
+      // }
+    });
     // Render the page with the holiday ranges and structured data
     res.render("layouts/layout", {
       ////title: "Home - School and Public Holidays",
@@ -129,7 +101,8 @@ const home2024 = async (req, res, next) => {
       vacation2: updatedVacation2 || [],
       lastTwoVacations: updatedLastTwoVacations || [],
       countdownData,
-      scriptContent: "alert('Hello world')" || null,
+      scriptContent: scriptContent || null,
+      selectedYear: parseInt(year),
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error);
@@ -218,6 +191,39 @@ const home2025 = async (req, res, next) => {
   }
 };
 
+
+const prioritizeSearchResults = (resultDepartments, resultRegion, resultAcademy) => {
+  const allResults = [
+    ...resultDepartments.map(result => ({ ...result, type: 'department' })),
+    ...resultRegion.map(result => ({ ...result, type: 'region' })),
+    ...resultAcademy.map(result => ({ ...result, type: 'academy' })),
+  ];
+
+  // Sort by score (ascending)
+  const sortedResults = allResults.sort((a, b) => a.score - b.score);
+
+  if (sortedResults.length > 0) {
+    const bestResult = sortedResults[0];
+
+    if (bestResult.type === 'department') {
+      return `/regions/year?of=2024&page=department&region_name=${encodeURIComponent(
+        bestResult.item
+      )}&zone=Zone A`;
+    } else if (bestResult.type === 'region') {
+      return `/regions/year?of=2024&region_name=${encodeURIComponent(
+        bestResult.item
+      )}&zone=Zone A`;
+    } else if (bestResult.type === 'academy') {
+      return `/regions/year?of=2024&page=academie&region_name=${encodeURIComponent(
+        bestResult.item
+      )}&zone=Zone A`;
+    }
+  }
+
+  // Fallback if no results
+  return `/regions/year?error="gAAAAABnUq1ClRQ8UBJpcyCGc8RggQjudGnJeliT65OESiGM-_Q2hKwPP5yFPKSkdprREHpdJuyUtUef47dN9HBWHfzmV8HglaP6FLjirMPnN2xQqj0LAkg="&of=2024&zone=Zone A`;
+};
+
 const search = async (req, res, next) => {
   const query = req.query.q;
 
@@ -225,37 +231,25 @@ const search = async (req, res, next) => {
     includeScore: true, // Provides relevance score
     threshold: 0.4, // Lower values mean stricter matching
   };
+
   try {
-    // Check if the query matches a region
+    const fuseDepartments = new Fuse(departments, fuseOptions);
     const fuseRegions = new Fuse(regions, fuseOptions);
     const fuseAcademies = new Fuse(academies, fuseOptions);
 
+    const resultDepartments = fuseDepartments.search(query);
     const resultRegion = fuseRegions.search(query);
     const resultAcademy = fuseAcademies.search(query);
 
-    if (resultRegion.length > 0) {
-      res.redirect(
-        `/regions/year?of=2024&region_name=${encodeURIComponent(
-          resultRegion[0].item
-        )}&zone=Zone A`
-      );
-    } else if (resultAcademy.length > 0) {
-      res.redirect(
-        `/regions/year?of=2024&page=academie&region_name=${encodeURIComponent(
-          resultAcademy[0].item
-        )}&zone=Zone A`
-      );
-    } else {
-      res.redirect(
-        `/regions/year?error="gAAAAABnUq1ClRQ8UBJpcyCGc8RggQjudGnJeliT65OESiGM-_Q2hKwPP5yFPKSkdprREHpdJuyUtUef47dN9HBWHfzmV8HglaP6FLjirMPnN2xQqj0LAkg="&of=2024&zone=Zone A`
-      );
-    }
+    // Use the prioritizeSearchResults function to determine redirection
+    const redirectUrl = prioritizeSearchResults(resultDepartments, resultRegion, resultAcademy);
+    res.redirect(redirectUrl);
   } catch (error) {
     console.error("Error processing search:", error.message);
-    // res.status(500).send("Internal server error");
     next(error);
   }
 };
+
 
 const map = async (req, res, next) => {
   const countdownData = req?.holidayData?.countdownData;

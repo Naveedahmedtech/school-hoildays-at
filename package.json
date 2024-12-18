@@ -1,12 +1,11 @@
 {
-  "name": "1st-project-(holidys-calender)",
+  "name": "school",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx prisma generate",
-    "vercel-build": "npx prisma generate",
+    "test": "echo 'hello world'",
     "postinstall": "npx prisma generate",
+    "build": "npx prisma generate",
     "start": "node server.js",
     "start:dev": "node --watch server.js"
   },

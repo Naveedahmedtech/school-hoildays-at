@@ -3,6 +3,9 @@ const zonesController = require("../../controllers/zonesController");
 
 const router = express.Router();
 
+router.get("/", zonesController.zoneB2024);
+
+
 // **** ZONE A ********************************
 router.get("/a-year-2024", zonesController.zoneA2024);
 router.get("/a-year-2025", zonesController.zoneA2025);
@@ -11,6 +14,7 @@ router.get("/a-year-2025", zonesController.zoneA2025);
 
 
 // **** ZONE B ********************************
+
 router.get("/b-year-2024", zonesController.zoneB2024);
 router.get("/b-year-2025", zonesController.zoneB2025);
 // **** ZONE B END ********************************

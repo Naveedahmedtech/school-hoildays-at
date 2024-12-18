@@ -1,31 +1,34 @@
-    <div class="main">
-      <main id="main">
+    <div>
+      <div class="dropdown-container-home">
+
+        <!-- Dropdown to select a year -->
+      <select id="yearDropdown" onchange="navigateToYearZone()">
+      <% for (let year = 2017; year <= 2025; year++) { %>
+        <option value="<%= year %>" <%= year === selectedYear ? 'selected' : '' %>>
+          <%= year %>
+        </option>  
+      <% } %>
+      </select>
+      
         <div id="menu_annee">
           <ul>
             <li>
               <a
-                href="/zones/b-year-2024"
-                id="actif"
-                title="vacances scolaires 2025 zone A"
-                >2024-2025</a
+              id="actif"
               >
-            </li>
-            <li>
-              <a
-                href="/zones/b-year-2025"
-                title="vacances scolaires 2026 zone A"
-                >2025-2026</a
-              >
+              <%= selectedYear %>
+              </a>
             </li>
           </ul>
+         </div>
         </div>
-        <h1>Vacances scolaires zone B 2024-2025</h1>
+        <h1>Vacances scolaires <%= zone + " " +  selectedYear + "-" + (selectedYear + 1) %></h1>
         <% vacations.forEach(vacation => { %>
           <div class="dateTitre">
             <a href="<%= vacation.link %>"><%= vacation.title %></a>
           </div>
-          <div class="date dB">
-            <div class="zone zB "><span><%= vacation.zoneB %></span></div>
+          <div class="date <%= zone === "Zone B" ? "dB" : zone === "Zone A" ? "dA" : "dC" %>">
+            <div class="zone <%= zone === "Zone B" ? "zB" : zone === "Zone A" ? "zA" : "zC" %>"><span><%= zone %></span></div>
             <span class="lesdates">
               <% if (vacation.startDate) { %>
                 Fin des cours : <b><%= vacation.startDate %></b><br />
@@ -38,25 +41,69 @@
         <% }); %>
         <div class="spacer"></div>
         <div class="dateTitre">
-          <span>Les académies rattachées à la zone B :</span>
+          <span>Les académies rattachées à la <%= zone  %> :</span>
         </div>
-        <div class="date dB">
-          <div class="zone zB"><span>Zone B</span></div>
-          <span class="lesdates"
-            ><a href="/academie-aix-marseille/" class="noir">Aix-Marseille</a>,
-            <a href="/academie-amiens/" class="noir">Amiens</a>,
-            <a href="/academie-caen/" class="noir">Caen</a>,
-            <a href="/academie-lille/" class="noir">Lille</a>,
-            <a href="/academie-nancy-metz/" class="noir">Nancy-Metz</a>,
-            <a href="/academie-nantes/" class="noir">Nantes</a>,
-            <a href="/academie-nice/" class="noir">Nice</a>,
-            <a href="/academie-orleans-tours/" class="noir">Orléans-Tours</a>,
-            <a href="/academie-reims/" class="noir">Reims</a>,
-            <a href="/academie-rennes/" class="noir">Rennes</a>,
-            <a href="/academie-rouen/" class="noir">Rouen</a>,
-            <a href="/academie-strasbourg/" class="noir">Strasbourg</a></span
-          >
-        </div>
-      </main>
+        <% if (zone === "Zone A") { %>
+          <div class="date dA">
+            <div class="zone zA"><span>Zone A</span></div>
+            <span class="lesdates">
+              <a href="/academie/besancon-year-<%= selectedYear %>" class="noir">Besançon</a>,
+              <a href="/academie/bordeaux-year-<%= selectedYear %>" class="noir">Bordeaux</a>,
+              <a href="/academie/clermont-ferrand-year-<%= selectedYear %>" class="noir">Clermont-Ferrand</a>,
+              <a href="/academie/dijon-year-<%= selectedYear %>" class="noir">Dijon</a>,
+              <a href="/academie/grenoble-year-<%= selectedYear %>" class="noir">Grenoble</a>,
+              <a href="/academie/limoges-year-<%= selectedYear %>" class="noir">Limoges</a>,
+              <a href="/academie/lyon-year-<%= selectedYear %>" class="noir">Lyon</a>,
+              <a href="/academie/poitiers-year-<%= selectedYear %>" class="noir">Poitiers</a>
+            </span>
+          </div>
+        <% } else if (zone === "Zone B") { %>
+          <div class="date dB">
+            <div class="zone zB"><span>Zone B</span></div>
+            <span class="lesdates">
+              <a href="/academie/aix-marseille-year-<%= selectedYear %>" class="noir">Aix-Marseille</a>,
+              <a href="/academie/amiens-year-<%= selectedYear %>" class="noir">Amiens</a>,
+              <a href="/academie/caen-year-<%= selectedYear %>" class="noir">Caen</a>,
+              <a href="/academie/lille-year-<%= selectedYear %>" class="noir">Lille</a>,
+              <a href="/academie/nancy-metz-year-<%= selectedYear %>" class="noir">Nancy-Metz</a>,
+              <a href="/academie/nantes-year-<%= selectedYear %>" class="noir">Nantes</a>,
+              <a href="/academie/nice-year-<%= selectedYear %>" class="noir">Nice</a>,
+              <a href="/academie/orleans-tours-year-<%= selectedYear %>" class="noir">Orléans-Tours</a>,
+              <a href="/academie/reims-year-<%= selectedYear %>" class="noir">Reims</a>,
+              <a href="/academie/rennes-year-<%= selectedYear %>" class="noir">Rennes</a>,
+              <a href="/academie/rouen-year-<%= selectedYear %>" class="noir">Rouen</a>,
+              <a href="/academie/strasbourg-year-<%= selectedYear %>" class="noir">Strasbourg</a>
+            </span>
+          </div>
+        <% } else if (zone === "Zone C") { %>
+          <div class="date dC">
+            <div class="zone zC"><span>Zone C</span></div>
+            <span class="lesdates">
+              <a href="/academie/creteil-year-<%= selectedYear %>" class="noir">Créteil</a>,
+              <a href="/academie/montpellier-year-<%= selectedYear %>" class="noir">Montpellier</a>,
+              <a href="/academie/paris-year-<%= selectedYear %>" class="noir">Paris</a>,
+              <a href="/academie/toulouse-year-<%= selectedYear %>" class="noir">Toulouse</a>,
+              <a href="/academie/versailles-year-<%= selectedYear %>" class="noir">Versailles</a>
+            </span>
+          </div>
+        <% } else if (zone === "Corse") { %>
+          <div class="date dCorse">
+            <div class="zone zCorse"><span>Corse</span></div>
+            <span class="lesdates">
+              <a href="/academie/corse-year-<%= selectedYear %>" class="noir">Corse</a>
+            </span>
+          </div>
+        <% } %>
+        
+      
+        
     </div>
 
+    <script>
+      window.navigateToYearZone = function () {
+        const dropdown = document.getElementById('yearDropdown');
+        const selectedYear = dropdown.value;
+        console.log("selectedYear", selectedYear);
+        window.location.href = `/zones?year=${selectedYear}&zone=${encodeURIComponent('<%= zone %>')}`;
+      };      
+    </script>

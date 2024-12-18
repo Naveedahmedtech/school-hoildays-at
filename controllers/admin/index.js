@@ -2,7 +2,7 @@ const axios = require("axios");
 const apiUtil = async (keys) => {
   try {
     const response = await axios.get(
-      `${process.env.baseUrl}/api/dashboard/translations`,
+      `https://holi-three.vercel.app/api/dashboard/translations`,
       {
         params: {
           keys: keys.join(","),
@@ -25,7 +25,7 @@ const apiUtil = async (keys) => {
 
 const getUsers = async () => {
   try {
-    const response = await axios.get(`${process.env.baseUrl}/api/auth/users`);
+    const response = await axios.get(`https://holi-three.vercel.app/api/auth/users`);
     return response.data.users;
   } catch (error) {
     console.error("Error fetching translations with axios:", error.message);
@@ -36,7 +36,7 @@ const getUsers = async () => {
 const getUserById = async (userId) => {
   try {
     const response = await axios.get(
-      `${process.env.baseUrl}/api/auth/users/${userId}`
+      `https://holi-three.vercel.app/api/auth/users/${userId}`
     );
     return response.data.user;
   } catch (error) {

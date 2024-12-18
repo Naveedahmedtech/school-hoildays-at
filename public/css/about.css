@@ -1,0 +1,99 @@
+.about-section {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #ffffff;
+    padding: 50px 20px;
+    margin: 0 0 20px 0;
+    max-width: 900px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    line-height: 1.8;
+  }
+  
+  /* About Container */
+  .about-container {
+    padding: 20px;
+  }
+  
+  /* Section Title */
+  .about-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    color: #000091;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  /* Subheadings */
+  .about-container h2 {
+    font-size: 1.8rem;
+    color: #000091;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    border-bottom: 2px solid #e5e5e5;
+    padding-bottom: 10px;
+  }
+  
+  /* Paragraph Text */
+  .about-container p {
+    color: #444444;
+    margin: 10px 0 20px;
+    text-align: justify;
+  }
+  
+  /* List Styling */
+  .about-list {
+    margin: 10px 0 20px 20px;
+    padding-left: 0;
+  }
+  
+  .about-list li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #555555;
+    list-style-type: disc;
+  }
+  
+  /* Strong Text Highlight */
+  strong {
+    color: #222222;
+    font-weight: 600;
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    .about-title {
+      font-size: 2rem;
+    }
+  
+    .about-container h2 {
+      font-size: 1.5rem;
+    }
+  
+    .about-container p,
+    .about-list li {
+      font-size: 0.95rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .about-section {
+      padding: 30px 15px;
+    }
+  
+    .about-title {
+      font-size: 1.8rem;
+    }
+  
+    .about-container h2 {
+      font-size: 1.3rem;
+    }
+  
+    .about-container p,
+    .about-list li {
+      font-size: 0.9rem;
+    }
+  }
+  

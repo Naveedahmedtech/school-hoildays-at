@@ -1,5 +1,5 @@
 const i18next  = require("i18next");
-const { prisma } = require("../../../lib/prisma");
+const prisma = require("../../../lib/prisma");
 const {
   generateTranslationFiles,
 } = require("../../../utils/generateTranslationFiles");

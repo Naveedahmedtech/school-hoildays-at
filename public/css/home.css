@@ -1,0 +1,110 @@
+/* Home Section Styling */
+.home-section {
+    background-color: #f4f7fc;
+    color: #333;
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Container for Grid Layout */
+  .home-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    line-height: 1.8;
+  }
+  
+  /* Title Styling */
+  .home-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #000091;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  /* Card Styling */
+  .card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card h2 {
+    font-size: 1.6rem;
+    color: #000091;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #e5e5e5;
+    padding-bottom: 10px;
+  }
+  
+  .card p {
+    font-size: 1rem;
+    color: #555;
+    margin: 0;
+  }
+  
+  /* Footer Styling */
+  .home-footer {
+    grid-column: 1 / -1; /* Spans entire row */
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 30px;
+    color: #333;
+  }
+
+  .dropdown-container-home{
+    display: flex;
+    align-items: center;
+  }
+
+
+  /* Dropdown Styling */
+  select#yearDropdown {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    outline: none;
+    transition: border 0.3s ease;
+  }
+
+  select#yearDropdown:focus {
+    border: 1px solid #007bff;
+  }
+
+  /* Selected Year Display */
+  #selectedYear {
+    font-weight: bold;
+    color: #007bff;
+    font-size: 18px;
+  }
+  
+  /* Responsive Breakpoints */
+  @media (max-width: 1024px) {
+    .home-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 cards per row on medium screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .home-container {
+      grid-template-columns: 1fr; /* 1 card per row on small screens */
+    }
+  }
+  

@@ -243,7 +243,7 @@ canvas {
     color: #000
 }
 
-#menu_annee ul {
+/* #menu_annee ul {
     list-style: none;
     display: inline-table;
     padding: 0 0 0 5px;
@@ -267,9 +267,9 @@ canvas {
     font-weight: bold;
     text-decoration: none;
     color: #000
-}
+} */
 
-#menu_annee ul li a:after {
+/* #menu_annee ul li a:after {
     content: "";
     border-top: 16px solid transparent;
     border-bottom: 16px solid transparent;
@@ -297,27 +297,23 @@ canvas {
 
 #menu_annee ul li:first-child a:before {
     display: none
-}
+} */
 
-#menu_annee ul li:last-child a {
+#menu_annee ul li a {
     border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px
-}
-
-#menu_annee ul li:last-child a:after {
-    display: none
-}
-
-#menu_annee ul li a:hover,
-#menu_annee ul li #actif {
+    border-bottom-right-radius: 2px;
     background: #e1000f;
-    color: #FFF
+    color: #FFF;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-left: 5px;
+    border-radius: 5px;
 }
 
-#menu_annee ul li a:hover:after,
+/* #menu_annee ul li a:hover:after,
 #menu_annee ul li #actif:after {
-    border-left-color: #e1000f
-}
+    border-left-color: #e1000f;
+} */
 
 h1 {
     font-family: Arial, Geneva, Helvetica, sans-serif !important;

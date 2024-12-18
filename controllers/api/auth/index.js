@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { prisma } = require("../../../lib/prisma");
+const prisma = require("../../../lib/prisma");
 
 const authController = {
   register: async (req, res) => {
@@ -81,7 +81,7 @@ const authController = {
       });
     } catch (error) {
       console.error("Signin error:", error);
-      res.status(500).json({ message: "Internal server error" });
+      res.status(500).json({ message: "Internal server error", error: error.message });
     }
   },
 

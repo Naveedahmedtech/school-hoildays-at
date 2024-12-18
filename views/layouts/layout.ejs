@@ -17,6 +17,7 @@
   <meta name="theme-color" content="#ffffff">
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/css/home.css" />
+  <link rel="stylesheet" href="/css/about.css" />
   <link rel="canonical" href="https://vacances-scolaires.education/carte/" />
 
 </head>
@@ -36,6 +37,12 @@
               </li>
               <li>
                 <a href="/academie" class="<%= route && route === 'academie' ? 'on' : '' %>"><%= t('academies') %></a>
+              </li> 
+              <li>
+                <a href="/departments" class="<%= route && route === 'departments' ? 'on' : '' %>"><%= t('departments') %></a>
+              </li> 
+              <li>
+                <a href="/about" class="<%= route && route === 'about' ? 'on' : '' %>"><%= t('about_nav') %></a>
               </li> 
               <li>
                 <select id="language-selector" aria-label="<%= t('select_language') %>">
@@ -203,22 +210,31 @@
               } else {
                 // No countdown_start_date, display default 00
                 targetElement.innerHTML = `
-                  <div class="time-segment">
-                    <span class="value">00</span>
-                    <span class="label">Days</span>
+                <div style="text-align: center; font-family: Arial, sans-serif;">
+                  <p style="font-size: 14px; font-weight: bold; margin-bottom: 0px;">
+                    commence dans
+                  </p>
+                  <div class="time-segment" style="display: inline-block; margin: 0px 0px; text-align: center;">
+                    <span class="value" style="font-size: 18px; font-weight: bold;">${"00"}</span>
+                    <span class="label" style="display: block; font-size: 10px;">Mois</span>
                   </div>
-                  <div class="time-segment">
-                    <span class="value">00</span>
-                    <span class="label">Hours</span>
+                  <div class="time-segment" style="display: inline-block; margin: 0px 0px; text-align: center;">
+                    <span class="value" style="font-size: 18px; font-weight: bold;">${ "00"}</span>
+                    <span class="label" style="display: block; font-size: 10px;">Jours</span>
                   </div>
-                  <div class="time-segment">
-                    <span class="value">00</span>
-                    <span class="label">Minutes</span>
+                  <div class="time-segment" style="display: inline-block; margin: 0 0px; text-align: center;">
+                    <span class="value" style="font-size: 18px; font-weight: bold;">${"00"}</span>
+                    <span class="label" style="display: block; font-size: 10px;">Heures</span>
                   </div>
-                  <div class="time-segment">
-                    <span class="value">00</span>
-                    <span class="label">Seconds</span>
+                  <div class="time-segment" style="display: inline-block; margin: 0 0px; text-align: center;">
+                    <span class="value" style="font-size: 18px; font-weight: bold;">${"00"}</span>
+                    <span class="label" style="display: block; font-size: 10px;">Minutes</span>
                   </div>
+                  <div class="time-segment" style="display: inline-block; margin: 0 0px; text-align: center;">
+                    <span class="value" style="font-size: 18px; font-weight: bold;">${"00"}</span>
+                    <span class="label" style="display: block; font-size: 10px;">Secondes</span>
+                  </div>
+                </div>
                 `;
               }
             }
@@ -258,6 +274,7 @@
         initializeCountdowns();
         setInterval(updateCountdowns, 1000);
         updateCountdowns();
+
       </script>
 
       <script src="/js/switch-language.js"></script>

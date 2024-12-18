@@ -46,6 +46,7 @@ const zoneA2024 = async (req, res, next) => {
       content: "../pages/zones/a/year2024",
       vacations: updatedVacations,
       countdownData,
+      selectedYear: year
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);
@@ -103,13 +104,11 @@ const zoneA2025 = async (req, res, next) => {
 
 // *** ZONE B START ********************************
 const zoneB2024 = async (req, res, next) => {
-  const zones = ["Zone B"];
-  const year = "2024";
+  const { year = "2024", zone = "Zone B" } = req.query;
+  const zones = [zone];
   const countdownData = req?.holidayData?.countdownData;
 
   try {
-    console.log("Fetching data using axios...");
-
     // Build API URLs
     const holidayAPIs = buildHolidayAPIs({
       baseURL: BASE_URL,
@@ -139,6 +138,8 @@ const zoneB2024 = async (req, res, next) => {
       content: "../pages/zones/b/year2024",
       vacations: updatedVacations,
       countdownData,
+      selectedYear: parseInt(year),
+      zone
     });
   } catch (error) {
     console.error("Error fetching data with axios:", error.message);

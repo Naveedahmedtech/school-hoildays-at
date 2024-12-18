@@ -4,8 +4,6 @@
   "school_holidays": "School Holidays",
   "regions": "Regions",
   "academies": "Academies",
-  "about_nav": "About",
-  "departments": "Departments",
   "search_placeholder": "Search for an academy, a region..",
   "search_button_aria_label": "Search",
   "zone": "Zone",
@@ -60,20 +58,5 @@
     },
     "commitmentTitle": "Our Commitment",
     "commitmentText": "We are committed to providing you with reliable and up-to-date service while continuously improving the site to make it even more complete and practical. dates-vacances.education is here to help you organize the school year with ease!"
-  },
-  "home": {
-    "title": "Home: How to Navigate the Site",
-    "intro": "On the homepage, you can quickly spot the upcoming key dates: just look at the colored blocks corresponding to your school zone. We also display a countdown showing how many months, days, and hours remain before the holidays arrive. To find the information you need, several options are available:",
-    "searchTitle": "Search Bar",
-    "searchDescription": "At the top of the page, enter the name of an academy (e.g., 'Lyon') or a region (e.g., 'Occitanie'). You will be redirected to the corresponding official calendar.",
-    "yearTabsTitle": "School Year Tabs",
-    "yearTabsDescription": "Just below the search bar, select the year (2024-2025, 2025-2026, etc.) to display the exact dates of various holidays.",
-    "zonesTablesTitle": "Tables by Zones",
-    "zonesTablesDescription": "In the central part, you will find calendars for Zones A, B, and C, as well as specific periods for Corsica and Overseas regions. Each table summarizes the holidays for All Saints' Day, Christmas, Winter, Spring, and Summer, with start and return dates.",
-    "interactiveMapTitle": "Interactive Map",
-    "interactiveMapDescription": "If needed, consult the map of France to quickly visualize which school zone corresponds to your academic region.",
-    "linksTitle": "Links to Overseas Calendars",
-    "linksDescription": "At the bottom of the table, navigation buttons direct you to the specific calendars for Corsica, Guadeloupe, Guyana, Martinique, Mayotte, and Réunion.",
-    "footerText": "Thanks to these features, you can plan trips, schedule stays, or simply ensure you don’t miss the school start date. Our platform has been designed to be accessible to everyone: students, parents, teachers, tourism professionals, and anyone who wants to know the exact dates of school holidays. We hope dates-vacances.education will accompany you throughout the year. Happy browsing!"
   }
 }

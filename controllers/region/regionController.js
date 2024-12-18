@@ -28,6 +28,27 @@ const region = async (req, res, next) => {
   }
 };
 
+
+const departments = async (req, res, next) => {
+  const countdownData = req?.holidayData?.countdownData;
+
+  const route = "departments";
+  try {
+    // Render the page with the holiday ranges and structured data
+    res.render("layouts/layout", {
+      //title: "Home - School and Public Holidays",
+      countdownData,
+      description:
+        "Bienvenue sur le calendrier officiel des vacances scolaires.",
+      content: "../pages/departments/departments",
+      route,
+    });
+  } catch (error) {
+    console.error("Error fetching data with axios:", error.message);
+    next(error);
+  }
+};
+
 const commonRegion2024 = async (req, res, next) => {
   const countdownData = req?.holidayData?.countdownData;
   const { region_name, of, department, zone, page, error } = req.query;
@@ -74,10 +95,10 @@ const commonRegion2024 = async (req, res, next) => {
       countdownData,
       description:
         "Bienvenue sur le calendrier officiel des vacances scolaires.",
-      content: `../pages/regions/year${of}`,
+      content: `../pages/regions/year2024`,
       vacations: updatedVacations,
       department,
-      year: of,
+      year: parseInt(of),
       region_name,
       zone,
       pageURL24,
@@ -96,5 +117,6 @@ const commonRegion2024 = async (req, res, next) => {
 
 module.exports = {
   region,
+  departments,
   commonRegion2024,
 };

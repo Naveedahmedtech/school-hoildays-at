@@ -95,21 +95,21 @@ let vacation = {
       zoneClass: "zB",
       zoneName: "Zone B",
       endOfClasses: "samedi 2 février ",
-      dayOfResumption: "lundi 02 février ",
+      dayOfResumption: null,
     },
     {
       className: "dC",
       zoneClass: "zC",
       zoneName: "Zone C",
       endOfClasses: "samedi 3 février ",
-      dayOfResumption: "lundi 03 mars ",
+      dayOfResumption: null,
     },
     {
       className: "dA",
       zoneClass: "zA",
       zoneName: "Zone A",
       endOfClasses: "samedi 10 février ",
-      dayOfResumption: "lundi 01 mars ",
+      dayOfResumption: null,
     },
   ],
 };
@@ -123,21 +123,21 @@ const vacation2 = {
       zoneClass: "zB",
       zoneName: "Zone B",
       endOfClasses: "samedi 5 avril ",
-      dayOfResumption: "mardi 22 avril ",
+      dayOfResumption: null,
     },
     {
       className: "dC",
       zoneClass: "zC",
       zoneName: "Zone C",
       endOfClasses: "samedi 12 avril ",
-      dayOfResumption: "lundi 28 avril ",
+      dayOfResumption: null,
     },
     {
       className: "dA",
       zoneClass: "zA",
       zoneName: "Zone A",
       endOfClasses: "samedi 19 avril ",
-      dayOfResumption: "lundi 5 mai ",
+      dayOfResumption: null,
     },
   ],
 };
@@ -309,6 +309,31 @@ const academies = [
   "Wallis et Futuna",
 ];
 
+const departments = [
+  "Ain",
+  "Aisne",
+  "Allier",
+  "Alpes-de-Haute-Provence",
+  "Hautes-Alpes",
+  "Alpes-Maritimes",
+  "Ardèche",
+  "Ardennes",
+  "Ariège",
+  "Aube",
+  "Aude",
+  "Aveyron",
+  "Bouches-du-Rhône",
+  "Calvados",
+  "Cantal",
+  "Charente",
+  "Charente-Maritime",
+  "Cher",
+  "Corrèze",
+  "Côte-d'or",
+  "Côtes-d'armor",
+  "Creuse",
+];
+
 module.exports = {
   firstThreeVacations,
   vacation,
@@ -325,4 +350,5 @@ module.exports = {
   longVacationData,
   regions,
   academies,
+  departments,
 };

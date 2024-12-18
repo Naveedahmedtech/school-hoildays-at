@@ -1,11 +1,12 @@
 generator client {
-  provider = "prisma-client-js"
-  output   = "./generated/client"
+  provider        = "prisma-client-js"
+  output          = "./generated/client"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
   provider = "mongodb"
-  url      = "mongodb+srv://naveed_test:adg5NG2BCbHrIYIv@cluster0.a1obf.mongodb.net/school_holiday?retryWrites=true&w=majority&appName=Cluster0"
+  url      = "mongodb+srv://naveed_test:adg5NG2BCbHrIYIv@cluster0.a1obf.mongodb.net/school_holiday?retryWrites=true&w=majority&appName=Cluster0&connectTimeoutMS=30000&socketTimeoutMS=30000"
 }
 
 model User {

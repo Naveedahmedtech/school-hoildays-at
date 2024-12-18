@@ -5,6 +5,19 @@ const { i18next } = require("../../config/i18n-config");
 const router = express.Router();
 
 router.get("/", homeController.home2024);
+router.get("/about", (req, res, next) => { 
+  const countdownData = req?.holidayData?.countdownData;
+
+  try {
+    res.render("layouts/layout", {
+      content: "../pages/about/about",
+      countdownData
+    });
+  } catch (error) {
+    next(error)
+  }
+});
+
 router.get("/annee-2025-2026", homeController.home2025);
 router.get("/recherche", homeController.search);
 router.get("/carte", homeController.map);
